@@ -23,3 +23,7 @@ For the sensor keys and values there are 3 parts:
  - sensor_device_class: this is the list from Home Assistant with all possible measurments. If the "unit_of_measurement" does not excist or has the wrong value you can change it here
 
 To know which keys the sensor sends it can be found in the decoder or enable "debug 5" and check "msg.result.currentData.sensorData" where all received keys are placed. It is also possible to check the "Context Data" and refresh the flow and browse to the sensor.
+
+As extra als the version hardware and firmware can be included by devining the correct keys in the arrays in deviceInfo
+
+![image](https://github.com/user-attachments/assets/0f35e7ac-0f97-4cd4-b1c7-2055b4487486)
