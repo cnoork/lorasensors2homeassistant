@@ -23,7 +23,7 @@ You can import lorasensors2homeassistant.json on an empty flow. After that you n
 
 For sensor configurations, this is done in function "Settings to flow variable (flow.set)".  After every finished change don't forget to click on the inject to activate the changes.
 
-Sensors needs to be defined whith there join_eui in the "joinKey2device", there are some examples there. join_eui needs to be registerd in lower case.
+Sensors needs to be defined whith there join_eui in the "joinKey2device", there are some examples there. The join_eui needs to be registerd in lower case.
 
 For the sensor keys and values there are 3 parts where changes could be done:
  - "sensorKeyTranslate": here the key kan be renamed to your prefered name or one of the device_classes (charcters in key's with a <underscore> will be replced with a <space> for variable name in Home Assistant)
