@@ -5,6 +5,10 @@ With this integration Lora "sensors" and "switches" can be integrated. I have tr
 
 ![image](https://github.com/user-attachments/assets/ee9f0d4f-3f06-426f-8311-82cb20d8637e)
 
+And here the Milesight Smart Portable Socket WS52x 
+
+![image](https://github.com/user-attachments/assets/63ba8e4e-5c59-44b2-ad5b-a454ec3b52ee)
+
 Below is the chain to integrate the Lora devices
 
 ![image](https://github.com/user-attachments/assets/96b2897e-cf5b-4b69-8fa1-196120f5b58c)
