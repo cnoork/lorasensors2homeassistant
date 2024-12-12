@@ -19,7 +19,7 @@ Prerquests:
  - If a sensor needs downlinks a encoder is needed (like a power switch)
  - Node Red running
  - MQTT running and integrated in Home Assistant
- - Sensor data a single value and not an object
+ - Sensor data is a single value and not an object
 
 You can import lorasensors2homeassistant.json on an empty flow. After that you need to do the following steps for the connections:
  - Connect the mqtt connections to the lora server. You can add as many applications as you need. All sensors are indentified by there join_eui
