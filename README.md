@@ -38,4 +38,5 @@ To know which keys the sensor sends it can be found in the decoder or enable "de
 
 As extra also the versions from hardware and firmware can be included by defining the correct keys in the arrays in deviceInfo
 
-![image](https://github.com/user-attachments/assets/5199243c-3298-42d8-aa6a-7fad011502b9)
+![image](https://github.com/user-attachments/assets/32ba5aa4-8549-4543-aab3-62aac0d61a36)
+
