@@ -1,16 +1,15 @@
-# lorasensors2homeassistant
+# lorasensors2homeassistant_v2
 
-==> Currently working on a improved version which will have many improvents and more integrations (2024-12-19)
 
-Integrate Lora sensors in Home Assistant
+Integrate Lora sensors into Home Assistant
 
-With this integration Lora "sensors" and "switches" can be integrated. I have tried to make the solution as univers as possible so it is possible to support all kind of sensors. It is also possible to control swichtes through Home Assistant. In the Node Red flow the Milesight portable socket WS52x is already configured.
+With this integration Lora "sensors" and "switches" can be integrated. I have tried to make the solution as univeral as possible so it is possible to support all kind of sensors. It is also possible to control swichtes through Home Assistant. In the Node Red flow the Milesight portable socket WS52x nad MClimate Vicki are already configured. These could also be used as example for other sensors.
 
 ![image](https://github.com/user-attachments/assets/1e088a27-bd7a-44e3-b14d-580ed334c643)
 
-And here the Milesight Smart Portable Socket WS52x 
+And here the MClimate Vicki - LoRaWAN Smart Radiator Thermostat 
 
-![image](https://github.com/user-attachments/assets/68830218-c5ec-42af-973a-121e8e027991)
+![image](https://github.com/user-attachments/assets/0563a3ad-1847-41be-9103-c3708893f949)
 
 Below is the chain to integrate the Lora devices
 
@@ -19,10 +18,9 @@ Below is the chain to integrate the Lora devices
 Prerquests:
  - Working Lora sensors
  - Decoder on Lora server
- - If a sensor needs downlinks a encoder is needed (like a power switch)
+ - If a sensor needs downlinks a encoder is needed (like a power switch, request software version or request configuration)
  - Node Red running
  - MQTT running and integrated in Home Assistant
- - Sensor data is a single value and not an object
 
 You can import lorasensors2homeassistant.json on an empty flow. After that you need to do the following steps for the connections:
  - Connect the mqtt connections to the lora server. You can add as many applications as you need. All sensors are indentified by there join_eui
@@ -30,16 +28,20 @@ You can import lorasensors2homeassistant.json on an empty flow. After that you n
 
 For sensor configurations, this is done in function "Settings to flow variable (flow.set)".  After every finished change don't forget to click on the inject to activate the changes.
 
-Sensors needs to be defined whith there join_eui in the "joinKey2device", there are some examples there. The join_eui needs to be registerd in lower case.
+Sensors needs to be defined with there join_eui in the "joinKey2lorakey2ha", there are some examples. The join_eui needs to be registerd in same case as the original message send by the lora server. Currently the following integrations are implemented: sensors, binary_sensor, switch, climate, number and button. in the object from the sensor the first name is the key name what is the the original lora message, all behind in the bracket is used in Home Assistant.
 
-For the sensor keys and values there are 3 parts where changes could be done:
- - "sensorKeyTranslate": here the key kan be renamed to your prefered name or one of the device_classes (charcters in key's with a <underscore> will be replced with a <space> for variable name in Home Assistant)
- - "sensor2device_class": when the key name does not excist as device_class you can link the value to the correct device_class
- - "sensor_device_class": this is the list from Home Assistant with all possible sensor measurments. If the "unit_of_measurement" does not excist or has the wrong value you can change it here
+To know which keys the sensor sends it can be found in the decoder or enable debug behind "Collect all data" and check "msg.result.currentData.sensorData" where all received keys are placed. It is also possible to check the "Context Data" and refresh the flow and browse to the sensor.
 
-To know which keys the sensor sends it can be found in the decoder or enable "debug 5" and check "msg.result.currentData.sensorData" where all received keys are placed. It is also possible to check the "Context Data" and refresh the flow and browse to the sensor.
+As extra also the versions from hardware and firmware can be included by defining the correct keys in the arrays in deviceInfo.
 
-As extra also the versions from hardware and firmware can be included by defining the correct keys in the arrays in deviceInfo
+Here the example how the MClimate Vicki is defined:
+![image](https://github.com/user-attachments/assets/b9e5055b-8aeb-4cc6-a5f4-fc1f1240e4b1)
 
-![image](https://github.com/user-attachments/assets/32ba5aa4-8549-4543-aab3-62aac0d61a36)
+Here the total flow:
+
+![image](https://github.com/user-attachments/assets/0569d221-6121-417e-beb9-4bf7e4e6608d)
+
+Below part is for debug. Because of the nature from Lora sensors a message is send not often you can enabling below part which save last received message and re-fire the message as many times as you want for debug:
+
+![image](https://github.com/user-attachments/assets/6a2b4471-1152-4a15-b77a-c06f0a7294f9)
 
