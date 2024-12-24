@@ -718,7 +718,6 @@
             "label": true
         },
         "nodes": [
-            "5ab2af1e1f9d1e04",
             "325765eca6ea9195",
             "f2bc3993be833f71",
             "9d1077b3e83fb2f3",
@@ -729,46 +728,13 @@
             "dc975f31375b3c60",
             "d2f839b91ff9421f",
             "e93863cff36d33be",
-            "0479323724a86060"
+            "0479323724a86060",
+            "fe41620ed4b3cab3"
         ],
         "x": 174,
         "y": 1319,
         "w": 1032,
         "h": 342
-    },
-    {
-        "id": "5ab2af1e1f9d1e04",
-        "type": "function",
-        "z": "7a9ca1740ef5409d",
-        "g": "37ce952a02d47061",
-        "name": "Downlink for lora and update HA",
-        "func": "msg.settings = flow.get(\"settings\")\nif(!msg.result) {\n    msg.result = {}\n}\n\nmsg.result.manufacturer = msg.topic.split(\"/\")[1]\nmsg.result.application = msg.topic.split(\"/\")[2]\nmsg.result.deviceName = msg.topic.split(\"/\")[3]\nmsg.result.join_eui = msg.topic.split(\"/\")[4]\nmsg.result.integration = msg.topic.split(\"/\")[6]\nmsg.result.sensor = msg.topic.split(\"/\")[7]\nmsg.result.value = msg.payload\n\nmsg.result.test = msg.settings.joinKey2lorakey2ha[msg.result.join_eui][msg.result.integration]\n\n\n// ######################\n// ##  create lora downlink command\n// ######################\nmsg.result.loraDownlinkCmd = []\nfor (const [key, value] of Object.entries(msg.settings.joinKey2lorakey2ha[msg.result.join_eui][msg.result.integration])) {\n    if ( value.name == msg.result.sensor ) {\n        if ( value.downlink ) {\n            msg.result.downlinkCmd = value.downlink.cmd\n            var objLora = {\n                topic: \"v3/\" + msg.result.application + \"@ttn/devices/\" + msg.result.deviceName + \"/down/push\",\n                payload: {\n                    downlinks: [\n                        {\n                            f_port: value.downlink.fPort,\n                            decoded_payload: { [value.downlink.cmd]: msg.result.value },\n                            priority: \"NORMAL\",\n                            confirmed: false\n                        }\n                    ]\n                },\n                application: msg.result.application\n            }\n            msg.result.loraDownlinkCmd.push(objLora)\n        }\n    }\n}\n\n// ######################\n// ##  create update Home Assistant\n// ######################\nmsg.result.homeassistantCmd = []\nfor (const [integration, integrationValue] of Object.entries(msg.settings.joinKey2lorakey2ha[msg.result.join_eui])) {\n    if ( integration != \"button\" ) {\n        for (const [loraKey, sensorValue] of Object.entries(integrationValue)) {\n            if ( sensorValue.downlink ) {\n                if ( sensorValue.downlink.cmd == msg.result.downlinkCmd ) {\n                    var objHa = {\n                        topic: \"lora2nodered2mqtt/\" + msg.result.manufacturer + \"/\" + msg.result.deviceName + \"/get/\" + integration + \"/\" + sensorValue.name,\n                        payload: { value: msg.result.value },\n                    }\n                    msg.result.homeassistantCmd.push(objHa)\n                }\n            }\n        }\n    }\n}\n\n\n// ######################\n// ##  create lora downlink command\n// ######################\nfor (const msgLora of msg.result.loraDownlinkCmd) {\n    node.send([null, null, msgLora])\n}\n\n\n// ######################\n// ##  send update Home Assistant\n// ######################\nfor (const msgHa of msg.result.homeassistantCmd) {\n    node.send([null, msgHa, null])\n}\n\nreturn [msg, null, null]",
-        "outputs": 3,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 610,
-        "y": 1400,
-        "wires": [
-            [
-                "325765eca6ea9195"
-            ],
-            [
-                "f2bc3993be833f71",
-                "d37afc8282157c48"
-            ],
-            [
-                "9d1077b3e83fb2f3",
-                "332a360722a27691"
-            ]
-        ],
-        "outputLabels": [
-            "debug",
-            "output mqtt HA device values",
-            "output mqtt downlink Lora server"
-        ]
     },
     {
         "id": "325765eca6ea9195",
@@ -977,8 +943,42 @@
         "y": 1400,
         "wires": [
             [
-                "5ab2af1e1f9d1e04"
+                "fe41620ed4b3cab3"
             ]
+        ]
+    },
+    {
+        "id": "fe41620ed4b3cab3",
+        "type": "function",
+        "z": "7a9ca1740ef5409d",
+        "g": "37ce952a02d47061",
+        "name": "Downlink for lora and update HA",
+        "func": "msg.settings = flow.get(\"settings\")\nif(!msg.result) {\n    msg.result = {}\n}\n\nmsg.result.manufacturer = msg.topic.split(\"/\")[1]\nmsg.result.application = msg.topic.split(\"/\")[2]\nmsg.result.deviceName = msg.topic.split(\"/\")[3]\nmsg.result.join_eui = msg.topic.split(\"/\")[4]\nmsg.result.integration = msg.topic.split(\"/\")[6]\nmsg.result.sensor = msg.topic.split(\"/\")[7]\nmsg.result.value = msg.payload\n\nmsg.result.test = msg.settings.joinKey2lorakey2ha[msg.result.join_eui][msg.result.integration]\n\n\n// ######################\n// ##  create lora downlink command\n// ######################\nmsg.result.loraDownlinkCmd = []\nfor (const [key, value] of Object.entries(msg.settings.joinKey2lorakey2ha[msg.result.join_eui][msg.result.integration])) {\n    if ( value.name == msg.result.sensor ) {\n        if ( value.downlink ) {\n            var downlinkValue = msg.result.value\n            if ( value.downlink[downlinkValue] ) {\n                downlinkValue = value.downlink[downlinkValue]\n            }\n            msg.result.downlinkCmd = value.downlink.cmd\n            var objLora = {\n                topic: \"v3/\" + msg.result.application + \"@ttn/devices/\" + msg.result.deviceName + \"/down/push\",\n                payload: {\n                    downlinks: [\n                        {\n                            f_port: value.downlink.fPort,\n                            decoded_payload: { [value.downlink.cmd]: downlinkValue },\n                            priority: \"NORMAL\",\n                            confirmed: false\n                        }\n                    ]\n                },\n                application: msg.result.application,\n            }\n            msg.result.loraDownlinkCmd.push(objLora)\n        }\n    }\n}\n\n// ######################\n// ##  create update Home Assistant\n// ######################\nmsg.result.homeassistantCmd = []\nfor (const [integration, integrationValue] of Object.entries(msg.settings.joinKey2lorakey2ha[msg.result.join_eui])) {\n    if ( integration != \"button\" ) {\n        for (const [loraKey, sensorValue] of Object.entries(integrationValue)) {\n            if ( sensorValue.downlink ) {\n                if ( sensorValue.downlink.cmd == msg.result.downlinkCmd ) {\n                    var objHa = {\n                        topic: \"lora2nodered2mqtt/\" + msg.result.manufacturer + \"/\" + msg.result.deviceName + \"/get/\" + integration + \"/\" + sensorValue.name,\n                        payload: { value: msg.result.value },\n                    }\n                    msg.result.homeassistantCmd.push(objHa)\n                }\n            }\n        }\n    }\n}\n\n\n// ######################\n// ##  create lora downlink command\n// ######################\nfor (const msgLora of msg.result.loraDownlinkCmd) {\n    node.send([null, null, msgLora])\n}\n\n\n// ######################\n// ##  send update Home Assistant\n// ######################\nfor (const msgHa of msg.result.homeassistantCmd) {\n    node.send([null, msgHa, null])\n}\n\nreturn [msg, null, null]",
+        "outputs": 3,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 1400,
+        "wires": [
+            [
+                "325765eca6ea9195"
+            ],
+            [
+                "d37afc8282157c48",
+                "f2bc3993be833f71"
+            ],
+            [
+                "332a360722a27691",
+                "9d1077b3e83fb2f3"
+            ]
+        ],
+        "outputLabels": [
+            "debug",
+            "output mqtt HA device values",
+            "output mqtt downlink Lora server"
         ]
     },
     {
