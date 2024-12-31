@@ -78,14 +78,16 @@ The config for example temprature:
 	tempC: { name: "temperature", device_class: "temperature", unit_of_measurement: "°C" },
   },
 
-Here is "tempC" the name which came from the lora server but within Home Assistant is that translated to "temperature", in the intgatrion documentation for the integration "sensor" there is a device_class "temperature" and the possible "unit_of_measurement"
+Here is "tempC" the name which came from the lora server but within Home Assistant it is translated to "temperature", in the documentation of the integration "sensor" there is a device_class "temperature" and the possible "unit_of_measurement"
+
+A key from the lora server can be defined in multiple intergations if needed but only once per integration.
 
 It is also possible to add extra attributes:
  - icon: for a manual defined icon for the integration value
- - value or value_default: gve the variable a fixed value or a default if there not yet a value send. defaults ar good to use when the variable is only available when requesting it through a downlink
- - downlink: when there is a posibility to control a value or request data from the device with a fPort and command
- - entity_category: to place an integration in config or diagnostic
+ - value or value_default: give the variable a fixed value or a default if there is not yet a value available. defaults is good to use when the variable is only available when requesting it through a downlink
+ - downlink: when there is a posibility to control a value or request data from the device with a fPort and a command (downlink encoder requered)
+ - entity_category: to place an integration value in config or diagnostic box
 
 For climate and number it is also needed to define the primary key in device.
 
-Al the result from the paramaters (don't forget to click on "timestamp" to activate after you have deployed it) in the debug under "result.integration" and the eventually data which will be send to Home Assistant in "result.haConfigQueue" and "result.haValueQueue"
+Al the result from the paramaters (don't forget to click on "timestamp" to activate after you have deployed it) could be found in the debug under "result.integration" and the eventually data which will be send to Home Assistant in "result.haConfigQueue" and "result.haValueQueue"
