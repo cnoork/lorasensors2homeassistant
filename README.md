@@ -1,7 +1,7 @@
 # lorasensors2homeassistant_v2_1
 
 
-Integrate Lora sensors into Home Assistant
+### Integrate Lora sensors into Home Assistant
 
 With this integration Lora "sensors" and "switches" can be integrated. I have tried to make the solution as univeral as possible so it is possible to support all kind of sensors. It is also possible to control swichtes through Home Assistant. In the Node Red flow the following devices are already defined:
  - Milesight: Smart Portable Socket WS52x
