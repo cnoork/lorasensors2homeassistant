@@ -1,4 +1,4 @@
-# lorasensors2homeassistant_v2
+# lorasensors2homeassistant_v2_1
 
 
 Integrate Lora sensors into Home Assistant
@@ -22,7 +22,7 @@ Prerquests:
  - Node Red running
  - MQTT running and integrated in Home Assistant
 
-You can import lorasensors2homeassistant.json on an empty flow. After that you need to do the following steps for the connections:
+You can import lorasensors2homeassistant_v2_1.json on an empty flow. After that you need to do the following steps for the connections:
  - Connect the mqtt connections to the lora server. You can add as many applications as you need. All sensors are indentified by there join_eui
  - Connect the mqtt connections to the mqtt broker which is used by Home Assistant
 
