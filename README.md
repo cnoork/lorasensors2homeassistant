@@ -53,3 +53,39 @@ Below part is for debug. Because of the nature from Lora sensors a message is se
 ![image](https://github.com/user-attachments/assets/2ffdb77b-5947-47b0-8393-2c747ce553b3)
 
 
+### How to configure a new type of device
+
+When "debug Collect data" is enabled you can find the "join_eui" in "result.loraData.metaData.join_eui".
+
+The first thing is to add the join_eui as key in "Settings to flow variable (flow.set)" under "joinKey2lorakey2ha" as follows:
+```
+        "<the_join_eui>": {
+            device: {
+                manufacturer: { name: "<manufacturer_name>" },
+                model: { name: "<model_name>"},
+            },
+            sensor: {
+                rssi: { name: "signal_strength", device_class: "signal_strength", unit_of_measurement: "dBm", icon: "mdi:signal", entity_category: "diagnostic" },
+            },
+        },
+
+```
+
+Don't forget after Deplay to activate it by a click on "timestamp". Now the flow will try to process the data and we can check the result at the end of processing integrations, currently it is "debug integration button". In the message you can see which key's are available for configuration. Depend on what kind of device it is to configure the apportiate integration ("sensor", "binary_sensor", "climate" etc).
+
+The config for example temprature:
+  sensor: {
+	tempC: { name: "temperature", device_class: "temperature", unit_of_measurement: "°C" },
+  },
+
+Here is "tempC" the name which came from the lora server but within Home Assistant is that translated to "temperature", in the intgatrion documentation for the integration "sensor" there is a device_class "temperature" and the possible "unit_of_measurement"
+
+It is also possible to add extra attributes:
+ - icon: for a manual defined icon for the integration value
+ - value or value_default: gve the variable a fixed value or a default if there not yet a value send. defaults ar good to use when the variable is only available when requesting it through a downlink
+ - downlink: when there is a posibility to control a value or request data from the device with a fPort and command
+ - entity_category: to place an integration in config or diagnostic
+
+For climate and number it is also needed to define the primary key in device.
+
+Al the result from the paramaters (don't forget to click on "timestamp" to activate) in the debug under "result.integration" and the eventually data in "result.haConfigQueue" and "result.haValueQueue"
