@@ -26,18 +26,18 @@ function encodeDownlink(input) {
         bytes.push(0x04);
         break;}
       case 'setOpenWindow': {
-		    let enabled = Number(input.data.setOpenWindow.enabled);
-		    let closeTime = parseInt(input.data.setOpenWindow.closeTime / 5);
-		    let delta = parseInt(input.data.setOpenWindow.delta, 8);
-		    let motorPosition = input.data.setOpenWindow.motorPosition;
-		    let motorPositionFirstPart = motorPosition & 0xFF;
-		    let motorPositionSecondPart = (motorPosition >> 8) & 0xFF;
-		    bytes.push(0x06);
-		    bytes.push(enabled);
-		    bytes.push(closeTime);
-		    bytes.push(motorPositionFirstPart);
-		    bytes.push((motorPositionSecondPart << 4) | delta);
-		    break;}
+        let enabled = Number(input.data.setOpenWindow.enabled);
+        let closeTime = parseInt(input.data.setOpenWindow.closeTime / 5);
+        let delta = parseInt(input.data.setOpenWindow.delta, 8);
+        let motorPosition = input.data.setOpenWindow.motorPosition;
+        let motorPositionFirstPart = motorPosition & 0xFF;
+        let motorPositionSecondPart = (motorPosition >> 8) & 0xFF;
+        bytes.push(0x06);
+        bytes.push(enabled);
+        bytes.push(closeTime);
+        bytes.push(motorPositionFirstPart);
+        bytes.push((motorPositionSecondPart << 4) | delta);
+        break;}
       case 'setChildLock': {
         bytes.push(0x07);
         bytes.push(Number(input.data.setChildLock));
