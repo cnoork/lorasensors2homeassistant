@@ -71,7 +71,7 @@ The first thing is to add the join_eui as key in "Settings to flow variable (flo
 
 ```
 
-Don't forget after Deplay to activate it by a click on "timestamp". Now the flow will try to process the data and we can check the result at the end of processing integrations, currently it is "debug integration button". In the message you can see which key's are available for configuration. Depend on what kind of device it is to configure the apportiate integration ("sensor", "binary_sensor", "climate" etc).
+Don't forget after Deploy to activate it by a click on "timestamp". Now the flow will try to process the data and we can check the result at the end of processing integrations, currently it is "debug integration button". In the message you can see which key's are available for configuration. Depend on what kind of device it is to configure the apportiate integration ("sensor", "binary_sensor", "climate" etc).
 
 The config for example temprature:
   sensor: {
@@ -88,4 +88,4 @@ It is also possible to add extra attributes:
 
 For climate and number it is also needed to define the primary key in device.
 
-Al the result from the paramaters (don't forget to click on "timestamp" to activate) in the debug under "result.integration" and the eventually data in "result.haConfigQueue" and "result.haValueQueue"
+Al the result from the paramaters (don't forget to click on "timestamp" to activate after you have deployed it) in the debug under "result.integration" and the eventually data which will be send to Home Assistant in "result.haConfigQueue" and "result.haValueQueue"
