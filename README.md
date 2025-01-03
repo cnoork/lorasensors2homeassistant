@@ -75,14 +75,14 @@ The first thing is to add the join_eui as key in "Settings to flow variable (flo
 
 Don't forget after Deploy to activate it by a click on "timestamp". Now the flow will try to process the data and we can check the result at the end of processing integrations, currently it is "debug integration button". In the message you can see which key's are available for configuration. Depend on what kind of device it is to configure the apportiate integration ("sensor", "binary_sensor", "climate" etc).
 
-The config for example temprature:
+Here a example from temprature:
 ```
   sensor: {
 	tempC: { name: "temperature", device_class: "temperature", unit_of_measurement: "°C" },
   },
 ```
 
-Here is "tempC" the name which came from the lora server but within Home Assistant it is translated to "temperature", in the documentation of the integration "sensor" there is a device_class "temperature" and the possible "unit_of_measurement"
+Here is "tempC" the name which came from the lora server, within Home Assistant it is registered in the "sensor" integration and translated to "temperature". In the documentation of the integration "sensor" there is a device_class "temperature" and the possible "unit_of_measurement"
 
 A key from the lora server can be defined in multiple intergations if needed but only once per integration.
 
