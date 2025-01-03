@@ -13,7 +13,9 @@ These could also be used as example for other sensors.
 
 ![image](https://github.com/user-attachments/assets/1e088a27-bd7a-44e3-b14d-580ed334c643)
 
-And here the MClimate Vicki - LoRaWAN Smart Radiator Thermostat 
+And here the MClimate Vicki - LoRaWAN Smart Radiator Thermostat
+
+<img src="https://github.com/user-attachments/assets/70c8a6de-c5c3-433f-9d89-ac2fd8bc776b" width="300" />
 
 ![image](https://github.com/user-attachments/assets/0563a3ad-1847-41be-9103-c3708893f949)
 
