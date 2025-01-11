@@ -29,7 +29,6 @@
             "label": true
         },
         "nodes": [
-            "27fe60a71a0908a7",
             "74a4c2a82480a432",
             "81a255506840c369",
             "b09230ebd6b34b67",
@@ -39,47 +38,13 @@
             "5f2ebf1e56d8f422",
             "d1f6ea20379d88de",
             "c612d04d8adee632",
-            "f17c16bc7fb1586a"
+            "f17c16bc7fb1586a",
+            "b5ac80d64844ce48"
         ],
         "x": 94,
         "y": 1459,
         "w": 1212,
         "h": 342
-    },
-    {
-        "id": "27fe60a71a0908a7",
-        "type": "function",
-        "z": "7a9ca1740ef5409d",
-        "g": "a926e537a486d88e",
-        "name": "Downlink for lora and update HA",
-        "func": "msg.settings = flow.get(\"settings\")\nif(!msg.result) {\n    msg.result = {}\n}\n\nmsg.result.manufacturer = msg.topic.split(\"/\")[1]\nmsg.result.application = msg.topic.split(\"/\")[2]\nmsg.result.deviceName = msg.topic.split(\"/\")[3]\nmsg.result.join_eui = msg.topic.split(\"/\")[4]\nmsg.result.integration = msg.topic.split(\"/\")[6]\nmsg.result.sensor = msg.topic.split(\"/\")[7]\nmsg.result.value = msg.payload\n\nmsg.result.test = msg.settings.joinKey2lorakey2ha[msg.result.join_eui][msg.result.integration]\n\n\n// ######################\n// ##  create lora downlink command\n// ######################\nmsg.result.loraDownlinkCmd = []\nfor (const [key, value] of Object.entries(msg.settings.joinKey2lorakey2ha[msg.result.join_eui][msg.result.integration])) {\n    if ( value.name == msg.result.sensor ) {\n        if ( value.downlink ) {\n            var downlinkValue = msg.result.value\n            if ( value.downlink[downlinkValue] ) {\n                downlinkValue = value.downlink[downlinkValue]\n            }\n            msg.result.downlinkCmd = value.downlink.cmd\n            var objLora = {\n                topic: \"v3/\" + msg.result.application + \"@ttn/devices/\" + msg.result.deviceName + \"/down/push\",\n                payload: {\n                    downlinks: [\n                        {\n                            f_port: value.downlink.fPort,\n                            decoded_payload: { [value.downlink.cmd]: downlinkValue },\n                            priority: \"NORMAL\",\n                            confirmed: false\n                        }\n                    ]\n                },\n                application: msg.result.application,\n            }\n            msg.result.loraDownlinkCmd.push(objLora)\n        }\n    }\n}\n\n// ######################\n// ##  create update Home Assistant\n// ######################\nmsg.result.homeassistantCmd = []\nfor (const [integration, integrationValue] of Object.entries(msg.settings.joinKey2lorakey2ha[msg.result.join_eui])) {\n    if ( integration != \"button\" ) {\n        for (const [loraKey, sensorValue] of Object.entries(integrationValue)) {\n            if ( sensorValue.downlink ) {\n                if ( sensorValue.downlink.cmd == msg.result.downlinkCmd ) {\n                    var objHa = {\n                        topic: \"lora2nodered2mqtt/\" + msg.result.manufacturer + \"/\" + msg.result.deviceName + \"/get/\" + integration + \"/\" + sensorValue.name,\n                        payload: { value: msg.result.value },\n                    }\n                    msg.result.homeassistantCmd.push(objHa)\n                }\n            }\n        }\n    }\n}\n\n\n// ######################\n// ##  create lora downlink command\n// ######################\nfor (const msgLora of msg.result.loraDownlinkCmd) {\n    node.send([null, null, msgLora])\n}\n\n\n// ######################\n// ##  send update Home Assistant\n// ######################\nfor (const msgHa of msg.result.homeassistantCmd) {\n    node.send([null, msgHa, null])\n}\n\nreturn [msg, null, null]",
-        "outputs": 3,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 610,
-        "y": 1540,
-        "wires": [
-            [
-                "74a4c2a82480a432"
-            ],
-            [
-                "81a255506840c369",
-                "fb6343e7c8e03ea3"
-            ],
-            [
-                "b09230ebd6b34b67",
-                "c612d04d8adee632",
-                "d1f6ea20379d88de"
-            ]
-        ],
-        "outputLabels": [
-            "debug",
-            "output mqtt HA device values",
-            "output mqtt downlink Lora server"
-        ]
     },
     {
         "id": "74a4c2a82480a432",
@@ -210,7 +175,7 @@
         "y": 1540,
         "wires": [
             [
-                "27fe60a71a0908a7"
+                "b5ac80d64844ce48"
             ]
         ]
     },
@@ -277,6 +242,41 @@
         "x": 1090,
         "y": 1660,
         "wires": []
+    },
+    {
+        "id": "b5ac80d64844ce48",
+        "type": "function",
+        "z": "7a9ca1740ef5409d",
+        "g": "a926e537a486d88e",
+        "name": "Downlink for lora and update HA",
+        "func": "msg.settings = flow.get(\"settings\")\nif(!msg.result) {\n    msg.result = {}\n}\n\nmsg.result.manufacturer = msg.topic.split(\"/\")[1]\nmsg.result.application = msg.topic.split(\"/\")[2]\nmsg.result.deviceName = msg.topic.split(\"/\")[3]\nmsg.result.join_eui = msg.topic.split(\"/\")[4]\nmsg.result.integration = msg.topic.split(\"/\")[6]\nmsg.result.sensor = msg.topic.split(\"/\")[7]\nmsg.result.value = msg.payload\n\nmsg.result.test = msg.settings.joinKey2lorakey2ha[msg.result.join_eui][msg.result.integration]\n\n\n// ######################\n// ##  create lora downlink command\n// ######################\nmsg.result.loraDownlinkCmd = []\nfor (const [key, value] of Object.entries(msg.settings.joinKey2lorakey2ha[msg.result.join_eui][msg.result.integration])) {\n    if ( value.name == msg.result.sensor ) {\n        if ( value.downlink ) {\n            var downlinkValue = msg.result.value\n            if ( value.downlink[downlinkValue] ) {\n                downlinkValue = value.downlink[downlinkValue]\n            }\n            msg.result.downlinkCmd = value.downlink.cmd\n            var objLora = {\n                topic: \"v3/\" + msg.result.application + \"@ttn/devices/\" + msg.result.deviceName + \"/down/push\",\n                payload: {\n                    downlinks: [\n                        {\n                            f_port: value.downlink.fPort,\n                            decoded_payload: { [value.downlink.cmd]: downlinkValue },\n                            priority: \"NORMAL\",\n                            confirmed: false\n                        }\n                    ]\n                },\n                application: msg.result.application,\n            }\n            msg.result.loraDownlinkCmd.push(objLora)\n        }\n    }\n}\n\n// ######################\n// ##  create update Home Assistant\n// ######################\nmsg.result.homeassistantCmd = []\nfor (const [integration, integrationValue] of Object.entries(msg.settings.joinKey2lorakey2ha[msg.result.join_eui])) {\n    if ( integration != \"button\" ) {\n        for (const [loraKey, sensorValue] of Object.entries(integrationValue)) {\n            if ( sensorValue.downlink ) {\n                if ( sensorValue.downlink.cmd == msg.result.downlinkCmd ) {\n                    var objHa = {\n                        topic: \"lora2nodered2mqtt/\" + msg.result.manufacturer + \"/\" + msg.result.deviceName + \"/get/\" + integration + \"/\" + sensorValue.name,\n                        payload: { value: msg.result.value },\n                    }\n                    msg.result.homeassistantCmd.push(objHa)\n                }\n            }\n        }\n    }\n}\n\n\n// ######################\n// ##  create lora downlink command\n// ######################\nfor (const msgLora of msg.result.loraDownlinkCmd) {\n    node.send([null, null, msgLora])\n}\n\n\n// ######################\n// ##  send update Home Assistant\n// ######################\nfor (const msgHa of msg.result.homeassistantCmd) {\n    node.send([null, msgHa, null])\n}\n\nreturn [msg, null, null]",
+        "outputs": 3,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 1540,
+        "wires": [
+            [
+                "74a4c2a82480a432"
+            ],
+            [
+                "fb6343e7c8e03ea3",
+                "81a255506840c369"
+            ],
+            [
+                "b09230ebd6b34b67",
+                "c612d04d8adee632",
+                "d1f6ea20379d88de"
+            ]
+        ],
+        "outputLabels": [
+            "debug",
+            "output mqtt HA device values",
+            "output mqtt downlink Lora server"
+        ]
     },
     {
         "id": "34b3812930585fe6",
@@ -387,7 +387,7 @@
         "type": "comment",
         "z": "7a9ca1740ef5409d",
         "g": "ace3311aef26de69",
-        "name": "Version 2.1.2   (2025-01-02)",
+        "name": "Version 2.1.3   (2025-01-11)",
         "info": "",
         "x": 230,
         "y": 80,
@@ -403,9 +403,9 @@
             "label": true
         },
         "nodes": [
-            "a54c180505e543fd",
-            "3e7aa6194691419f",
-            "cae7182abcf5b5d3"
+            "789d186e5ef30814",
+            "092352c7b953c883",
+            "c7d938e04a4ca478"
         ],
         "x": 94,
         "y": 139,
@@ -413,7 +413,25 @@
         "h": 82
     },
     {
-        "id": "a54c180505e543fd",
+        "id": "789d186e5ef30814",
+        "type": "debug",
+        "z": "7a9ca1740ef5409d",
+        "g": "e1ef8c61ae3d69b3",
+        "name": "debug settings",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "092352c7b953c883",
         "type": "inject",
         "z": "7a9ca1740ef5409d",
         "g": "e1ef8c61ae3d69b3",
@@ -438,17 +456,17 @@
         "y": 180,
         "wires": [
             [
-                "3e7aa6194691419f"
+                "c7d938e04a4ca478"
             ]
         ]
     },
     {
-        "id": "3e7aa6194691419f",
+        "id": "c7d938e04a4ca478",
         "type": "function",
         "z": "7a9ca1740ef5409d",
         "g": "e1ef8c61ae3d69b3",
         "name": "Settings to flow variable (flow.set)",
-        "func": "// general settings\nmsg.settings = {\n    loraServer: \"https://eu1.cloud.thethings.network\",\n\n    joinKey2lorakey2ha: {\n        \"70B3D52DD3000000\": { \n            device: {\n                manufacturer: { name: \"MClimate\" },\n                model: { name: \"Vicki - LoRaWAN Smart Radiator Thermostat\" },\n                deviceVersions_software: { name: \"sw_version\" },\n                deviceVersions_hardware: { name: \"hw_version\" },\n                climate_primary_key: { name: \"radiator_thermostat\" },\n                number_primary_key: { name: \"temperature_control\" },\n            },\n            sensor: {\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n                batteryPct: { name: \"battery\", device_class: \"battery\", unit_of_measurement: \"%\", entity_category: \"diagnostic\"},\n                relativeHumidity: { name: \"humidity\", device_class: \"humidity\", unit_of_measurement: \"%\" },\n                valvePct: { name: \"valve_open_status\", device_class: \"None\", unit_of_measurement: \"%\", icon: \"mdi:pipe-valve\" }\n            },\n            binary_sensor: {\n                attachedBackplate: { name: \"attached_backplate\", icon: \"mdi:engine\" },\n                childLock: { name: \"child_lock\", icon: \"mdi:lock\" },\n                openWindow: { name: \"open_window_detection\", icon: \"mdi:window-closed-variant\" },\n            },\n            climate: {\n                sensorTemperature: { name: \"current_temperature\" },\n                targetTemperature: { name: \"radiator_thermostat\", device_class: \"temperature\", unit_of_measurement: \"°C\", downlink: { fPort: 1, cmd: \"setTargetTemperature\" } },\n                temperatureRangeSettings_min: { name: \"min_temp\", value_default: 15 },\n                temperatureRangeSettings_max: { name: \"max_temp\", value_default: 21 },\n                system_mode: { name: \"system_mode\", value_default: \"heat\" },\n                attachedBackplate: { name: \"attached_backplate\" },\n                temp_step: { name: \"temp_step\", value: 1 },\n            },\n            number: {\n                temperatureRangeSettings_min: { name: \"min\", value_default: 15 },\n                temperatureRangeSettings_max: { name: \"max\", value_default: 21 },\n                targetTemperature: { name: \"temperature_control\", device_class: 'temperature', unit_of_measurement: \"°C\", downlink: { fPort: 1, cmd: \"setTargetTemperature\" } },\n                step: { name: \"step\", value: 1 },\n                mode: { name: \"mode\", value: \"slider\" }\n            },\n            button: {\n                request_device_settings: { name: \"request_device_settings\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 1, cmd: \"getAllParams\" } },\n                request_device_version: { name: \"request_device_version\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 1, cmd: \"getDeviceVersions\" } },\n            }\n        },\n        \"70B3D52DD8000000\": {\n            device: {\n                manufacturer: { name: \"MClimate\" },\n                model: { name: \"WirelessThermostat - LoRaWAN\"},\n                deviceVersions_software: { name: \"sw_version\" },\n                deviceVersions_hardware: { name: \"hw_version\" },\n                climate_primary_key: { name: \"thermostat\" },\n                number_primary_key: { name: \"temperature_control\" },\n            },\n            sensor: {\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n                batteryPct: { name: \"battery\", device_class: \"battery\", unit_of_measurement: \"%\", entity_category: \"diagnostic\" },\n                relativeHumidity: { name: \"humidity\", device_class: \"humidity\", unit_of_measurement: \"%\" },\n                lux: { name: \"light\", device_class: \"illuminance\", unit_of_measurement: \"lx\" },\n            },\n            climate: {\n                sensorTemperature: { name: \"current_temperature\" },\n                targetTemperature: { name: \"thermostat\", device_class: \"temperature\", unit_of_measurement: \"°C\", downlink: { fPort: 1, cmd: \"setTargetTemperature\" } },\n                temperatureRangeSettings_min: { name: \"min_temp\", value_default: 15 },\n                temperatureRangeSettings_max: { name: \"max_temp\", value_default: 21 },\n                system_mode: { name: \"system_mode\", value: \"heat\" },\n                temp_step: { name: \"temp_step\", value: 1 },\n            },\n            number: {\n                temperatureRangeSettings_min: { name: \"min\", value_default: 15 },\n                temperatureRangeSettings_max: { name: \"max\", value_default: 21 },\n                targetTemperature: { name: \"temperature_control\", device_class: 'temperature', unit_of_measurement: \"°C\", downlink: { fPort: 1, cmd: \"setTargetTemperature\" } },\n                step: { name: \"step\", value: 1 },\n                mode: { name: \"mode\", value: \"slider\" }\n            },\n            button: {\n                request_device_settings: { name: \"request_device_settings\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 1, cmd: \"getAllParams\" } },\n                request_device_version: { name: \"request_device_version\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 1, cmd: \"getDeviceVersions\" } },\n            }\n        },\n        \"24E124C0002A0001\": {\n            device: { \n                manufacturer: { name: \"Milesight\" },\n                model: { name: \"WS523 - Smart Portable Socket\" },\n                softwareVersion: { name: \"sw_version\" },\n                hardwareVersion: { name: \"hw_version\" },\n            },\n            sensor: {\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n                factor: { name: \"power_factor\", device_class: \"power_factor\", unit_of_measurement: \"%\" },\n                power: { name: \"power\", device_class: \"power\", unit_of_measurement: \"W\" },\n                power_sum: { name: \"energy_total\", device_class: \"energy\", unit_of_measurement: \"Wh\" },\n                voltage: { name: \"voltage\", device_class: \"voltage\", unit_of_measurement: \"V\" }\n            },\n            switch: {\n                state: { name: \"switch\", downlink: { fPort: 1, cmd: \"setState\", on: \"open\", off: \"close\" } }\n            },\n        },\n        \"70B3D5FFFE0B5002\": { \n            device: { \n                manufacturer: { name: \"OfficeSense\" },\n                model: { name: \"Comfort\" },\n                swVersion: { name: \"sw_version\" },\n                hwVersion: { name: \"hw_version\" },\n            },\n            sensor: {\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n                vddPct: { name: \"battery\", device_class: \"battery\", unit_of_measurement: \"%\", entity_category: \"diagnostic\"},\n                humidity: { name: \"humidity\", device_class: \"humidity\", unit_of_measurement: \"%\" },\n                tempC: { name: \"temperature\", device_class: \"temperature\", unit_of_measurement: \"°C\" },\n            },\n            button: {\n                request_device_version: { name: \"request_device_version\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 200, cmd: \"getDeviceVersions\" } },\n            }\n        },\n        \"70B3D5FFFE0B5502\": { \n            device: { \n                manufacturer: { name: \"OfficeSense\" },\n                model: { name: \"Comfort\" },\n                swVersion: { name: \"sw_version\" },\n                hwVersion: { name: \"hw_version\" },\n            },\n            sensor: {\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n                vddPct: { name: \"battery\", device_class: \"battery\", unit_of_measurement: \"%\", entity_category: \"diagnostic\"},\n                humidity: { name: \"humidity\", device_class: \"humidity\", unit_of_measurement: \"%\" },\n                tempC: { name: \"temperature\", device_class: \"temperature\", unit_of_measurement: \"°C\" },\n                co2: { name: \"carbon_dioxide\", device_class: \"carbon_dioxide\", unit_of_measurement: \"ppm\" },\n                sound: { name: \"sound\", device_class: \"sound_pressure\", unit_of_measurement: \"dBA\" },\n                lux: { name: \"light\", device_class: \"illuminance\", unit_of_measurement: \"lx\" },\n            },\n            button: {\n                request_device_version: { name: \"request_device_version\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 200, cmd: \"getDeviceVersions\" } },\n            }\n        },\n        \"70B3D5FFFE0B5005\": { \n            device: { \n                manufacturer: { name: \"OfficeSense\" },\n                model: { name: \"Desk\" },\n                swVersion: { name: \"sw_version\" },\n                hwVersion: { name: \"hw_version\" },\n            },\n            sensor: {\n                vddPct: { name: \"battery\", device_class: \"battery\", unit_of_measurement: \"%\", entity_category: \"diagnostic\"},\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n            },\n            binary_sensor: {\n                occupied: { name: \"occupancy\", device_class: \"occupancy\" }\n            },\n            button: {\n                request_device_version: { name: \"request_device_version\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 200, cmd: \"getDeviceVersions\" } },\n            }\n        },\n        \"70B3D5FFFE0B5505\": { \n            device: { \n                manufacturer: { name: \"OfficeSense\" },\n                model: { name: \"Desk\" },\n                swVersion: { name: \"sw_version\" },\n                hwVersion: { name: \"hw_version\" },\n            },\n            sensor: {\n                vddPct: { name: \"battery\", device_class: \"battery\", unit_of_measurement: \"%\", entity_category: \"diagnostic\"},\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n            },\n            binary_sensor: {\n                occupied: { name: \"occupancy\", device_class: \"occupancy\" }\n            },\n            button: {\n                request_device_version: { name: \"request_device_version\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 200, cmd: \"getDeviceVersions\" } },\n            }\n        },\n        \"70B3D5FFFE0B5001\": { \n            device: { \n                manufacturer: { name: \"OfficeSense\" },\n                model: { name: \"Presence\" },\n                swVersion: { name: \"sw_version\" },\n                hwVersion: { name: \"hw_version\" },\n            },\n            sensor: {\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n                vddPct: { name: \"battery\", device_class: \"battery\", unit_of_measurement: \"%\", entity_category: \"diagnostic\"},\n                humidity: { name: \"humidity\", device_class: \"humidity\", unit_of_measurement: \"%\" },\n                tempC: { name: \"temperature\", device_class: \"temperature\", unit_of_measurement: \"°C\" },\n            },\n            binary_sensor: {\n                occupied: { name: \"occupancy\", device_class: \"occupancy\" }\n            },\n            button: {\n                request_device_version: { name: \"request_device_version\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 200, cmd: \"getDeviceVersions\" } },\n            }\n        },\n        \"70B3D5FFFE0B5501\": { \n            device: { \n                manufacturer: { name: \"OfficeSense\" },\n                model: { name: \"Presence\" },\n                swVersion: { name: \"sw_version\" },\n                hwVersion: { name: \"hw_version\" },\n            },\n            sensor: {\n                vddPct: { name: \"battery\", device_class: \"battery\", unit_of_measurement: \"%\", entity_category: \"diagnostic\"},\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n                humidity: { name: \"humidity\", device_class: \"humidity\", unit_of_measurement: \"%\" },\n                tempC: { name: \"temperature\", device_class: \"temperature\", unit_of_measurement: \"°C\" },\n            },\n            binary_sensor: {\n                occupied: { name: \"occupancy\", device_class: \"occupancy\" }\n            },\n            button: {\n                request_device_version: { name: \"request_device_version\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 200, cmd: \"getDeviceVersions\" } },\n            }\n        },\n    },\n}\n\nflow.set( \"settings\", msg.settings )\n\nreturn msg;",
+        "func": "// general settings\nmsg.settings = {\n    loraServer: \"https://eu1.cloud.thethings.network\",\n\n    joinKey2lorakey2ha: {\n        \"70B3D52DD3000000\": { \n            device: {\n                manufacturer: { name: \"MClimate\" },\n                model: { name: \"Vicki - LoRaWAN Smart Radiator Thermostat\" },\n                deviceVersions_software: { name: \"sw_version\" },\n                deviceVersions_hardware: { name: \"hw_version\" },\n                climate_primary_key: { name: \"radiator_thermostat\" },\n                number_primary_key: { name: \"temperature_control\" },\n            },\n            sensor: {\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n                batteryPct: { name: \"battery\", device_class: \"battery\", unit_of_measurement: \"%\", entity_category: \"diagnostic\"},\n                relativeHumidity: { name: \"humidity\", device_class: \"humidity\", unit_of_measurement: \"%\" },\n                valvePct: { name: \"valve_open_status\", device_class: \"None\", unit_of_measurement: \"%\", icon: \"mdi:pipe-valve\" }\n            },\n            binary_sensor: {\n                attachedBackplate: { name: \"attached_backplate\", icon: \"mdi:engine\" },\n                childLock: { name: \"child_lock\", icon: \"mdi:lock\" },\n                openWindow: { name: \"open_window_detection\", icon: \"mdi:window-closed-variant\" },\n            },\n            climate: {\n                sensorTemperature: { name: \"current_temperature\" },\n                targetTemperature: { name: \"radiator_thermostat\", device_class: \"temperature\", unit_of_measurement: \"°C\", downlink: { fPort: 1, cmd: \"setTargetTemperature\" } },\n                temperatureRangeSettings_min: { name: \"min_temp\", value: 15 },\n                temperatureRangeSettings_max: { name: \"max_temp\", value: 21 },\n                system_mode: { name: \"system_mode\", value_default: \"heat\" },\n                attachedBackplate: { name: \"attached_backplate\" },\n                temp_step: { name: \"temp_step\", value: 1 },\n            },\n            number: {\n                temperatureRangeSettings_min: { name: \"min\", value: 15 },\n                temperatureRangeSettings_max: { name: \"max\", value: 21 },\n                targetTemperature: { name: \"temperature_control\", device_class: 'temperature', unit_of_measurement: \"°C\", downlink: { fPort: 1, cmd: \"setTargetTemperature\" } },\n                step: { name: \"step\", value: 1 },\n                mode: { name: \"mode\", value: \"slider\" }\n            },\n            button: {\n                request_device_settings: { name: \"request_device_settings\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 1, cmd: \"getAllParams\" } },\n                request_device_version: { name: \"request_device_version\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 1, cmd: \"getDeviceVersions\" } },\n            }\n        },\n        \"70B3D52DD8000000\": {\n            device: {\n                manufacturer: { name: \"MClimate\" },\n                model: { name: \"WirelessThermostat - LoRaWAN\"},\n                deviceVersions_software: { name: \"sw_version\" },\n                deviceVersions_hardware: { name: \"hw_version\" },\n                climate_primary_key: { name: \"thermostat\" },\n                number_primary_key: { name: \"temperature_control\" },\n            },\n            sensor: {\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n                batteryPct: { name: \"battery\", device_class: \"battery\", unit_of_measurement: \"%\", entity_category: \"diagnostic\" },\n                relativeHumidity: { name: \"humidity\", device_class: \"humidity\", unit_of_measurement: \"%\" },\n                lux: { name: \"light\", device_class: \"illuminance\", unit_of_measurement: \"lx\" },\n            },\n            climate: {\n                sensorTemperature: { name: \"current_temperature\" },\n                targetTemperature: { name: \"thermostat\", device_class: \"temperature\", unit_of_measurement: \"°C\", downlink: { fPort: 1, cmd: \"setTargetTemperature\" } },\n                temperatureRangeSettings_min: { name: \"min\", value: 15 },\n                temperatureRangeSettings_max: { name: \"max\", value: 21 },\n                system_mode: { name: \"system_mode\", value: \"heat\" },\n                temp_step: { name: \"temp_step\", value: 1 },\n            },\n            number: {\n                temperatureRangeSettings_min: { name: \"min\", value: 15 },\n                temperatureRangeSettings_max: { name: \"max\", value: 21 },\n                targetTemperature: { name: \"temperature_control\", device_class: 'temperature', unit_of_measurement: \"°C\", downlink: { fPort: 1, cmd: \"setTargetTemperature\" } },\n                step: { name: \"step\", value: 1 },\n                mode: { name: \"mode\", value: \"slider\" }\n            },\n            button: {\n                request_device_settings: { name: \"request_device_settings\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 1, cmd: \"getAllParams\" } },\n                request_device_version: { name: \"request_device_version\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 1, cmd: \"getDeviceVersions\" } },\n            }\n        },\n        \"24E124C0002A0001\": {\n            device: { \n                manufacturer: { name: \"Milesight\" },\n                model: { name: \"WS523 - Smart Portable Socket\" },\n                softwareVersion: { name: \"sw_version\" },\n                hardwareVersion: { name: \"hw_version\" },\n            },\n            sensor: {\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n                factor: { name: \"power_factor\", device_class: \"power_factor\", unit_of_measurement: \"%\" },\n                power: { name: \"power\", device_class: \"power\", unit_of_measurement: \"W\" },\n                power_sum: { name: \"energy_total\", device_class: \"energy\", unit_of_measurement: \"Wh\" },\n                voltage: { name: \"voltage\", device_class: \"voltage\", unit_of_measurement: \"V\" }\n            },\n            switch: {\n                state: { name: \"switch\", downlink: { fPort: 1, cmd: \"setState\", on: \"open\", off: \"close\" } }\n            },\n        },\n        \"8000000000000003\": {\n            device: {\n                manufacturer: { name: \"Elsys\" },\n                model: { name: \"ERS smart building sensor\" },\n                swVersion: { name: \"sw_version\" },\n                hwVersion: { name: \"hw_version\" },\n            },\n            sensor: {\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n                vddPct: { name: \"battery\", device_class: \"battery\", unit_of_measurement: \"%\", entity_category: \"diagnostic\" },\n                humidity: { name: \"humidity\", device_class: \"humidity\", unit_of_measurement: \"%\" },\n                temperature: { name: \"temperature\", device_class: \"temperature\", unit_of_measurement: \"°C\" },\n                light: { name: \"light\", device_class: \"illuminance\", unit_of_measurement: \"lx\" },\n                motion: { name: \"motion\", icon: \"mdi:walk\" },\n            },\n            binary_sensor: {\n                motion: { name: \"occupancy\", device_class: \"occupancy\" }\n            },\n        },\n        \"647FDA8010000100\": {\n            device: {\n                manufacturer: { name: \"Tektelic\" },\n                model: { name: \"Smart Room Sensor - PIR\" },\n                swVersion: { name: \"sw_version\" },\n                hwVersion: { name: \"hw_version\" },\n            },\n            sensor: {\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n                batteryPct: { name: \"battery\", device_class: \"battery\", unit_of_measurement: \"%\", entity_category: \"diagnostic\" },\n                humidity: { name: \"humidity\", device_class: \"humidity\", unit_of_measurement: \"%\" },\n                temperature: { name: \"temperature\", device_class: \"temperature\", unit_of_measurement: \"°C\" },\n                lux: { name: \"light\", device_class: \"illuminance\", unit_of_measurement: \"lx\" },\n                motion: { name: \"occupancy\" },\n            },\n        },\n        \"70B3D5FFFE0B5002\": { \n            device: { \n                manufacturer: { name: \"OfficeSense\" },\n                model: { name: \"Comfort\" },\n                swVersion: { name: \"sw_version\" },\n                hwVersion: { name: \"hw_version\" },\n            },\n            sensor: {\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n                vddPct: { name: \"battery\", device_class: \"battery\", unit_of_measurement: \"%\", entity_category: \"diagnostic\"},\n                humidity: { name: \"humidity\", device_class: \"humidity\", unit_of_measurement: \"%\" },\n                tempC: { name: \"temperature\", device_class: \"temperature\", unit_of_measurement: \"°C\" },\n            },\n            button: {\n                request_device_version: { name: \"request_device_version\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 200, cmd: \"getDeviceVersions\" } },\n            }\n        },\n        \"70B3D5FFFE0B5502\": { \n            device: { \n                manufacturer: { name: \"OfficeSense\" },\n                model: { name: \"Comfort\" },\n                swVersion: { name: \"sw_version\" },\n                hwVersion: { name: \"hw_version\" },\n            },\n            sensor: {\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n                vddPct: { name: \"battery\", device_class: \"battery\", unit_of_measurement: \"%\", entity_category: \"diagnostic\"},\n                humidity: { name: \"humidity\", device_class: \"humidity\", unit_of_measurement: \"%\" },\n                tempC: { name: \"temperature\", device_class: \"temperature\", unit_of_measurement: \"°C\" },\n                co2: { name: \"carbon_dioxide\", device_class: \"carbon_dioxide\", unit_of_measurement: \"ppm\" },\n                sound: { name: \"sound\", device_class: \"sound_pressure\", unit_of_measurement: \"dBA\" },\n                lux: { name: \"light\", device_class: \"illuminance\", unit_of_measurement: \"lx\" },\n            },\n            button: {\n                request_device_version: { name: \"request_device_version\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 200, cmd: \"getDeviceVersions\" } },\n            }\n        },\n        \"70B3D5FFFE0B5005\": { \n            device: { \n                manufacturer: { name: \"OfficeSense\" },\n                model: { name: \"Desk\" },\n                swVersion: { name: \"sw_version\" },\n                hwVersion: { name: \"hw_version\" },\n            },\n            sensor: {\n                vddPct: { name: \"battery\", device_class: \"battery\", unit_of_measurement: \"%\", entity_category: \"diagnostic\"},\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n            },\n            binary_sensor: {\n                occupied: { name: \"occupancy\", device_class: \"occupancy\" }\n            },\n            button: {\n                request_device_version: { name: \"request_device_version\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 200, cmd: \"getDeviceVersions\" } },\n            }\n        },\n        \"70B3D5FFFE0B5505\": { \n            device: { \n                manufacturer: { name: \"OfficeSense\" },\n                model: { name: \"Desk\" },\n                swVersion: { name: \"sw_version\" },\n                hwVersion: { name: \"hw_version\" },\n            },\n            sensor: {\n                vddPct: { name: \"battery\", device_class: \"battery\", unit_of_measurement: \"%\", entity_category: \"diagnostic\"},\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n            },\n            binary_sensor: {\n                occupied: { name: \"occupancy\", device_class: \"occupancy\" }\n            },\n            button: {\n                request_device_version: { name: \"request_device_version\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 200, cmd: \"getDeviceVersions\" } },\n            }\n        },\n        \"70B3D5FFFE0B5001\": { \n            device: { \n                manufacturer: { name: \"OfficeSense\" },\n                model: { name: \"Presence\" },\n                swVersion: { name: \"sw_version\" },\n                hwVersion: { name: \"hw_version\" },\n            },\n            sensor: {\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n                vddPct: { name: \"battery\", device_class: \"battery\", unit_of_measurement: \"%\", entity_category: \"diagnostic\"},\n                humidity: { name: \"humidity\", device_class: \"humidity\", unit_of_measurement: \"%\" },\n                tempC: { name: \"temperature\", device_class: \"temperature\", unit_of_measurement: \"°C\" },\n            },\n            binary_sensor: {\n                occupied: { name: \"occupancy\", device_class: \"occupancy\" }\n            },\n            button: {\n                request_device_version: { name: \"request_device_version\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 200, cmd: \"getDeviceVersions\" } },\n            }\n        },\n        \"70B3D5FFFE0B5501\": { \n            device: { \n                manufacturer: { name: \"OfficeSense\" },\n                model: { name: \"Presence\" },\n                swVersion: { name: \"sw_version\" },\n                hwVersion: { name: \"hw_version\" },\n            },\n            sensor: {\n                vddPct: { name: \"battery\", device_class: \"battery\", unit_of_measurement: \"%\", entity_category: \"diagnostic\"},\n                rssi: { name: \"signal_strength\", device_class: \"signal_strength\", unit_of_measurement: \"dBm\", icon: \"mdi:signal\", entity_category: \"diagnostic\" },\n                humidity: { name: \"humidity\", device_class: \"humidity\", unit_of_measurement: \"%\" },\n                tempC: { name: \"temperature\", device_class: \"temperature\", unit_of_measurement: \"°C\" },\n            },\n            binary_sensor: {\n                occupied: { name: \"occupancy\", device_class: \"occupancy\" }\n            },\n            button: {\n                request_device_version: { name: \"request_device_version\", device_class: \"None\", icon: \"mdi:cog-outline\", entity_category: \"config\", downlink: { fPort: 200, cmd: \"getDeviceVersions\" } },\n            }\n        },\n    },\n}\n\nflow.set( \"settings\", msg.settings )\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -459,27 +477,9 @@
         "y": 180,
         "wires": [
             [
-                "cae7182abcf5b5d3"
+                "789d186e5ef30814"
             ]
         ]
-    },
-    {
-        "id": "cae7182abcf5b5d3",
-        "type": "debug",
-        "z": "7a9ca1740ef5409d",
-        "g": "e1ef8c61ae3d69b3",
-        "name": "debug settings",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1100,
-        "y": 180,
-        "wires": []
     },
     {
         "id": "1338bdfeb1080994",
@@ -493,43 +493,45 @@
         "nodes": [
             "270a02beaf9268e6",
             "fb6343e7c8e03ea3",
-            "06529bb3d3928a21",
-            "92e2f9e792bc254e",
-            "2f06052e38dfcecd",
-            "31af38d05daa3c64",
-            "422b5b3fd873fe7d",
-            "4a683c44de835292",
-            "6d41a739374f2923",
             "36a8bdf13a518ff5",
             "c3b38eec68f54dd1",
-            "4ad1a5c4bffea745",
-            "67ec09b5a191cc10",
-            "8ad0f782257b3809",
-            "c8b075c0cc7c390e",
-            "853c8dbce26cd493",
-            "7d4ff3f3e28516c6",
-            "e77e1f97f8526383",
-            "448b5f9a69b39531",
-            "e77408ee9de4c32a",
-            "ab4a82c36dcdacce",
-            "1e9e3617d74cd8a6",
-            "c9d3b3edf38773b5",
-            "d7f5f40feeddb750",
-            "333a2fa38eee5620",
-            "c554f87bc1b9fb19",
-            "0eee47f315f5bb92",
-            "bc2a900a55d203d4",
-            "1c879fe6ec9a0576",
             "862457515fc879d1",
-            "0e42d39464877cb2",
             "347fce4f4934a1b8",
             "aebc8dfb826d1f21",
             "523eef3e0b1d1532",
-            "bd6b48a7c533308b",
-            "5dafba7d7d0f0796",
             "3b2b8459a60ad688",
             "da6dd2a6478eb1c8",
-            "934dcec75d08e2c3"
+            "934dcec75d08e2c3",
+            "fc1d823afa4e91b8",
+            "a27f89b8146e2fb2",
+            "596a21811403fcb6",
+            "caa2c2c674f578b2",
+            "5e806f569e84a9d2",
+            "8ffc94637c605b4e",
+            "d536829704a1ee9f",
+            "530111d12df2be92",
+            "03e64ea8ee4a9496",
+            "a48f1d933ce1688f",
+            "a9d7abc5d84dfe54",
+            "ece18891db627e67",
+            "da8740cc13579f4b",
+            "7d1fa5b2efb47eae",
+            "3505492278cecd97",
+            "727e6b52c63cd5fc",
+            "b38f6a5a62010d1a",
+            "17f53f5586ad858c",
+            "fdcd10268a3e64f2",
+            "a980e08be805ebbe",
+            "36c25b23ce4c6b78",
+            "18cb6c868ffa7c11",
+            "51617034baaa10b7",
+            "cd10f4f58a6ecb12",
+            "b7977e0c9e65b641",
+            "c61496b6b4e8e5ae",
+            "c19335a5143b19eb",
+            "0b8d9d98ce3b730d",
+            "2cd17094407e8101",
+            "93c7a5302b512c33"
         ],
         "x": 94,
         "y": 279,
@@ -581,167 +583,6 @@
         ]
     },
     {
-        "id": "06529bb3d3928a21",
-        "type": "function",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "push haConfigQueue to mqtt",
-        "func": "for ( const [index, command] of msg.result.haConfigQueue.entries() ) {\n    var msgMqtt = command\n    msgMqtt.delay = index * 5\n    node.send([null, msgMqtt, null])\n}\n\nvar msgOut = {\n    settings: msg.settings,\n    result: msg.result,\n}\n\nreturn [msg, null, msgOut];",
-        "outputs": 3,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 1160,
-        "wires": [
-            [
-                "92e2f9e792bc254e"
-            ],
-            [
-                "2f06052e38dfcecd",
-                "bd6b48a7c533308b"
-            ],
-            [
-                "6d41a739374f2923",
-                "0e42d39464877cb2"
-            ]
-        ],
-        "outputLabels": [
-            "debug",
-            "mqtt",
-            "output"
-        ]
-    },
-    {
-        "id": "92e2f9e792bc254e",
-        "type": "debug",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "debug mqtt jobs",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1100,
-        "y": 1120,
-        "wires": []
-    },
-    {
-        "id": "2f06052e38dfcecd",
-        "type": "debug",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "output mqtt haConfigQueue",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1140,
-        "y": 1160,
-        "wires": []
-    },
-    {
-        "id": "31af38d05daa3c64",
-        "type": "function",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "push haValueQueue to mqtt",
-        "func": "for ( const [index, command] of msg.result.haValueQueue.entries() ) {\n    var msgMqtt = command\n    msgMqtt.delay = index * 5\n    node.send(msgMqtt, null)\n}\n\nreturn [null, msg];",
-        "outputs": 2,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 1280,
-        "wires": [
-            [
-                "4a683c44de835292",
-                "5dafba7d7d0f0796"
-            ],
-            [
-                "422b5b3fd873fe7d"
-            ]
-        ],
-        "outputLabels": [
-            "mqtt",
-            "output"
-        ]
-    },
-    {
-        "id": "422b5b3fd873fe7d",
-        "type": "debug",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "output",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1070,
-        "y": 1300,
-        "wires": []
-    },
-    {
-        "id": "4a683c44de835292",
-        "type": "debug",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "output mqtt haValueQueue",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1140,
-        "y": 1260,
-        "wires": []
-    },
-    {
-        "id": "6d41a739374f2923",
-        "type": "delay",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "1",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 540,
-        "y": 1220,
-        "wires": [
-            [
-                "31af38d05daa3c64"
-            ]
-        ]
-    },
-    {
         "id": "36a8bdf13a518ff5",
         "type": "link in",
         "z": "7a9ca1740ef5409d",
@@ -773,376 +614,6 @@
         "wires": []
     },
     {
-        "id": "4ad1a5c4bffea745",
-        "type": "function",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "Collect all data",
-        "func": "function checkKeyInObj(key, obj) {\n    if ( typeof obj !== \"object\" || obj === null ) {\n        return false;\n    }\n\n    const keys = key.split('.')\n\n    for ( const part of keys ) {\n        const match = part.match(/^([^\\[\\]]+)(?:\\[(\\d+)\\])?$/); // Matches \"property\" or \"property[index]\"\n        if ( !match ) {\n            return { exist: false, value: undefined };\n        }\n\n        const property = match[1] // The property name\n        const index = match[2]   // The optional array index\n\n        // Ensure `obj` is an object or array and has the property\n        if ( typeof obj !== \"object\" || obj === null || !( property in obj ) ) {\n            return { exist: false, value: undefined }\n        }\n        obj = obj[property] // Move to the next level\n\n        // Handle array indexing\n        if (index !== undefined) {\n            if ( !Array.isArray(obj) || !( index in obj ) ) {\n                return { exist: false, value: undefined }\n            }\n            obj = obj[index]; // Move to the indexed array element\n        }\n    }\n    return { exist: true, value: obj }\n}\n\nfunction dateConvert(timestamp) {\n    const date = new Date(timestamp)\n    var day = date.getDate().toString()\n    var month = (date.getMonth() + 1).toString()\n    var year = date.getFullYear().toString()\n    var hour = date.getHours().toString()\n    var minutes = date.getMinutes().toString()\n    var seconds = date.getSeconds().toString()\n\n    day = checkZero(day)\n    month = checkZero(month)\n    year = checkZero(year)\n    hour = checkZero(hour)\n    minutes = checkZero(minutes)\n    seconds = checkZero(seconds)\n\n    return year + \"/\" + month + \"/\" + day + \" \" + hour + \":\" + minutes + \":\" + seconds + \" GMT\"\n}\n\nfunction checkZero(data) {\n    if (data.length == 1) {\n        data = \"0\" + data;\n    }\n    return data;\n}\n\nmsg.settings = flow.get(\"settings\")\nif (!msg.result) {\n    msg.result = {}\n}\n\nmsg.result.loraData = { metaData: {}, sensorData: {} }\n\n// read the new lora message\nif (msg.payload.end_device_ids) {\n    if (msg.payload.end_device_ids.device_id) {\n        msg.result.loraData.metaData.deviceName = msg.payload.end_device_ids.device_id\n        msg.result.loraData.metaData.join_eui = msg.payload.end_device_ids.join_eui\n        msg.result.loraData.metaData.application = msg.payload.end_device_ids.application_ids.application_id\n        msg.result.loraData.metaData.timestamp = Date.parse(msg.payload.received_at)\n        msg.result.loraData.metaData.timestamp_hr = dateConvert(Date.parse(msg.payload.received_at))\n\n        // get strongest rssi from gateway\n        \n        let rx_metadata = {value: []}\n        rx_metadata = checkKeyInObj( \"payload.uplink_message.rx_metadata\", msg )\n        if ( rx_metadata.exist ) {\n            for (const [index, loraValue] of rx_metadata.value.entries()) {\n                if (!msg.result.loraData.sensorData) {\n                    msg.result.loraData.sensorData = {}\n                }\n                if (!msg.result.loraData.sensorData.rssi) {\n                    msg.result.loraData.sensorData.rssi = loraValue.rssi\n                } else if (loraValue.rssi > msg.result.loraData.sensorData.rssi) {\n                    msg.result.loraData.sensorData.rssi = loraValue.rssi\n                }\n            }\n        }\n\n        let decoded_payload = {value: {}}\n        decoded_payload = checkKeyInObj( \"payload.uplink_message.decoded_payload\", msg )\n        if ( decoded_payload.exist ) {\n            for (const [loraKey, loraValue] of Object.entries(decoded_payload.value)) {\n                if (!msg.result.loraData.sensorData) {\n                    msg.result.loraData.sensorData = {}\n                }\n                if (typeof (loraValue) != \"object\") {\n                    msg.result.loraData.sensorData[loraKey] = loraValue\n                } else {\n                    for (var [loraKeySub, loraValueSub] of Object.entries(loraValue)) {\n                        msg.result.loraData.sensorData[loraKey + \"_\" + loraKeySub] = loraValueSub\n                    }\n                }\n            }\n        }\n    }\n}\n\n\n\n// read the prefious message from node red memory\nif ( msg.result.loraData.metaData.deviceName ) {\n    msg.result.previousData = flow.get(\"previous_\" + msg.result.loraData.metaData.deviceName) || { metaData: {}, sensorData: {} }\n}\n\nmsg.result.currentData = {\n    metaData: Object.assign({}, msg.result.previousData.metaData, msg.result.loraData.metaData),\n    sensorData: Object.assign({}, msg.result.previousData.sensorData, msg.result.loraData.sensorData),\n}\n\nflow.set(\"previous_\" + msg.result.loraData.metaData.deviceName, msg.result.currentData)\n\nif (msg.settings.joinKey2lorakey2ha[msg.result.currentData.metaData.join_eui] ) {\n    var msgOut = {\n        settings: msg.settings,\n        result: msg.result\n    }\n\n    return [msg, msgOut];\n}\n\n\nreturn [msg, null]",
-        "outputs": 2,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 560,
-        "y": 520,
-        "wires": [
-            [
-                "67ec09b5a191cc10"
-            ],
-            [
-                "8ad0f782257b3809",
-                "c8b075c0cc7c390e"
-            ]
-        ],
-        "outputLabels": [
-            "debug",
-            "output"
-        ]
-    },
-    {
-        "id": "67ec09b5a191cc10",
-        "type": "debug",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "debug Collect data",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1110,
-        "y": 500,
-        "wires": []
-    },
-    {
-        "id": "8ad0f782257b3809",
-        "type": "debug",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "output Collect data",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1110,
-        "y": 540,
-        "wires": []
-    },
-    {
-        "id": "c8b075c0cc7c390e",
-        "type": "function",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "collect device topic and distribute values to the correct integration",
-        "func": "function copyObject(objIn) {\n    var objOut = {}\n    for (const [key, value] of Object.entries(objIn)) {\n        objOut[key] = value\n    }\n    return objOut\n}\n\nvar metaData = msg.result.currentData.metaData\nvar sensorData = msg.result.currentData.sensorData\n\nmsg.deviceConfig = msg.settings.joinKey2lorakey2ha[metaData.join_eui]\n\nmsg.result.integration = {}\n\nmsg.result.general = {\n    deviceName: metaData.deviceName,\n    application: metaData.application,\n    join_eui: metaData.join_eui,\n}\n\nmsg.manufacturerId = msg.deviceConfig.device.manufacturer.name.replaceAll(\" \",\"_\")\nmsg.result.general.topicDeviceGet = \"lora2nodered2mqtt/\" + msg.manufacturerId + \"/\" + metaData.deviceName + \"/get\"\nmsg.result.general.topicDeviceSet = \"mqtt2nodered2lora/\" + msg.manufacturerId + \"/\" + metaData.application + \"/\" + metaData.deviceName + \"/\" + metaData.join_eui + \"/set\"\n\nmsg.result.integration.device = {\n    identifiers: [\"lora2nodered2mqtt_\" + metaData.deviceName],\n    name: metaData.deviceName,\n    configuration_url: msg.settings.loraServer + \"/console/applications/\" + metaData.application + \"/devices/\" + metaData.deviceName\n}\nif (msg.deviceConfig.device.manufacturer ) {\n    msg.result.integration.device.manufacturer = msg.deviceConfig.device.manufacturer.name + \" (LoRaWAN device)\"\n}\nif (msg.deviceConfig.device.model ) {\n    msg.result.integration.device.model = msg.deviceConfig.device.model.name\n}\n\nmsg.result.key_skipped = {}\nfor ( const [loraKey, loraValue] of Object.entries(msg.result.currentData.sensorData) ) {\n    var keySelect = true\n    for ( const [integration, keysObject] of Object.entries(msg.deviceConfig) ) {\n        for (const [key, config] of Object.entries(keysObject) ) {\n            if ( loraKey == key ) {\n                var keySelect = false\n                if ( !msg.result.integration[integration] ) {\n                    msg.result.integration[integration] = {}\n                }\n                let name = loraKey\n                if (config.name) {\n                    name = config.name\n                }\n                if ( integration == \"device\" ) {\n                    msg.result.integration[integration][name] = loraValue.toString()\n                } else {\n                    msg.result.integration[integration][name] = copyObject(config)\n                    msg.result.integration[integration][name].value = loraValue\n                    delete msg.result.integration[integration][name].name\n                }\n            }\n        }\n    }\n    if ( keySelect ) {\n        msg.result.key_skipped[loraKey] = loraValue\n    }\n}\n\nmsg.result.haConfigQueue = []\nmsg.result.haValueQueue = []\n\nvar msgOut = {\n    settings: msg.settings,\n    result: msg.result\n}\n\nreturn [msg, msgOut];",
-        "outputs": 2,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 720,
-        "y": 640,
-        "wires": [
-            [
-                "7d4ff3f3e28516c6"
-            ],
-            [
-                "853c8dbce26cd493",
-                "e77e1f97f8526383"
-            ]
-        ],
-        "outputLabels": [
-            "debug",
-            "output"
-        ]
-    },
-    {
-        "id": "853c8dbce26cd493",
-        "type": "debug",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "output Order data",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1110,
-        "y": 660,
-        "wires": []
-    },
-    {
-        "id": "7d4ff3f3e28516c6",
-        "type": "debug",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "debug Order data",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1110,
-        "y": 620,
-        "wires": []
-    },
-    {
-        "id": "e77e1f97f8526383",
-        "type": "function",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "process integration \"sensor\"",
-        "func": "var general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"sensor\"\n\nif ( msg.result.integration[integration] ) {\n    for ( const [key, valueObj] of Object.entries(msg.result.integration[integration]) ) {\n\n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key.replaceAll(\"_\", \" \").replace(/\\b./g, function(m){ return m.toUpperCase(); }),\n            object_id: general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            json_attributes_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            value_template: \"{{ value_json.value }}\",\n        }\n        if ( valueObj.entity_category ) {\n            objConfig.payload.entity_category = valueObj.entity_category\n        }\n        if ( valueObj.icon ) {\n            objConfig.payload.icon = valueObj.icon\n        }\n        if ( valueObj.device_class ) {\n            if ( valueObj.device_class != \"None\" ) {\n                objConfig.payload.device_class = valueObj.device_class\n            }\n        }\n        if ( valueObj.unit_of_measurement ) {\n            objConfig.payload.unit_of_measurement = valueObj.unit_of_measurement\n        }\n        msg.result.haConfigQueue.push(objConfig)\n\n\n        // #########################        \n        // ##  Integration values\n        // #########################        \n        var objValue = {\n            topic: msg.result.general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            payload: {value: valueObj.value}\n        }\n        msg.result.haValueQueue.push(objValue)\n    }\n}\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 720,
-        "wires": [
-            [
-                "448b5f9a69b39531",
-                "e77408ee9de4c32a"
-            ]
-        ]
-    },
-    {
-        "id": "448b5f9a69b39531",
-        "type": "debug",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "debug integration \"sensor\"",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1140,
-        "y": 720,
-        "wires": []
-    },
-    {
-        "id": "e77408ee9de4c32a",
-        "type": "function",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "process integration \"binary_sensor\"",
-        "func": "var general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"binary_sensor\"\n\nif ( msg.result.integration[integration] ) {\n    for ( const [key, valueObj] of Object.entries(msg.result.integration[integration]) ) {\n\n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key.replace(/_/g, \" \").replace(/\\b./g, function (m) { return m.toUpperCase(); }),\n            object_id: general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            json_attributes_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            value_template: \"{{ value_json.value }}\",\n            payload_on: true,\n            payload_off: false,\n        }\n        if ( valueObj.entity_category ) {\n            objConfig.payload.entity_category = valueObj.entity_category\n        }\n        if ( valueObj.icon ) {\n            objConfig.payload.icon = valueObj.icon\n        }\n        if ( valueObj.device_class ) {\n            if ( valueObj.device_class != \"None\" ) {\n                objConfig.payload.device_class = valueObj.device_class\n            }\n        }\n        msg.result.haConfigQueue.push(objConfig)\n\n\n        // #########################        \n        // ##  Integration values\n        // #########################        \n        if ( valueObj.value === true || valueObj.value === false ) {\n            var value = valueObj.value\n        } else {\n            if ( valueObj.value == 0 ) {\n                value = false\n            } else {\n                value = true\n            }\n        }\n        var objValue = {\n            topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            payload: {value: value}\n        }\n        msg.result.haValueQueue.push(objValue)\n    }\n}\n\nreturn msg;\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 620,
-        "y": 780,
-        "wires": [
-            [
-                "ab4a82c36dcdacce",
-                "333a2fa38eee5620"
-            ]
-        ]
-    },
-    {
-        "id": "ab4a82c36dcdacce",
-        "type": "function",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "process integration \"switch\"",
-        "func": "var general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"switch\"\n\nif ( msg.result.integration[integration] ) {\n    var integrationValues = msg.result.integration[integration]\n\n    for ( const [key, valueObj] of Object.entries(msg.result.integration[integration]) ) {\n\n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key.replace(/_/g, \" \").replace(/\\b./g, function (m) { return m.toUpperCase(); }),\n            object_id: general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            command_topic: general.topicDeviceSet + \"/\" + integration + \"/\" + key,\n            state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            json_attributes_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            value_template: \"{{ value_json.value }}\",\n            payload_off: \"off\",\n            payload_on: \"on\",\n        }\n        if ( valueObj.entity_category ) {\n            objConfig.payload.entity_category = valueObj.entity_category\n        }\n        if ( valueObj.icon ) {\n            objConfig.payload.icon = valueObj.icon\n        }\n        msg.result.haConfigQueue.push(objConfig)\n\n\n        // #########################        \n        // ##  Integration values\n        // #########################        \n        if ( valueObj.value == integrationValues[key].downlink.on ) {\n            var switchState = \"on\"\n        } else {\n            switchState = \"off\"\n        }\n        var objValue = {\n            topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            payload: {value: switchState}\n        }\n        msg.result.haValueQueue.push(objValue)\n    }\n}\n\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 840,
-        "wires": [
-            [
-                "1e9e3617d74cd8a6",
-                "d7f5f40feeddb750"
-            ]
-        ]
-    },
-    {
-        "id": "1e9e3617d74cd8a6",
-        "type": "function",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "process integration \"climate\"",
-        "func": "function checkKeyInObj(key, obj) {\n    if (typeof obj !== 'object' || obj === null) {\n        return false;\n    }\n\n    const keys = key.split('.')\n\n    for ( const part of keys ) {\n        const match = part.match(/^([^\\[\\]]+)(?:\\[(\\d+)\\])?$/); // Matches \"property\" or \"property[index]\"\n        if ( !match ) {\n            return { exist: false, value: undefined };\n        }\n\n        const property = match[1] // The property name\n        const index = match[2]   // The optional array index\n\n        // Ensure `obj` is an object or array and has the property\n        if ( typeof obj !== 'object' || obj === null || !( property in obj ) ) {\n            return { exist: false, value: undefined }\n        }\n        obj = obj[property] // Move to the next level\n\n        // Handle array indexing\n        if (index !== undefined) {\n            if ( !Array.isArray(obj) || !( index in obj ) ) {\n                return { exist: false, value: undefined }\n            }\n            obj = obj[index]; // Move to the indexed array element\n        }\n    }\n    return { exist: true, value: obj }\n}\n\nfunction getKeyValue(keyValue) {\n    var key_lora = keyValue\n    for (const [keyConfig, valueConfig] of Object.entries(integrationConfig)) {\n        if (valueConfig.name == keyValue) {\n            key_lora = keyConfig\n        }\n    }\n    if (!msg.testGetKeyValue ) {\n        msg.testGetKeyValue = {}\n    }\n    msg.testGetKeyValue[keyValue] = {}\n    // check if in the config a default value is available\n    msg.testGetKeyValue[keyValue].value_default = checkKeyInObj(key_lora + \".value_default\", integrationConfig)\n    if (msg.testGetKeyValue[keyValue].value_default.exist ) {\n        var value = msg.testGetKeyValue[keyValue].value_default.value;\n    }\n    // check if in the sensordata the value is available\n    msg.testGetKeyValue[keyValue].value_lora = checkKeyInObj(keyValue + \".value\", integrationValues)\n    if (msg.testGetKeyValue[keyValue].value_lora.exist ) {\n        value = msg.testGetKeyValue[keyValue].value_lora.value\n    } else {\n        integrationValues[keyValue] = { value: value }\n    }\n    // check if in the config the value is available which will overwrite the sensor data\n    msg.testGetKeyValue[keyValue].value_overwrite = checkKeyInObj(key_lora + \".value\", integrationConfig)\n    if (msg.testGetKeyValue[keyValue].value_overwrite.exist ) {\n        value = msg.testGetKeyValue[keyValue].value_overwrite.value\n        integrationValues[keyValue] = { value: value }\n    }\n    return value\n}\n\nvar general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"climate\"\n\nif ( msg.result.integration[integration] ) {\n    var integrationValues = msg.result.integration[integration]\n    var integrationConfig = msg.settings.joinKey2lorakey2ha[join_eui][integration]\n\n    var key = msg.settings.joinKey2lorakey2ha[join_eui].device[integration + \"_primary_key\"].name\n    var valueObj = integrationValues[key]\n\n    var max_temp = getKeyValue(\"max_temp\")\n    var min_temp = getKeyValue(\"min_temp\")\n    var temp_step = getKeyValue(\"temp_step\")\n    var system_mode = getKeyValue(\"system_mode\")\n\n\n    // ##################################################\n    // ##  Start - device specific excetions\n    // ##################################################\n\n    // additional check for MClimate Vicki\n    if ( join_eui == \"70B3D52DD3000000\" ) {\n        if ( integrationValues.attached_backplate ) {    // MClimate Vicki exception\n            integrationValues.system_mode = { value: \"heat\" }\n        } else {\n            integrationValues.system_mode = { value: \"off\" }\n        }\n    }\n\n    // ##################################################\n    // ##  End - device specific excetions\n    // ##################################################\n\n    if ( integrationValues[key] ) {\n\n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key.replace(/_/g, \" \").replace(/\\b./g, function (m) { return m.toUpperCase(); }),\n            object_id: general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            modes: [\"off\", \"heat\"],\n            max_temp: max_temp,\n            min_temp: min_temp,\n            temp_step: 1,\n\n            json_attributes_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n\n            mode_state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + \"system_mode\",\n//            mode_state_template: \"{{ value_json.value  if value_json.value=='off' else 'heat'}}\",\n            mode_state_template: \"{{ value_json.value }}\",\n\n            current_temperature_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + \"current_temperature\",\n            current_temperature_template: \"{{ value_json.value }}\",\n            \n            temperature_state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            temperature_state_template: \"{{ value_json.value }}\",\n\n            temperature_command_topic: general.topicDeviceSet + \"/\" + integration + \"/\" + key,\n            mode_command_topic: general.topicDeviceSet + \"/\" + integration + \"/\" + \"system_mode\",\n        }\n        if (valueObj.entity_category) {\n            objConfig.payload.entity_category = valueObj.entity_category\n        }\n        if ( valueObj.icon ) {\n            objConfig.payload.icon = valueObj.icon\n        }\n        if ( valueObj.device_class ) {\n            if ( valueObj.device_class != \"None\" ) {\n                objConfig.payload.device_class = valueObj.device_class\n            }\n        }\n        if ( valueObj.unit_of_measurement ) {\n            objConfig.payload.unit_of_measurement = valueObj.unit_of_measurement\n        }\n        msg.result.haConfigQueue.push(objConfig)\n\n\n        // #########################        \n        // ##  Integration values\n        // #########################        \n        for (const [key, value] of Object.entries(integrationValues) ) {\n            var objValue = {\n                topic: msg.result.general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n                payload: { value: value.value }\n            }\n            msg.result.haValueQueue.push(objValue)\n        }\n    }\n}\n\n\n\n\n\n\n\n\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 900,
-        "wires": [
-            [
-                "c9d3b3edf38773b5",
-                "c554f87bc1b9fb19"
-            ]
-        ]
-    },
-    {
-        "id": "c9d3b3edf38773b5",
-        "type": "debug",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "debug integration \"climate\"",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1140,
-        "y": 900,
-        "wires": []
-    },
-    {
-        "id": "d7f5f40feeddb750",
-        "type": "debug",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "debug integration \"switch\"",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1130,
-        "y": 840,
-        "wires": []
-    },
-    {
-        "id": "333a2fa38eee5620",
-        "type": "debug",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "debug integration \"binary_sensor\"",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1160,
-        "y": 780,
-        "wires": []
-    },
-    {
-        "id": "c554f87bc1b9fb19",
-        "type": "function",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "process integration \"number\"",
-        "func": "function checkKeyInObj(key, obj) {\n    if (typeof obj !== 'object' || obj === null) {\n        return false;\n    }\n\n    const keys = key.split('.')\n\n    for ( const part of keys ) {\n        const match = part.match(/^([^\\[\\]]+)(?:\\[(\\d+)\\])?$/); // Matches \"property\" or \"property[index]\"\n        if ( !match ) {\n            return { exist: false, value: undefined };\n        }\n\n        const property = match[1] // The property name\n        const index = match[2]   // The optional array index\n\n        // Ensure `obj` is an object or array and has the property\n        if ( typeof obj !== 'object' || obj === null || !( property in obj ) ) {\n            return { exist: false, value: undefined }\n        }\n        obj = obj[property] // Move to the next level\n\n        // Handle array indexing\n        if (index !== undefined) {\n            if ( !Array.isArray(obj) || !( index in obj ) ) {\n                return { exist: false, value: undefined }\n            }\n            obj = obj[index]; // Move to the indexed array element\n        }\n    }\n    return { exist: true, value: obj }\n}\n\nfunction getKeyValue(keyValue) {\n    var key_lora = keyValue\n    for (const [keyConfig, valueConfig] of Object.entries(integrationConfig)) {\n        if (valueConfig.name == keyValue) {\n            key_lora = keyConfig\n        }\n    }\n    if (!msg.testGetKeyValue) {\n        msg.testGetKeyValue = {}\n    }\n    msg.testGetKeyValue[keyValue] = {}\n    // check if in the config a default value is available\n    msg.testGetKeyValue[keyValue].value_default = checkKeyInObj(key_lora + \".value_default\", integrationConfig)\n    if (msg.testGetKeyValue[keyValue].value_default.exist) {\n        var value = msg.testGetKeyValue[keyValue].value_default.value;\n    }\n    // check if in the sensordata the value is available\n    msg.testGetKeyValue[keyValue].value_lora = checkKeyInObj(keyValue + \".value\", integrationValues)\n    if (msg.testGetKeyValue[keyValue].value_lora.exist) {\n        value = msg.testGetKeyValue[keyValue].value_lora.value\n    } else {\n        integrationValues[keyValue] = { value: value }\n    }\n    // check if in the config the value is available which will overwrite the sensor data\n    msg.testGetKeyValue[keyValue].value_overwrite = checkKeyInObj(key_lora + \".value\", integrationConfig)\n    if (msg.testGetKeyValue[keyValue].value_overwrite.exist) {\n        value = msg.testGetKeyValue[keyValue].value_overwrite.value\n        integrationValues[keyValue] = { value: value }\n    }\n    return value\n}\n\nvar general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"number\"\n\nif ( msg.result.integration[integration] ) {\n    var integrationValues = msg.result.integration[integration]\n    var integrationConfig = msg.settings.joinKey2lorakey2ha[join_eui][integration]\n\n    var key = msg.settings.joinKey2lorakey2ha[join_eui].device[integration + \"_primary_key\"].name\n    var valueObj = integrationValues[key]\n\n    var max = getKeyValue(\"max\")\n    var min = getKeyValue(\"min\")\n    var step = getKeyValue(\"step\")\n    var mode = getKeyValue(\"mode\")\n\n    if ( integrationValues[key] ) {\n\n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key.replace(/_/g, \" \").replace(/\\b./g, function (m) { return m.toUpperCase(); }),\n            object_id: general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            max: max,\n            min: min,\n            step: step,\n            mode: mode,\n          \n            state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            value_template: '{{ value_json.value }}',\n\n            command_topic: general.topicDeviceSet + \"/\" + integration + \"/\" + key,\n        }\n        if (valueObj.entity_category) {\n            objConfig.payload.entity_category = valueObj.entity_category\n        }\n        if (valueObj.icon) {\n            objConfig.payload.icon = valueObj.icon\n        }\n        if (valueObj.device_class) {\n            if (valueObj.device_class != \"None\") {\n                objConfig.payload.device_class = valueObj.device_class\n            }\n        }\n        if (valueObj.unit_of_measurement) {\n            objConfig.payload.unit_of_measurement = valueObj.unit_of_measurement\n        }\n        msg.result.haConfigQueue.push(objConfig)\n    }\n}\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 960,
-        "wires": [
-            [
-                "0eee47f315f5bb92",
-                "bc2a900a55d203d4"
-            ]
-        ]
-    },
-    {
-        "id": "0eee47f315f5bb92",
-        "type": "debug",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "debug integration \"number\"",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1140,
-        "y": 960,
-        "wires": []
-    },
-    {
-        "id": "bc2a900a55d203d4",
-        "type": "function",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "process integration \"button\"",
-        "func": "var general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"button\"\n\nif (msg.settings.joinKey2lorakey2ha[general.join_eui][integration]) {\n    var integrationConfig = msg.settings.joinKey2lorakey2ha[general.join_eui][integration]\n\n    for (const [key, value] of Object.entries(integrationConfig)) {\n        var valueObj = msg.settings.joinKey2lorakey2ha[general.join_eui][integration][key]\n\n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key.replace(/_/g, \" \").replace(/\\b./g, function (m) { return m.toUpperCase(); }),\n            object_id: general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            command_topic: general.topicDeviceSet + \"/\" + integration + \"/\" + key,\n            payload_press: \"request\",\n        }\n        if (valueObj.entity_category) {\n            objConfig.payload.entity_category = valueObj.entity_category\n        }\n        if (valueObj.icon) {\n            objConfig.payload.icon = valueObj.icon\n        }\n        if (valueObj.device_class) {\n            if (valueObj.device_class != \"None\") {\n                objConfig.payload.device_class = valueObj.device_class\n            }\n        }\n        if (valueObj.unit_of_measurement) {\n            objConfig.payload.unit_of_measurement = valueObj.unit_of_measurement\n        }\n        msg.result.haConfigQueue.push(objConfig)\n    }\n}\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 1020,
-        "wires": [
-            [
-                "1c879fe6ec9a0576",
-                "06529bb3d3928a21"
-            ]
-        ]
-    },
-    {
-        "id": "1c879fe6ec9a0576",
-        "type": "debug",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "debug integration \"button\"",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1130,
-        "y": 1020,
-        "wires": []
-    },
-    {
         "id": "862457515fc879d1",
         "type": "debug",
         "z": "7a9ca1740ef5409d",
@@ -1161,24 +632,6 @@
         "wires": []
     },
     {
-        "id": "0e42d39464877cb2",
-        "type": "debug",
-        "z": "7a9ca1740ef5409d",
-        "g": "1338bdfeb1080994",
-        "name": "output",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1070,
-        "y": 1200,
-        "wires": []
-    },
-    {
         "id": "347fce4f4934a1b8",
         "type": "junction",
         "z": "7a9ca1740ef5409d",
@@ -1188,7 +641,7 @@
         "wires": [
             [
                 "c3b38eec68f54dd1",
-                "4ad1a5c4bffea745"
+                "596a21811403fcb6"
             ]
         ]
     },
@@ -1221,7 +674,664 @@
         ]
     },
     {
-        "id": "bd6b48a7c533308b",
+        "id": "3b2b8459a60ad688",
+        "type": "mqtt in",
+        "z": "7a9ca1740ef5409d",
+        "d": true,
+        "g": "1338bdfeb1080994",
+        "name": "TTN - app-01 | #",
+        "topic": "#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "364cba795bd47ac5",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 320,
+        "wires": [
+            [
+                "fc1d823afa4e91b8"
+            ]
+        ]
+    },
+    {
+        "id": "da6dd2a6478eb1c8",
+        "type": "mqtt in",
+        "z": "7a9ca1740ef5409d",
+        "d": true,
+        "g": "1338bdfeb1080994",
+        "name": "TTN - app-02 | #",
+        "topic": "#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "34b3812930585fe6",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 380,
+        "wires": [
+            [
+                "a27f89b8146e2fb2"
+            ]
+        ]
+    },
+    {
+        "id": "934dcec75d08e2c3",
+        "type": "mqtt out",
+        "z": "7a9ca1740ef5409d",
+        "d": true,
+        "g": "1338bdfeb1080994",
+        "name": "HomeAssistant",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "d02c3570ba850c4f",
+        "x": 1100,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "fc1d823afa4e91b8",
+        "type": "function",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "filter for uplink",
+        "func": "// Define the pattern to match the topic\n//const pattern = /^v3\\/[^\\/]+\\/devices\\/[^\\/]+\\/up\\/[^\\/]+/;\nconst pattern = /^v3\\/[^\\/]+\\/devices\\/[^\\/]+\\/up$/;\n\n// Check if the topic matches the pattern\nif (pattern.test(msg.topic)) {\n    return msg; // Pass the message if it matches\n}\n\nreturn null\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 320,
+        "wires": [
+            [
+                "aebc8dfb826d1f21"
+            ]
+        ]
+    },
+    {
+        "id": "a27f89b8146e2fb2",
+        "type": "function",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "filter for uplink",
+        "func": "// Define the pattern to match the topic\n//const pattern = /^v3\\/[^\\/]+\\/devices\\/[^\\/]+\\/up\\/[^\\/]+/;\nconst pattern = /^v3\\/[^\\/]+\\/devices\\/[^\\/]+\\/up$/;\n\n// Check if the topic matches the pattern\nif (pattern.test(msg.topic)) {\n    return msg; // Pass the message if it matches\n}\n\nreturn null\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 380,
+        "wires": [
+            [
+                "523eef3e0b1d1532"
+            ]
+        ]
+    },
+    {
+        "id": "596a21811403fcb6",
+        "type": "function",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "Collect all data",
+        "func": "function checkKeyInObj(key, obj) {\n    if ( typeof obj !== \"object\" || obj === null ) {\n        return false;\n    }\n\n    const keys = key.split('.')\n\n    for ( const part of keys ) {\n        const match = part.match(/^([^\\[\\]]+)(?:\\[(\\d+)\\])?$/); // Matches \"property\" or \"property[index]\"\n        if ( !match ) {\n            return { exist: false, value: undefined };\n        }\n\n        const property = match[1] // The property name\n        const index = match[2]   // The optional array index\n\n        // Ensure `obj` is an object or array and has the property\n        if ( typeof obj !== \"object\" || obj === null || !( property in obj ) ) {\n            return { exist: false, value: undefined }\n        }\n        obj = obj[property] // Move to the next level\n\n        // Handle array indexing\n        if (index !== undefined) {\n            if ( !Array.isArray(obj) || !( index in obj ) ) {\n                return { exist: false, value: undefined }\n            }\n            obj = obj[index]; // Move to the indexed array element\n        }\n    }\n    return { exist: true, value: obj }\n}\n\nfunction dateConvert(timestamp) {\n    const date = new Date(timestamp)\n    var day = date.getDate().toString()\n    var month = (date.getMonth() + 1).toString()\n    var year = date.getFullYear().toString()\n    var hour = date.getHours().toString()\n    var minutes = date.getMinutes().toString()\n    var seconds = date.getSeconds().toString()\n\n    day = checkZero(day)\n    month = checkZero(month)\n    year = checkZero(year)\n    hour = checkZero(hour)\n    minutes = checkZero(minutes)\n    seconds = checkZero(seconds)\n\n    return year + \"/\" + month + \"/\" + day + \" \" + hour + \":\" + minutes + \":\" + seconds + \" GMT\"\n}\n\nfunction checkZero(data) {\n    if (data.length == 1) {\n        data = \"0\" + data;\n    }\n    return data;\n}\n\nmsg.settings = flow.get(\"settings\")\nif (!msg.result) {\n    msg.result = {}\n}\n\nmsg.result.loraData = { metaData: {}, sensorData: {} }\n\n// read the new lora message\nif (msg.payload.end_device_ids) {\n    if (msg.payload.end_device_ids.device_id) {\n        msg.result.loraData.metaData.deviceName = msg.payload.end_device_ids.device_id\n        msg.result.loraData.metaData.join_eui = msg.payload.end_device_ids.join_eui\n        msg.result.loraData.metaData.application = msg.payload.end_device_ids.application_ids.application_id\n        msg.result.loraData.metaData.timestamp = Date.parse(msg.payload.received_at)\n        msg.result.loraData.metaData.timestamp_hr = dateConvert(Date.parse(msg.payload.received_at))\n\n        // get strongest rssi from gateway\n        \n        let rx_metadata = {value: []}\n        rx_metadata = checkKeyInObj( \"payload.uplink_message.rx_metadata\", msg )\n        if ( rx_metadata.exist ) {\n            for (const [index, loraValue] of rx_metadata.value.entries()) {\n                if (!msg.result.loraData.sensorData) {\n                    msg.result.loraData.sensorData = {}\n                }\n                if (!msg.result.loraData.sensorData.rssi) {\n                    msg.result.loraData.sensorData.rssi = loraValue.rssi\n                } else if (loraValue.rssi > msg.result.loraData.sensorData.rssi) {\n                    msg.result.loraData.sensorData.rssi = loraValue.rssi\n                }\n            }\n        }\n\n        let decoded_payload = {value: {}}\n        decoded_payload = checkKeyInObj( \"payload.uplink_message.decoded_payload\", msg )\n        if ( decoded_payload.exist ) {\n            for (const [loraKey, loraValue] of Object.entries(decoded_payload.value)) {\n                if (!msg.result.loraData.sensorData) {\n                    msg.result.loraData.sensorData = {}\n                }\n                if (typeof (loraValue) != \"object\") {\n                    msg.result.loraData.sensorData[loraKey] = loraValue\n                } else {\n                    for (var [loraKeySub, loraValueSub] of Object.entries(loraValue)) {\n                        msg.result.loraData.sensorData[loraKey + \"_\" + loraKeySub] = loraValueSub\n                    }\n                }\n            }\n        }\n    }\n}\n\n\n\n// read the prefious message from node red memory\nif ( msg.result.loraData.metaData.deviceName ) {\n    msg.result.previousData = flow.get(\"previous_\" + msg.result.loraData.metaData.deviceName) || { metaData: {}, sensorData: {} }\n}\n\nmsg.result.currentData = {\n    metaData: Object.assign({}, msg.result.previousData.metaData, msg.result.loraData.metaData),\n    sensorData: Object.assign({}, msg.result.previousData.sensorData, msg.result.loraData.sensorData),\n}\n\nflow.set(\"previous_\" + msg.result.loraData.metaData.deviceName, msg.result.currentData)\n\nif (msg.settings.joinKey2lorakey2ha[msg.result.currentData.metaData.join_eui] ) {\n    var msgOut = {\n        settings: msg.settings,\n        result: msg.result\n    }\n\n    return [msg, msgOut];\n}\n\n\nreturn [msg, null]",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 520,
+        "wires": [
+            [
+                "a9d7abc5d84dfe54"
+            ],
+            [
+                "ece18891db627e67",
+                "da8740cc13579f4b"
+            ]
+        ],
+        "outputLabels": [
+            "debug",
+            "output"
+        ]
+    },
+    {
+        "id": "caa2c2c674f578b2",
+        "type": "function",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "push haConfigQueue to mqtt",
+        "func": "for ( const [index, command] of msg.result.haConfigQueue.entries() ) {\n    var msgMqtt = command\n    msgMqtt.delay = index * 5\n    node.send([null, msgMqtt, null])\n}\n\nvar msgOut = {\n    settings: msg.settings,\n    result: msg.result,\n}\n\nreturn [msg, null, msgOut];",
+        "outputs": 3,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1160,
+        "wires": [
+            [
+                "5e806f569e84a9d2"
+            ],
+            [
+                "8ffc94637c605b4e",
+                "2cd17094407e8101"
+            ],
+            [
+                "a48f1d933ce1688f",
+                "0b8d9d98ce3b730d"
+            ]
+        ],
+        "outputLabels": [
+            "debug",
+            "mqtt",
+            "output"
+        ]
+    },
+    {
+        "id": "5e806f569e84a9d2",
+        "type": "debug",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "debug mqtt jobs",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "8ffc94637c605b4e",
+        "type": "debug",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "output mqtt haConfigQueue",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "d536829704a1ee9f",
+        "type": "function",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "push haValueQueue to mqtt",
+        "func": "for ( const [index, command] of msg.result.haValueQueue.entries() ) {\n    var msgMqtt = command\n    msgMqtt.delay = index * 5\n    node.send(msgMqtt, null)\n}\n\nreturn [null, msg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1280,
+        "wires": [
+            [
+                "03e64ea8ee4a9496",
+                "93c7a5302b512c33"
+            ],
+            [
+                "530111d12df2be92"
+            ]
+        ],
+        "outputLabels": [
+            "mqtt",
+            "output"
+        ]
+    },
+    {
+        "id": "530111d12df2be92",
+        "type": "debug",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "output",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "03e64ea8ee4a9496",
+        "type": "debug",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "output mqtt haValueQueue",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "a48f1d933ce1688f",
+        "type": "delay",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 540,
+        "y": 1220,
+        "wires": [
+            [
+                "d536829704a1ee9f"
+            ]
+        ]
+    },
+    {
+        "id": "a9d7abc5d84dfe54",
+        "type": "debug",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "debug Collect data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "ece18891db627e67",
+        "type": "debug",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "output Collect data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "da8740cc13579f4b",
+        "type": "function",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "collect device topic and distribute values to the correct integration",
+        "func": "function copyObject(objIn) {\n    var objOut = {}\n    for (const [key, value] of Object.entries(objIn)) {\n        objOut[key] = value\n    }\n    return objOut\n}\n\nvar metaData = msg.result.currentData.metaData\nvar sensorData = msg.result.currentData.sensorData\n\nmsg.deviceConfig = msg.settings.joinKey2lorakey2ha[metaData.join_eui]\n\nmsg.result.integration = {}\n\nmsg.result.general = {\n    deviceName: metaData.deviceName,\n    application: metaData.application,\n    join_eui: metaData.join_eui,\n}\n\nmsg.manufacturerId = msg.deviceConfig.device.manufacturer.name.replaceAll(\" \",\"_\")\nmsg.result.general.topicDeviceGet = \"lora2nodered2mqtt/\" + msg.manufacturerId + \"/\" + metaData.deviceName + \"/get\"\nmsg.result.general.topicDeviceSet = \"mqtt2nodered2lora/\" + msg.manufacturerId + \"/\" + metaData.application + \"/\" + metaData.deviceName + \"/\" + metaData.join_eui + \"/set\"\n\nmsg.result.integration.device = {\n    identifiers: [\"lora2nodered2mqtt_\" + metaData.deviceName],\n    name: metaData.deviceName,\n    configuration_url: msg.settings.loraServer + \"/console/applications/\" + metaData.application + \"/devices/\" + metaData.deviceName\n}\nif (msg.deviceConfig.device.manufacturer ) {\n    msg.result.integration.device.manufacturer = msg.deviceConfig.device.manufacturer.name + \" (LoRaWAN device)\"\n}\nif (msg.deviceConfig.device.model ) {\n    msg.result.integration.device.model = msg.deviceConfig.device.model.name\n}\n\nmsg.result.key_skipped = {}\nfor ( const [loraKey, loraValue] of Object.entries(msg.result.currentData.sensorData) ) {\n    var keySelect = true\n    for ( const [integration, keysObject] of Object.entries(msg.deviceConfig) ) {\n        for (const [key, config] of Object.entries(keysObject) ) {\n            if ( loraKey == key ) {\n                var keySelect = false\n                if ( !msg.result.integration[integration] ) {\n                    msg.result.integration[integration] = {}\n                }\n                let name = loraKey\n                if (config.name) {\n                    name = config.name\n                }\n                if ( integration == \"device\" ) {\n                    msg.result.integration[integration][name] = loraValue.toString()\n                } else {\n                    msg.result.integration[integration][name] = copyObject(config)\n                    msg.result.integration[integration][name].value = loraValue\n                    delete msg.result.integration[integration][name].name\n                }\n            }\n        }\n    }\n    if ( keySelect ) {\n        msg.result.key_skipped[loraKey] = loraValue\n    }\n}\n\nmsg.result.haConfigQueue = []\nmsg.result.haValueQueue = []\n\nvar msgOut = {\n    settings: msg.settings,\n    result: msg.result\n}\n\nreturn [msg, msgOut];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 640,
+        "wires": [
+            [
+                "3505492278cecd97"
+            ],
+            [
+                "7d1fa5b2efb47eae",
+                "727e6b52c63cd5fc"
+            ]
+        ],
+        "outputLabels": [
+            "debug",
+            "output"
+        ]
+    },
+    {
+        "id": "7d1fa5b2efb47eae",
+        "type": "debug",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "output Order data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "3505492278cecd97",
+        "type": "debug",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "debug Order data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "727e6b52c63cd5fc",
+        "type": "function",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "process integration \"sensor\"",
+        "func": "var general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"sensor\"\n\nif ( msg.result.integration[integration] ) {\n    for ( const [key, valueObj] of Object.entries(msg.result.integration[integration]) ) {\n\n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key.replaceAll(\"_\", \" \").replace(/\\b./g, function(m){ return m.toUpperCase(); }),\n            object_id: general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            json_attributes_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            value_template: \"{{ value_json.value }}\",\n        }\n        if ( valueObj.entity_category ) {\n            objConfig.payload.entity_category = valueObj.entity_category\n        }\n        if ( valueObj.icon ) {\n            objConfig.payload.icon = valueObj.icon\n        }\n        if ( valueObj.device_class ) {\n            if ( valueObj.device_class != \"None\" ) {\n                objConfig.payload.device_class = valueObj.device_class\n            }\n        }\n        if ( valueObj.unit_of_measurement ) {\n            objConfig.payload.unit_of_measurement = valueObj.unit_of_measurement\n        }\n        msg.result.haConfigQueue.push(objConfig)\n\n\n        // #########################        \n        // ##  Integration values\n        // #########################        \n        var objValue = {\n            topic: msg.result.general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            retain: true,\n            payload: {value: valueObj.value}\n        }\n        msg.result.haValueQueue.push(objValue)\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 720,
+        "wires": [
+            [
+                "b38f6a5a62010d1a",
+                "17f53f5586ad858c"
+            ]
+        ]
+    },
+    {
+        "id": "b38f6a5a62010d1a",
+        "type": "debug",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "debug integration \"sensor\"",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "17f53f5586ad858c",
+        "type": "function",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "process integration \"binary_sensor\"",
+        "func": "var general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"binary_sensor\"\n\nif ( msg.result.integration[integration] ) {\n    for ( const [key, valueObj] of Object.entries(msg.result.integration[integration]) ) {\n\n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key.replace(/_/g, \" \").replace(/\\b./g, function (m) { return m.toUpperCase(); }),\n            object_id: general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            json_attributes_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            value_template: \"{{ value_json.value }}\",\n            payload_on: true,\n            payload_off: false,\n        }\n        if ( valueObj.entity_category ) {\n            objConfig.payload.entity_category = valueObj.entity_category\n        }\n        if ( valueObj.icon ) {\n            objConfig.payload.icon = valueObj.icon\n        }\n        if ( valueObj.device_class ) {\n            if ( valueObj.device_class != \"None\" ) {\n                objConfig.payload.device_class = valueObj.device_class\n            }\n        }\n        msg.result.haConfigQueue.push(objConfig)\n\n\n        // #########################        \n        // ##  Integration values\n        // #########################        \n        if ( valueObj.value === true || valueObj.value === false ) {\n            var value = valueObj.value\n        } else if ( valueObj.value == \"off\" ) {\n            value = false\n        } else if ( valueObj.value == \"on\" ) {\n            value = true\n        } else {\n            if ( valueObj.value == 0 ) {\n                value = false\n            } else {\n                value = true\n            }\n        }\n        var objValue = {\n            topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            retain: true,\n            payload: {value: value}\n        }\n        msg.result.haValueQueue.push(objValue)\n    }\n}\n\nreturn msg;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 780,
+        "wires": [
+            [
+                "fdcd10268a3e64f2",
+                "51617034baaa10b7"
+            ]
+        ]
+    },
+    {
+        "id": "fdcd10268a3e64f2",
+        "type": "function",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "process integration \"switch\"",
+        "func": "var general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"switch\"\n\nif ( msg.result.integration[integration] ) {\n    var integrationValues = msg.result.integration[integration]\n\n    for ( const [key, valueObj] of Object.entries(msg.result.integration[integration]) ) {\n\n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key.replace(/_/g, \" \").replace(/\\b./g, function (m) { return m.toUpperCase(); }),\n            object_id: general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            command_topic: general.topicDeviceSet + \"/\" + integration + \"/\" + key,\n            state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            json_attributes_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            value_template: \"{{ value_json.value }}\",\n            payload_off: \"off\",\n            payload_on: \"on\",\n        }\n        if ( valueObj.entity_category ) {\n            objConfig.payload.entity_category = valueObj.entity_category\n        }\n        if ( valueObj.icon ) {\n            objConfig.payload.icon = valueObj.icon\n        }\n        msg.result.haConfigQueue.push(objConfig)\n\n\n        // #########################        \n        // ##  Integration values\n        // #########################        \n        if ( valueObj.value == integrationValues[key].downlink.on ) {\n            var switchState = \"on\"\n        } else {\n            switchState = \"off\"\n        }\n        var objValue = {\n            topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            retain: true,\n            payload: {value: switchState}\n        }\n        msg.result.haValueQueue.push(objValue)\n    }\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 840,
+        "wires": [
+            [
+                "a980e08be805ebbe",
+                "18cb6c868ffa7c11"
+            ]
+        ]
+    },
+    {
+        "id": "a980e08be805ebbe",
+        "type": "function",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "process integration \"climate\"",
+        "func": "function checkKeyInObj(key, obj) {\n    if (typeof obj !== 'object' || obj === null) {\n        return false;\n    }\n\n    const keys = key.split('.')\n\n    for ( const part of keys ) {\n        const match = part.match(/^([^\\[\\]]+)(?:\\[(\\d+)\\])?$/); // Matches \"property\" or \"property[index]\"\n        if ( !match ) {\n            return { exist: false, value: undefined };\n        }\n\n        const property = match[1] // The property name\n        const index = match[2]   // The optional array index\n\n        // Ensure `obj` is an object or array and has the property\n        if ( typeof obj !== 'object' || obj === null || !( property in obj ) ) {\n            return { exist: false, value: undefined }\n        }\n        obj = obj[property] // Move to the next level\n\n        // Handle array indexing\n        if (index !== undefined) {\n            if ( !Array.isArray(obj) || !( index in obj ) ) {\n                return { exist: false, value: undefined }\n            }\n            obj = obj[index]; // Move to the indexed array element\n        }\n    }\n    return { exist: true, value: obj }\n}\n\nfunction getKeyValue(keyValue) {\n    var key_lora = keyValue\n    for (const [keyConfig, valueConfig] of Object.entries(integrationConfig)) {\n        if (valueConfig.name == keyValue) {\n            key_lora = keyConfig\n        }\n    }\n    if (!msg.testGetKeyValue ) {\n        msg.testGetKeyValue = {}\n    }\n    msg.testGetKeyValue[keyValue] = {}\n    // check if in the config a default value is available\n    msg.testGetKeyValue[keyValue].value_default = checkKeyInObj(key_lora + \".value_default\", integrationConfig)\n    if (msg.testGetKeyValue[keyValue].value_default.exist ) {\n        var value = msg.testGetKeyValue[keyValue].value_default.value;\n    }\n    // check if in the sensordata the value is available\n    msg.testGetKeyValue[keyValue].value_lora = checkKeyInObj(keyValue + \".value\", integrationValues)\n    if (msg.testGetKeyValue[keyValue].value_lora.exist ) {\n        value = msg.testGetKeyValue[keyValue].value_lora.value\n    } else {\n        integrationValues[keyValue] = { value: value }\n    }\n    // check if in the config the value is available which will overwrite the sensor data\n    msg.testGetKeyValue[keyValue].value_overwrite = checkKeyInObj(key_lora + \".value\", integrationConfig)\n    if (msg.testGetKeyValue[keyValue].value_overwrite.exist ) {\n        value = msg.testGetKeyValue[keyValue].value_overwrite.value\n        integrationValues[keyValue] = { value: value }\n    }\n    return value\n}\n\nvar general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"climate\"\n\nif ( msg.result.integration[integration] ) {\n    var integrationValues = msg.result.integration[integration]\n    var integrationConfig = msg.settings.joinKey2lorakey2ha[join_eui][integration]\n\n    var key = msg.settings.joinKey2lorakey2ha[join_eui].device[integration + \"_primary_key\"].name\n    var valueObj = integrationValues[key]\n\n    var max_temp = getKeyValue(\"max_temp\")\n    var min_temp = getKeyValue(\"min_temp\")\n    var temp_step = getKeyValue(\"temp_step\")\n    var system_mode = getKeyValue(\"system_mode\")\n\n\n    // ##################################################\n    // ##  Start - device specific excetions\n    // ##################################################\n\n    // additional check for MClimate Vicki\n    if ( join_eui == \"70B3D52DD3000000\" ) {\n        if ( integrationValues.attached_backplate ) {    // MClimate Vicki exception\n            integrationValues.system_mode = { value: \"heat\" }\n        } else {\n            integrationValues.system_mode = { value: \"off\" }\n        }\n    }\n\n    // ##################################################\n    // ##  End - device specific excetions\n    // ##################################################\n\n    if ( integrationValues[key] ) {\n\n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key.replace(/_/g, \" \").replace(/\\b./g, function (m) { return m.toUpperCase(); }),\n            object_id: general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            modes: [\"off\", \"heat\"],\n            max_temp: max_temp,\n            min_temp: min_temp,\n            temp_step: 1,\n\n            json_attributes_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n\n            mode_state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + \"system_mode\",\n//            mode_state_template: \"{{ value_json.value  if value_json.value=='off' else 'heat'}}\",\n            mode_state_template: \"{{ value_json.value }}\",\n\n            current_temperature_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + \"current_temperature\",\n            current_temperature_template: \"{{ value_json.value }}\",\n            \n            temperature_state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            temperature_state_template: \"{{ value_json.value }}\",\n\n            temperature_command_topic: general.topicDeviceSet + \"/\" + integration + \"/\" + key,\n            mode_command_topic: general.topicDeviceSet + \"/\" + integration + \"/\" + \"system_mode\",\n        }\n        if (valueObj.entity_category) {\n            objConfig.payload.entity_category = valueObj.entity_category\n        }\n        if ( valueObj.icon ) {\n            objConfig.payload.icon = valueObj.icon\n        }\n        if ( valueObj.device_class ) {\n            if ( valueObj.device_class != \"None\" ) {\n                objConfig.payload.device_class = valueObj.device_class\n            }\n        }\n        if ( valueObj.unit_of_measurement ) {\n            objConfig.payload.unit_of_measurement = valueObj.unit_of_measurement\n        }\n        msg.result.haConfigQueue.push(objConfig)\n\n\n        // #########################        \n        // ##  Integration values\n        // #########################        \n        for (const [key, value] of Object.entries(integrationValues) ) {\n            var objValue = {\n                topic: msg.result.general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n                retain: true,\n                payload: { value: value.value }\n            }\n            msg.result.haValueQueue.push(objValue)\n        }\n    }\n}\n\n\n\n\n\n\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 900,
+        "wires": [
+            [
+                "36c25b23ce4c6b78",
+                "cd10f4f58a6ecb12"
+            ]
+        ]
+    },
+    {
+        "id": "36c25b23ce4c6b78",
+        "type": "debug",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "debug integration \"climate\"",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "18cb6c868ffa7c11",
+        "type": "debug",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "debug integration \"switch\"",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1130,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "51617034baaa10b7",
+        "type": "debug",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "debug integration \"binary_sensor\"",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "cd10f4f58a6ecb12",
+        "type": "function",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "process integration \"number\"",
+        "func": "function checkKeyInObj(key, obj) {\n    if (typeof obj !== 'object' || obj === null) {\n        return false;\n    }\n\n    const keys = key.split('.')\n\n    for ( const part of keys ) {\n        const match = part.match(/^([^\\[\\]]+)(?:\\[(\\d+)\\])?$/); // Matches \"property\" or \"property[index]\"\n        if ( !match ) {\n            return { exist: false, value: undefined };\n        }\n\n        const property = match[1] // The property name\n        const index = match[2]   // The optional array index\n\n        // Ensure `obj` is an object or array and has the property\n        if ( typeof obj !== 'object' || obj === null || !( property in obj ) ) {\n            return { exist: false, value: undefined }\n        }\n        obj = obj[property] // Move to the next level\n\n        // Handle array indexing\n        if (index !== undefined) {\n            if ( !Array.isArray(obj) || !( index in obj ) ) {\n                return { exist: false, value: undefined }\n            }\n            obj = obj[index]; // Move to the indexed array element\n        }\n    }\n    return { exist: true, value: obj }\n}\n\nfunction getKeyValue(keyValue) {\n    var key_lora = keyValue\n    for (const [keyConfig, valueConfig] of Object.entries(integrationConfig)) {\n        if (valueConfig.name == keyValue) {\n            key_lora = keyConfig\n        }\n    }\n    if (!msg.testGetKeyValue) {\n        msg.testGetKeyValue = {}\n    }\n    msg.testGetKeyValue[keyValue] = {}\n    // check if in the config a default value is available\n    msg.testGetKeyValue[keyValue].value_default = checkKeyInObj(key_lora + \".value_default\", integrationConfig)\n    if (msg.testGetKeyValue[keyValue].value_default.exist) {\n        var value = msg.testGetKeyValue[keyValue].value_default.value;\n    }\n    // check if in the sensordata the value is available\n    msg.testGetKeyValue[keyValue].value_lora = checkKeyInObj(keyValue + \".value\", integrationValues)\n    if (msg.testGetKeyValue[keyValue].value_lora.exist) {\n        value = msg.testGetKeyValue[keyValue].value_lora.value\n    } else {\n        integrationValues[keyValue] = { value: value }\n    }\n    // check if in the config the value is available which will overwrite the sensor data\n    msg.testGetKeyValue[keyValue].value_overwrite = checkKeyInObj(key_lora + \".value\", integrationConfig)\n    if (msg.testGetKeyValue[keyValue].value_overwrite.exist) {\n        value = msg.testGetKeyValue[keyValue].value_overwrite.value\n        integrationValues[keyValue] = { value: value }\n    }\n    return value\n}\n\nvar general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"number\"\n\nif ( msg.result.integration[integration] ) {\n    var integrationValues = msg.result.integration[integration]\n    var integrationConfig = msg.settings.joinKey2lorakey2ha[join_eui][integration]\n\n    var key = msg.settings.joinKey2lorakey2ha[join_eui].device[integration + \"_primary_key\"].name\n    var valueObj = integrationValues[key]\n\n    var max = getKeyValue(\"max\")\n    var min = getKeyValue(\"min\")\n    var step = getKeyValue(\"step\")\n    var mode = getKeyValue(\"mode\")\n\n    if ( integrationValues[key] ) {\n\n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key.replace(/_/g, \" \").replace(/\\b./g, function (m) { return m.toUpperCase(); }),\n            object_id: general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            max: max,\n            min: min,\n            step: step,\n            mode: mode,\n          \n            state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            value_template: '{{ value_json.value }}',\n\n            command_topic: general.topicDeviceSet + \"/\" + integration + \"/\" + key,\n        }\n        if (valueObj.entity_category) {\n            objConfig.payload.entity_category = valueObj.entity_category\n        }\n        if (valueObj.icon) {\n            objConfig.payload.icon = valueObj.icon\n        }\n        if (valueObj.device_class) {\n            if (valueObj.device_class != \"None\") {\n                objConfig.payload.device_class = valueObj.device_class\n            }\n        }\n        if (valueObj.unit_of_measurement) {\n            objConfig.payload.unit_of_measurement = valueObj.unit_of_measurement\n        }\n        msg.result.haConfigQueue.push(objConfig)\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 960,
+        "wires": [
+            [
+                "b7977e0c9e65b641",
+                "c61496b6b4e8e5ae"
+            ]
+        ]
+    },
+    {
+        "id": "b7977e0c9e65b641",
+        "type": "debug",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "debug integration \"number\"",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "c61496b6b4e8e5ae",
+        "type": "function",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "process integration \"button\"",
+        "func": "var general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"button\"\n\nif (msg.settings.joinKey2lorakey2ha[general.join_eui][integration]) {\n    var integrationConfig = msg.settings.joinKey2lorakey2ha[general.join_eui][integration]\n\n    for (const [key, value] of Object.entries(integrationConfig)) {\n        var valueObj = msg.settings.joinKey2lorakey2ha[general.join_eui][integration][key]\n\n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key.replace(/_/g, \" \").replace(/\\b./g, function (m) { return m.toUpperCase(); }),\n            object_id: general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            command_topic: general.topicDeviceSet + \"/\" + integration + \"/\" + key,\n            payload_press: \"request\",\n        }\n        if (valueObj.entity_category) {\n            objConfig.payload.entity_category = valueObj.entity_category\n        }\n        if (valueObj.icon) {\n            objConfig.payload.icon = valueObj.icon\n        }\n        if (valueObj.device_class) {\n            if (valueObj.device_class != \"None\") {\n                objConfig.payload.device_class = valueObj.device_class\n            }\n        }\n        if (valueObj.unit_of_measurement) {\n            objConfig.payload.unit_of_measurement = valueObj.unit_of_measurement\n        }\n        msg.result.haConfigQueue.push(objConfig)\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1020,
+        "wires": [
+            [
+                "c19335a5143b19eb",
+                "caa2c2c674f578b2"
+            ]
+        ]
+    },
+    {
+        "id": "c19335a5143b19eb",
+        "type": "debug",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "debug integration \"button\"",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1130,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "0b8d9d98ce3b730d",
+        "type": "debug",
+        "z": "7a9ca1740ef5409d",
+        "g": "1338bdfeb1080994",
+        "name": "output",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "2cd17094407e8101",
         "type": "delay",
         "z": "7a9ca1740ef5409d",
         "g": "1338bdfeb1080994",
@@ -1247,7 +1357,7 @@
         ]
     },
     {
-        "id": "5dafba7d7d0f0796",
+        "id": "93c7a5302b512c33",
         "type": "delay",
         "z": "7a9ca1740ef5409d",
         "g": "1338bdfeb1080994",
@@ -1271,72 +1381,6 @@
                 "934dcec75d08e2c3"
             ]
         ]
-    },
-    {
-        "id": "3b2b8459a60ad688",
-        "type": "mqtt in",
-        "z": "7a9ca1740ef5409d",
-        "d": true,
-        "g": "1338bdfeb1080994",
-        "name": "TTN - app-01 | v3/+/devices/+/up/#",
-        "topic": "v3/+/devices/+/up/#",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "364cba795bd47ac5",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 260,
-        "y": 320,
-        "wires": [
-            [
-                "aebc8dfb826d1f21"
-            ]
-        ]
-    },
-    {
-        "id": "da6dd2a6478eb1c8",
-        "type": "mqtt in",
-        "z": "7a9ca1740ef5409d",
-        "d": true,
-        "g": "1338bdfeb1080994",
-        "name": "TTN - app-02 | v3/+/devices/+/up/#",
-        "topic": "v3/+/devices/+/up/#",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "34b3812930585fe6",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 260,
-        "y": 380,
-        "wires": [
-            [
-                "523eef3e0b1d1532"
-            ]
-        ]
-    },
-    {
-        "id": "934dcec75d08e2c3",
-        "type": "mqtt out",
-        "z": "7a9ca1740ef5409d",
-        "d": true,
-        "g": "1338bdfeb1080994",
-        "name": "HomeAssistant",
-        "topic": "",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "d02c3570ba850c4f",
-        "x": 1100,
-        "y": 1360,
-        "wires": []
     },
     {
         "id": "c2ca4631a9007acd",
@@ -1624,7 +1668,6 @@
         "name": "test payload send",
         "mode": "link",
         "links": [
-            "63e08a8e22366226",
             "36a8bdf13a518ff5"
         ],
         "x": 2115,
