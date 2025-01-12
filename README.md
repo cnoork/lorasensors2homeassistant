@@ -8,7 +8,7 @@ With this integration Lora "sensors" and "switches" can be integrated. I have tr
  - Milesight: Smart Portable Socket WS52x
  - MClimate:  Vicki LoRaWAN
  - MClimate:  Wireless Thermostat LoRaWAN
- - OfficeSense sensors: Comfort, Desk and Presence
+ - OfficeSense: Comfort, Desk and Presence
  - Tektelic: Smart Room Sensor - PIR
 
 These could also be used as example for other sensors.
