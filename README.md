@@ -11,7 +11,7 @@ With this integration Lora "sensors" and "switches" can be integrated. I have tr
  - OfficeSense: Comfort, Desk and Presence
  - Tektelic: Smart Room Sensor - PIR
 
-These could also be used as example for other sensors.
+These definitions could also be used as example for other sensors.
 
 ![image](https://github.com/user-attachments/assets/1e088a27-bd7a-44e3-b14d-580ed334c643)
 
