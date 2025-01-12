@@ -6,8 +6,8 @@
 With this integration Lora "sensors" and "switches" can be integrated. I have tried to make the solution as univeral as possible so it is possible to support all kind of sensors. It is also possible to control swichtes through Home Assistant. In the Node Red flow the following devices are already defined:
  - Elsys: ERS smart building sensor
  - Milesight: Smart Portable Socket WS52x
- - MClimate:  Vicki LoRaWAN
- - MClimate:  Wireless Thermostat LoRaWAN
+ - MClimate:  Vicki
+ - MClimate:  Wireless Thermostat
  - OfficeSense: Comfort, Desk and Presence
  - Tektelic: Smart Room Sensor - PIR
 
