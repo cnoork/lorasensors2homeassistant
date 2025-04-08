@@ -77,7 +77,7 @@ The first thing is to add the join_eui as key in "Settings to flow variable (flo
 
 Don't forget after Deploy to activate it by a click on "timestamp". Now the flow will try to process the data and we can check the result at the end of processing integrations, currently it is "debug integration button". The data which is selected by the configuration could be found in "result.integration". In the message you can also see which key's are available for configuration in "result.key_skipped". Depend on what kind of device it is to configure the apportiate integration ("sensor", "binary_sensor", "climate" etc).
 
-Here a example from temprature:
+Here a example from temperature:
 ```
   sensor: {
 	tempC: { name: "temperature", device_class: "temperature", unit_of_measurement: "°C" },
