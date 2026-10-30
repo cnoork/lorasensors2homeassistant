@@ -1,0 +1,1610 @@
+[
+    {
+        "id": "31916c06523cf6d5",
+        "type": "tab",
+        "label": "Lora integration for Home Assistant",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1d45479fd7650495",
+        "type": "group",
+        "z": "31916c06523cf6d5",
+        "name": "Lora integration for Home Assistant",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "301df37e027e0159",
+            "eb63ee17ba012dae",
+            "19478ee5f05b3fa3",
+            "c27d99bf77c056cd",
+            "2f9a63d95378d89c",
+            "49ec1f350b1c8b0e"
+        ],
+        "x": 68,
+        "y": 59,
+        "w": 1384,
+        "h": 2348
+    },
+    {
+        "id": "19478ee5f05b3fa3",
+        "type": "group",
+        "z": "31916c06523cf6d5",
+        "g": "1d45479fd7650495",
+        "name": "configuration",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "847b82f3a10bfdad",
+            "5e4dc059414e5620",
+            "0d6cd81f297797de"
+        ],
+        "x": 94,
+        "y": 159,
+        "w": 1132,
+        "h": 82
+    },
+    {
+        "id": "c27d99bf77c056cd",
+        "type": "group",
+        "z": "31916c06523cf6d5",
+        "g": "1d45479fd7650495",
+        "name": "data input from lora devices",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "28d3cf249406163e",
+            "cd4c45b86d0692c3",
+            "0f512801ce54c2ed",
+            "f5859b8b4f1e2b8d",
+            "48ec3d86ea3b8891",
+            "5508cae80718b493",
+            "948117c26c60d181",
+            "1c66a0b563e7951d",
+            "8133c8e66208a8e8",
+            "bdbecd65264f2fae",
+            "92e46f2e9806a759",
+            "70eabc4b1c779112",
+            "2722e2159758eafd",
+            "3e0168e3a12610a4",
+            "c71aa33e19a46870",
+            "24b61149eaa5cab5",
+            "3a4db6f303f34824",
+            "cdf4e02a3d6004b0",
+            "645f7be806c95179",
+            "6d6a04341f33fd96",
+            "fbb5c7dcc3f419b7",
+            "54beca1da5ab7e12",
+            "b8a04f622b177fd1",
+            "3b7efac40a52d699",
+            "ca2b473d39f23fc0",
+            "cd298c397842f716",
+            "6f40bb1fad8b78de",
+            "68b2a4d63a46d3fe",
+            "8286b55fac62e5e1",
+            "dfeac6853e8d5156",
+            "6789640e6eed2948",
+            "d034bb4dab5598dc",
+            "537bb638f089a045",
+            "bf9ec015259d5077",
+            "13e748b78850cde5",
+            "8f6e2d7f2d5242ba",
+            "b61231ba3b9e2057",
+            "4e6912709662bcc3",
+            "28d8a150d08d759d",
+            "0e081ce7cb21952d"
+        ],
+        "x": 454,
+        "y": 519,
+        "w": 972,
+        "h": 1302
+    },
+    {
+        "id": "2f9a63d95378d89c",
+        "type": "group",
+        "z": "31916c06523cf6d5",
+        "g": "1d45479fd7650495",
+        "name": "Command (downlink) to lora device",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "266a54d6ec26a923",
+            "68331ecb232579a4",
+            "7231c57d70a84070",
+            "37044c85521a5d88",
+            "6646f5239447d38d",
+            "0658a7569cbd7566",
+            "75f234b8fad01a5d",
+            "3b6bf9cba361b113",
+            "87ac556b37f9ae88",
+            "3890e7ae4e9e7974",
+            "50dbfbdd8fcc9baf",
+            "e7803e290bd27a07",
+            "6da66e81b8274fb9",
+            "7a76aa14950c24ea",
+            "98dd0b40f6d55958"
+        ],
+        "x": 94,
+        "y": 1879,
+        "w": 1212,
+        "h": 502
+    },
+    {
+        "id": "49ec1f350b1c8b0e",
+        "type": "group",
+        "z": "31916c06523cf6d5",
+        "g": "1d45479fd7650495",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "5fc24c9adcfd1d5d",
+            "3e28be76817123af",
+            "d5b2198c7a8f23eb",
+            "d4a17e0aaf69e7e4",
+            "a1d50d7a1c91209b",
+            "afcbe524785d6152",
+            "88aa668b4c6335ae"
+        ],
+        "x": 94,
+        "y": 299,
+        "w": 1152,
+        "h": 167
+    },
+    {
+        "id": "88aa668b4c6335ae",
+        "type": "junction",
+        "z": "31916c06523cf6d5",
+        "g": "49ec1f350b1c8b0e",
+        "x": 620,
+        "y": 440,
+        "wires": [
+            [
+                "dfeac6853e8d5156"
+            ]
+        ]
+    },
+    {
+        "id": "13e748b78850cde5",
+        "type": "junction",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "x": 980,
+        "y": 1780,
+        "wires": [
+            [
+                "bf9ec015259d5077"
+            ]
+        ]
+    },
+    {
+        "id": "d5b2198c7a8f23eb",
+        "type": "junction",
+        "z": "31916c06523cf6d5",
+        "g": "49ec1f350b1c8b0e",
+        "x": 480,
+        "y": 400,
+        "wires": [
+            [
+                "afcbe524785d6152",
+                "88aa668b4c6335ae"
+            ]
+        ]
+    },
+    {
+        "id": "d4a17e0aaf69e7e4",
+        "type": "junction",
+        "z": "31916c06523cf6d5",
+        "g": "49ec1f350b1c8b0e",
+        "x": 480,
+        "y": 340,
+        "wires": [
+            [
+                "a1d50d7a1c91209b",
+                "88aa668b4c6335ae"
+            ]
+        ]
+    },
+    {
+        "id": "98dd0b40f6d55958",
+        "type": "junction",
+        "z": "31916c06523cf6d5",
+        "g": "2f9a63d95378d89c",
+        "x": 380,
+        "y": 2200,
+        "wires": [
+            [
+                "6646f5239447d38d",
+                "3b6bf9cba361b113"
+            ]
+        ]
+    },
+    {
+        "id": "301df37e027e0159",
+        "type": "comment",
+        "z": "31916c06523cf6d5",
+        "g": "1d45479fd7650495",
+        "name": "url's for mqtt integration",
+        "info": "https://www.home-assistant.io/integrations/mqtt/\n\n\n==== The options are implemented ====\n\nhttps://www.home-assistant.io/integrations/sensor/\nhttps://www.home-assistant.io/integrations/sensor.mqtt/\n\nhttps://www.home-assistant.io/integrations/binary_sensor/\nhttps://www.home-assistant.io/integrations/binary_sensor.mqtt/\n\nhttps://www.home-assistant.io/integrations/switch/\nhttps://www.home-assistant.io/integrations/switch.mqtt/\n\n\n\n==== Following are not yet implemented and probably there are more options ====\n\nhttps://www.home-assistant.io/integrations/climate/\nhttps://www.home-assistant.io/integrations/climate.mqtt/\n\nhttps://www.home-assistant.io/integrations/valve/\nhttps://www.home-assistant.io/integrations/valve.mqtt/\n\n\n==== diagnostics data ====\nhttps://community.home-assistant.io/t/entity-category-mqtt-diagnostic-and-config/609731\n\n\n==== icons ====\nhttps://pictogrammers.com/library/mdi/\n",
+        "x": 1120,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "eb63ee17ba012dae",
+        "type": "comment",
+        "z": "31916c06523cf6d5",
+        "g": "1d45479fd7650495",
+        "name": "Version 2.1.4   (2026-10-30)",
+        "info": "",
+        "x": 230,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "847b82f3a10bfdad",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "19478ee5f05b3fa3",
+        "name": "debug settings",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "5e4dc059414e5620",
+        "type": "inject",
+        "z": "31916c06523cf6d5",
+        "g": "19478ee5f05b3fa3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "2",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 200,
+        "wires": [
+            [
+                "0d6cd81f297797de"
+            ]
+        ]
+    },
+    {
+        "id": "0d6cd81f297797de",
+        "type": "function",
+        "z": "31916c06523cf6d5",
+        "g": "19478ee5f05b3fa3",
+        "name": "Settings to flow variable (flow.set)",
+        "func": "// general settings\nmsg.settings = {\n    lns: \"ttn\",  // \"ttn\" or \" \"chripstack\"\n    loraServer: \"https://eu1.cloud.thethings.network\",\n\n    joinKey2lorakey2ha: {\n        \"70B3D52DD3000000\": [\n            { \n                device: {\n                    manufacturer: { name: \"MClimate\" },\n                    model: { name: \"Vicki - LoRaWAN Smart Radiator Thermostat\" },\n                    deviceVersions_software: { name: \"sw_version\" },\n                    deviceVersions_hardware: { name: \"hw_version\" },\n                    climate_primary_key: { name: \"radiator_thermostat\" },\n                    number_primary_key: { name: \"temperature_control\" },\n                },\n                sensor: {\n                    rssi: {\n                        name: \"signal_strength\",\n                        device_class: \"signal_strength\",\n                        unit_of_measurement: \"dBm\",\n                        icon: \"mdi:signal\",\n                        entity_category: \"diagnostic\",\n                        state_class:\"measurement\" },\n                    batteryPct: {\n                        name: \"battery\",\n                        device_class: \"battery\",\n                        unit_of_measurement: \"%\",\n                        entity_category: \"diagnostic\",\n                        state_class:\"measurement\" },\n                    relativeHumidity: {\n                        name: \"humidity\",\n                        device_class: \"humidity\",\n                        unit_of_measurement: \"%\",\n                        state_class:\"measurement\" },\n                    valvePct: {\n                        name: \"valve_open_status\",\n                        device_class: \"None\",\n                        unit_of_measurement: \"%\",\n                        icon: \"mdi:pipe-valve\",\n                        state_class:\"measurement\" }\n                },\n                binary_sensor: {\n                    attachedBackplate: { \n                        name: \"attached_backplate\",\n                        icon: \"mdi:engine\" },\n                    childLock: {\n                        name: \"child_lock\",\n                        icon: \"mdi:lock\" },\n                    openWindow: {\n                        name: \"open_window_detection\",\n                        icon: \"mdi:window-closed-variant\" },\n                },\n                climate: {\n                    sensorTemperature: { \n                        name: \"current_temperature\" },\n                    targetTemperature: {\n                        name: \"radiator_thermostat\",\n                        device_class: \"temperature\",\n                        unit_of_measurement: \"°C\",\n                        state_class: \"measurement\",\n                        downlink: { fPort: 1, cmd: \"setTargetTemperature\" } },\n                    temperatureRangeSettings_min: { \n                        name: \"min_temp\", \n                        value: 15 },\n                    temperatureRangeSettings_max: { \n                        name: \"max_temp\", \n                        value: 21 },\n                    modes: { \n                        name: \"mode\", \n                        value: [\"off\", \"heat\"] },\n                    system_mode: { \n                        name: \"system_mode\", \n                        value_default: \"heat\" },\n                    attachedBackplate: { \n                        name: \"attached_backplate\" },\n                    temp_step: { \n                        name: \"temp_step\", value: 1 },\n                },\n                number: {\n                    temperatureRangeSettings_min: { \n                        name: \"min\", \n                        value: 15 },\n                    temperatureRangeSettings_max: { \n                        name: \"max\", \n                        value: 21 },\n                    targetTemperature: {\n                        name: \"temperature_control\",\n                        device_class: 'temperature',\n                        unit_of_measurement: \"°C\",\n                        downlink: { fPort: 1, cmd: \"setTargetTemperature\" } },\n                    step: { \n                        name: \"step\", \n                        value: 1 },\n                    mode: { \n                        name: \"mode\", \n                        value: \"slider\" }\n                },\n                button: {\n                    request_device_settings: { \n                        name: \"request_device_settings\", \n                        device_class: \"None\", \n                        icon: \"mdi:cog-outline\",\n                        entity_category: \"config\", \n                        downlink: { fPort: 1, cmd: \"getAllParams\" } },\n                    request_device_version: { \n                        name: \"request_device_version\",\n                        device_class: \"None\", \n                        icon: \"mdi:cog-outline\", \n                        entity_category: \"config\", \n                        downlink: { fPort: 1, cmd: \"getDeviceVersions\" } },\n                }\n            },\n        ],\n        \"70B3D52DD8000000\": [\n            {\n                device: {\n                    manufacturer: { name: \"MClimate\" },\n                    model: { name: \"WirelessThermostat - LoRaWAN\"},\n                    deviceVersions_software: { name: \"sw_version\" },\n                    deviceVersions_hardware: { name: \"hw_version\" },\n                    climate_primary_key: { name: \"thermostat\" },\n                    number_primary_key: { name: \"temperature_control\" },\n                },\n                sensor: {\n                    rssi: {\n                        name: \"signal_strength\",\n                        device_class: \"signal_strength\",\n                        unit_of_measurement: \"dBm\",\n                        icon: \"mdi:signal\",\n                        entity_category: \"diagnostic\",\n                        state_class: \"measurement\" },\n                    batteryPct: {\n                        name: \"battery\",\n                        device_class: \"battery\",\n                        unit_of_measurement: \"%\",\n                        entity_category: \"diagnostic\",\n                        state_class: \"measurement\" },\n                    relativeHumidity: {\n                        name: \"humidity\",\n                        device_class: \"humidity\",\n                        unit_of_measurement: \"%\",\n                        state_class: \"measurement\" },\n                    lux: {\n                        name: \"light\",\n                        device_class: \"illuminance\",\n                        unit_of_measurement: \"lx\",\n                        state_class: \"measurement\" },\n                },\n                climate: {\n                    sensorTemperature: {\n                        name: \"current_temperature\" },\n                    targetTemperature: {\n                        name: \"thermostat\",\n                        device_class: \"temperature\",\n                        unit_of_measurement: \"°C\",\n                        downlink: { fPort: 1, cmd: \"setTargetTemperature\" } },\n                    temperatureRangeSettings_min: {\n                        name: \"min\",\n                        value: 15 },\n                    temperatureRangeSettings_max: {\n                        name: \"max\",\n                        value: 21 },\n                    modes: {\n                        name: \"mode\",\n                        value: [\"off\", \"heat\"] },\n                    system_mode: {\n                        name: \"system_mode\",\n                        value: \"heat\" },\n                    temp_step: {\n                        name: \"temp_step\",\n                        value: 1 },\n                },\n                number: {\n                    temperatureRangeSettings_min: { \n                        name: \"min\", \n                        value: 15 },\n                    temperatureRangeSettings_max: { \n                        name: \"max\", \n                        value: 21 },\n                    targetTemperature: { \n                        name: \"temperature_control\", \n                        device_class: 'temperature', \n                        unit_of_measurement: \"°C\", \n                        downlink: { fPort: 1, cmd: \"setTargetTemperature\" } },\n                    step: { \n                        name: \"step\", \n                        value: 1 },\n                    mode: { \n                        name: \"mode\", \n                        value: \"slider\" }\n                },\n                button: {\n                    request_device_settings: { \n                        name: \"request_device_settings\", \n                        device_class: \"None\", \n                        icon: \"mdi:cog-outline\", \n                        entity_category: \"config\", \n                        downlink: { fPort: 1, cmd: \"getAllParams\" } },\n                    request_device_version: { \n                        name: \"request_device_version\", \n                        device_class: \"None\", \n                        icon: \"mdi:cog-outline\", \n                        entity_category: \"config\", \n                        downlink: { fPort: 1, cmd: \"getDeviceVersions\" } },\n                }\n            },\n        ],\n        \"24E124C0002A0001\": [\n            {\n                device: { \n                    manufacturer: { name: \"Milesight\" },\n                    model: { name: \"WS523 - Smart Portable Socket\" },\n                    softwareVersion: { name: \"sw_version\" },\n                    hardwareVersion: { name: \"hw_version\" },\n                },\n                sensor: {\n                    rssi: {\n                        name: \"signal_strength\", \n                        device_class: \"signal_strength\", \n                        unit_of_measurement: \"dBm\", \n                        icon: \"mdi:signal\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\" },\n                    factor: { \n                        name: \"power_factor\", \n                        device_class: \"power_factor\", \n                        unit_of_measurement: \"%\", \n                        state_class: \"measurement\" },\n                    power: { \n                        name: \"power\", \n                        device_class: \"power\", \n                        unit_of_measurement: \"W\", \n                        state_class: \"measurement\" },\n                    power_sum: { \n                        name: \"energy_total\", \n                        device_class: \"energy\", \n                        unit_of_measurement: \"Wh\", \n                        state_class: \"measurement\" },\n                    voltage: { \n                        name: \"voltage\", \n                        device_class: \"voltage\", \n                        unit_of_measurement: \"V\", \n                        state_class: \"measurement\" }\n                },\n                switch: {\n                    state: { \n                        name: \"switch\", \n                        downlink: { fPort: 1, cmd: \"setState\", on: \"open\", off: \"close\" } }\n                },\n            },\n        ],\n        \"8000000000000003\": [\n            {\n                device: {\n                    manufacturer: { name: \"Elsys\" },\n                    model: { name: \"ERS smart building sensor\" },\n                    swVersion: { name: \"sw_version\" },\n                    hwVersion: { name: \"hw_version\" },\n                },\n                sensor: {\n                    rssi: { \n                        name: \"signal_strength\", \n                        device_class: \"signal_strength\", \n                        unit_of_measurement: \"dBm\", \n                        icon: \"mdi:signal\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\" },\n                    vddPct: { \n                        name: \"battery\", \n                        device_class: \"battery\", \n                        unit_of_measurement: \"%\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\" },\n                    vdd: {\n                        name: \"voltage\",\n                        device_classe: \"voltage\",\n                        unit_of_measurement: \"V\",\n                        entity_category: \"diagnostic\",\n                        state_class: \"measurement\"\n                    },\n                    humidity: { \n                        name: \"humidity\", \n                        device_class: \"humidity\", \n                        unit_of_measurement: \"%\", \n                        state_class: \"measurement\" },\n                    temperature: { \n                        name: \"temperature\", \n                        device_class: \"temperature\", \n                        unit_of_measurement: \"°C\", \n                        state_class: \"measurement\" },\n                    light: { \n                        name: \"light\", \n                        device_class: \"illuminance\", \n                        unit_of_measurement: \"lx\", \n                        state_class: \"measurement\" },\n                    motion: { \n                        name: \"motion\", \n                        icon: \"mdi:walk\", state_class: \"measurement\" },\n                },\n                binary_sensor: {\n                    motion: { name: \"occupancy\", \n                    device_class: \"occupancy\", \n                    state_class: \"measurement\" }\n                },\n            },\n        ],\n        \"647FDA8010000100\": [\n            {\n                dev_eui_array: [\"647FDA00000069d1\"],\n                application_array: [\"tektelic\", \"test_app_B\"],\n                device: {\n                    manufacturer: { name: \"Tektelic\" },\n                    model: { name: \"Smart Room Sensor - PIR\" },\n                    swVersion: { name: \"sw_version\" },\n                    hwVersion: { name: \"hw_version\" },\n                },\n                sensor: {\n                    rssi: { \n                        name: \"signal_strength\", \n                        device_class: \"signal_strength\", \n                        unit_of_measurement: \"dBm\", \n                        icon: \"mdi:signal\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\" },\n                    batteryPct: { \n                        name: \"battery\",\n                        device_class: \"battery\", \n                        unit_of_measurement: \"%\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\" },\n                    battery_voltage: {\n                        name: \"voltage\",\n                        device_classe: \"voltage\",\n                        unit_of_measurement: \"V\",\n                        entity_category: \"diagnostic\",\n                        state_class: \"measurement\" },\n                    ambient_temperature: { \n                        name: \"temperature\", \n                        device_class: \"temperature\", \n                        unit_of_measurement: \"°C\", \n                        state_class: \"measurement\" },\n                    relative_humidity: {\n                        name: \"humidity\", \n                        device_class: \"humidity\", \n                        unit_of_measurement: \"%\", \n                        state_class: \"measurement\" },\n                },\n                binary_sensor: {\n                    motion_event_state: { \n                        name: \"occupancy\", \n                        device_class: \"occupancy\", \n                        state_class: \"measurement\" },\n                    reed_state: { \n                        name: \"contact\",\n                        device_class: \"door\",\n                        state_class: \"measurement\" }\n                },\n            },\n            {\n                dev_eui_array: [\"647FDA0000007D3C\"],\n                application_array: [\"test_app_1\", \"test_app_2\", \"test_app_3\"],\n                device: {\n                    manufacturer: { name: \"Tektelic\" },\n                    model: { name: \"Tundra - Cold Chain Temperature & Humidity Sensor\" },\n                    swVersion: { name: \"sw_version\" },\n                    hwVersion: { name: \"hw_version\" },\n                },\n                sensor: {\n                    rssi: { \n                        name: \"signal_strength\", \n                        device_class: \"signal_strength\", \n                        unit_of_measurement: \"dBm\", \n                        icon: \"mdi:signal\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\" },\n                    batteryPct: { \n                        name: \"battery\",\n                        device_class: \"battery\", \n                        unit_of_measurement: \"%\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\" },\n                    vdd: {\n                        name: \"voltage\",\n                        device_classe: \"voltage\",\n                        unit_of_measurement: \"V\",\n                        entity_category: \"diagnostic\",\n                        state_class: \"measurement\"\n                    },\n                    ambient_temperature: { \n                        name: \"temperature\", \n                        device_class: \"temperature\", \n                        unit_of_measurement: \"°C\", \n                        state_class: \"measurement\" },\n                    ambient_humidity: { \n                        name: \"humidity\", \n                        device_class: \"humidity\", \n                        unit_of_measurement: \"%\", \n                        state_class: \"measurement\" },\n                },\n            },\n        ],\n        \"70B3D5FFFE0B5002\": [\n            { \n                device: { \n                    manufacturer: { name: \"OfficeSense\" },\n                    model: { name: \"Comfort\" },\n                    swVersion: { name: \"sw_version\" },\n                    hwVersion: { name: \"hw_version\" },\n                },\n                sensor: {\n                    rssi: { \n                        name: \"signal_strength\", \n                        device_class: \"signal_strength\", \n                        unit_of_measurement: \"dBm\", \n                        icon: \"mdi:signal\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\" },\n                    vddPct: { \n                        name: \"battery\", \n                        device_class: \"battery\", \n                        unit_of_measurement: \"%\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\"  },\n                    vdd: {\n                        name: \"voltage\",\n                        device_classe: \"voltage\",\n                        unit_of_measurement: \"V\",\n                        entity_category: \"diagnostic\",\n                        state_class: \"measurement\"\n                    },\n                    humidity: { \n                        name: \"humidity\", \n                        device_class: \"humidity\", \n                        unit_of_measurement: \"%\", \n                        state_class: \"measurement\" },\n                    tempC: { \n                        name: \"temperature\",\n                        unit_of_measurement: \"°C\", \n                        state_class: \"measurement\" },\n                },\n                button: {\n                    request_device_version: { \n                        name: \"request_device_version\", \n                        device_class: \"None\", \n                        icon: \"mdi:cog-outline\", \n                        entity_category: \"config\", \n                        downlink: { fPort: 200, cmd: \"getDeviceVersions\" } },\n                }\n            },\n        ],\n        \"70B3D5FFFE0B5502\": [\n            { \n                device: { \n                    manufacturer: { name: \"OfficeSense\" },\n                    model: { name: \"Comfort\" },\n                    swVersion: { name: \"sw_version\" },\n                    hwVersion: { name: \"hw_version\" },\n                },\n                sensor: {\n                    rssi: { \n                        name: \"signal_strength\", \n                        device_class: \"signal_strength\", \n                        unit_of_measurement: \"dBm\", \n                        icon: \"mdi:signal\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\" },\n                    vddPct: { \n                        name: \"battery\", \n                        device_class: \"battery\", \n                        unit_of_measurement: \"%\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\"  },\n                    vdd: {\n                        name: \"voltage\",\n                        device_classe: \"voltage\",\n                        unit_of_measurement: \"V\",\n                        entity_category: \"diagnostic\",\n                        state_class: \"measurement\"\n                    },\n                    humidity: { \n                        name: \"humidity\", \n                        device_class: \"humidity\", \n                        unit_of_measurement: \"%\", \n                        state_class: \"measurement\" },\n                    tempC: { \n                        name: \"temperature\", \n                        device_class: \"temperature\", \n                        unit_of_measurement: \"°C\", \n                        state_class: \"measurement\" },\n                    co2: { \n                        name: \"carbon_dioxide\", \n                        device_class: \"carbon_dioxide\",\n                        unit_of_measurement: \"ppm\", \n                        state_class: \"measurement\" },\n                    sound: { \n                        name: \"sound\", \n                        device_class: \"sound_pressure\", \n                        unit_of_measurement: \"dBA\", \n                        state_class: \"measurement\" },\n                    lux: {\n                        name: \"light\", \n                        device_class: \"illuminance\", \n                        unit_of_measurement: \"lx\", \n                        state_class: \"measurement\" },\n                },\n                button: {\n                    request_device_version: { \n                        name: \"request_device_version\", \n                        device_class: \"None\", \n                        icon: \"mdi:cog-outline\", \n                        entity_category: \"config\", \n                        downlink: { fPort: 200, cmd: \"getDeviceVersions\" } },\n                }\n            },\n        ],\n        \"70B3D5FFFE0B5005\": [\n            { \n                device: { \n                    manufacturer: { name: \"OfficeSense\" },\n                    model: { name: \"Desk\" },\n                    swVersion: { name: \"sw_version\" },\n                    hwVersion: { name: \"hw_version\" },\n                },\n                sensor: {\n                    vddPct: { \n                        name: \"battery\", \n                        device_class: \"battery\", \n                        unit_of_measurement: \"%\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\" },\n                    vdd: {\n                        name: \"voltage\",\n                        device_classe: \"voltage\",\n                        unit_of_measurement: \"V\",\n                        entity_category: \"diagnostic\",\n                        state_class: \"measurement\"\n                    },\n                    rssi: { \n                        name: \"signal_strength\", \n                        device_class: \"signal_strength\", \n                        unit_of_measurement: \"dBm\", \n                        icon: \"mdi:signal\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\" },\n                },\n                binary_sensor: {\n                    occupied: { \n                        name: \"occupancy\", \n                        device_class: \"occupancy\", \n                        state_class: \"measurement\" }\n                },\n                button: {\n                    request_device_version: { \n                        name: \"request_device_version\", \n                        device_class: \"None\", \n                        icon: \"mdi:cog-outline\", \n                        entity_category: \"config\", \n                        downlink: { fPort: 200, cmd: \"getDeviceVersions\" } },\n                }\n            },\n        ],\n        \"70B3D5FFFE0B5505\": [\n            { \n                device: { \n                    manufacturer: { name: \"OfficeSense\" },\n                    model: { name: \"Desk\" },\n                    swVersion: { name: \"sw_version\" },\n                    hwVersion: { name: \"hw_version\" },\n                },\n                sensor: {\n                    vddPct: { \n                        name: \"battery\", \n                        device_class: \"battery\", \n                        unit_of_measurement: \"%\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\" },\n                    vdd: {\n                        name: \"voltage\",\n                        device_classe: \"voltage\",\n                        unit_of_measurement: \"V\",\n                        entity_category: \"diagnostic\",\n                        state_class: \"measurement\"\n                    },\n                    rssi: { \n                        name: \"signal_strength\", \n                        device_class: \"signal_strength\", \n                        unit_of_measurement: \"dBm\", \n                        icon: \"mdi:signal\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\" },\n                },\n                binary_sensor: {\n                    occupied: { \n                        name: \"occupancy\", \n                        device_class: \"occupancy\", \n                        state_class: \"measurement\" }\n                },\n                button: {\n                    request_device_version: { \n                        name: \"request_device_version\", \n                        device_class: \"None\", \n                        icon: \"mdi:cog-outline\", \n                        entity_category: \"config\", \n                        downlink: { fPort: 200, cmd: \"getDeviceVersions\" } },\n                }\n            },\n        ],\n        \"70B3D5FFFE0B5001\": [\n            { \n                device: { \n                    manufacturer: { name: \"OfficeSense\" },\n                    model: { name: \"Presence\" },\n                    swVersion: { name: \"sw_version\" },\n                    hwVersion: { name: \"hw_version\" },\n                },\n                sensor: {\n                    rssi: { \n                        name: \"signal_strength\", \n                        device_class: \"signal_strength\", \n                        unit_of_measurement: \"dBm\", \n                        icon: \"mdi:signal\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\" },\n                    vddPct: { \n                        name: \"battery\", \n                        device_class: \"battery\", \n                        unit_of_measurement: \"%\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\"  },\n                    vdd: {\n                        name: \"voltage\",\n                        device_classe: \"voltage\",\n                        unit_of_measurement: \"V\",\n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\"  },\n                    humidity: { \n                        name: \"humidity\", \n                        device_class: \"humidity\",\n                        unit_of_measurement: \"%\", \n                        state_class: \"measurement\" },\n                    tempC: { \n                        name: \"temperature\", \n                        device_class: \"temperature\", \n                        unit_of_measurement: \"°C\", \n                        state_class: \"measurement\" },\n                },\n                binary_sensor: {\n                    occupied: { \n                        name: \"occupancy\", \n                        device_class: \"occupancy\", \n                        state_class: \"measurement\" }\n                },\n                button: {\n                    request_device_version: { \n                        name: \"request_device_version\", \n                        device_class: \"None\", \n                        icon: \"mdi:cog-outline\", \n                        entity_category: \"config\", \n                        downlink: { fPort: 200, cmd: \"getDeviceVersions\" } },\n                }\n            },\n        ],\n        \"70B3D5FFFE0B5501\": [\n            { \n                device: { \n                    manufacturer: { name: \"OfficeSense\" },\n                    model: { name: \"Presence\" },\n                    swVersion: { name: \"sw_version\" },\n                    hwVersion: { name: \"hw_version\" },\n                },\n                sensor: {\n                    vddPct: { \n                        name: \"battery\", \n                        device_class: \"battery\", \n                        unit_of_measurement: \"%\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\"  },\n                    vdd: {\n                        name: \"voltage\",\n                        device_classe: \"voltage\",\n                        unit_of_measurement: \"V\",\n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\"  },\n                    rssi: { \n                        name: \"signal_strength\", \n                        device_class: \"signal_strength\", \n                        unit_of_measurement: \"dBm\", \n                        icon: \"mdi:signal\", \n                        entity_category: \"diagnostic\", \n                        state_class: \"measurement\" },\n                    humidity: { \n                        name: \"humidity\", \n                        device_class: \"humidity\", \n                        unit_of_measurement: \"%\", \n                        state_class: \"measurement\" },\n                    tempC: { \n                        name: \"temperature\", \n                        device_class: \"temperature\", \n                        unit_of_measurement: \"°C\", \n                        state_class: \"measurement\" },\n                },\n                binary_sensor: {\n                    occupied: { \n                        name: \"occupancy\", \n                        device_class: \"occupancy\", \n                        state_class: \"measurement\" }\n                },\n                button: {\n                    request_device_version: { \n                        name: \"request_device_version\", \n                        device_class: \"None\", \n                        icon: \"mdi:cog-outline\", \n                        entity_category: \"config\", \n                        downlink: { fPort: 200, cmd: \"getDeviceVersions\" } },\n                }\n            },\n        ],\n    },\n}\n\nflow.set( \"settings\", msg.settings )\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 200,
+        "wires": [
+            [
+                "847b82f3a10bfdad"
+            ]
+        ]
+    },
+    {
+        "id": "28d3cf249406163e",
+        "type": "delay",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 540,
+        "y": 1780,
+        "wires": [
+            [
+                "bf9ec015259d5077",
+                "13e748b78850cde5"
+            ]
+        ]
+    },
+    {
+        "id": "cd4c45b86d0692c3",
+        "type": "function",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "Push haConfigQueue to mqtt",
+        "func": "for ( const [index, command] of msg.result.haConfigQueue.entries() ) {\n    var msgMqtt = command\n    msgMqtt.delay = index * 5\n    node.send([null, msgMqtt, null])\n}\n\nvar msgOut = {\n    settings: msg.settings,\n    result: msg.result,\n}\n\nreturn [msg, null, msgOut];",
+        "outputs": 3,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1580,
+        "wires": [
+            [
+                "0f512801ce54c2ed"
+            ],
+            [
+                "f5859b8b4f1e2b8d",
+                "68b2a4d63a46d3fe"
+            ],
+            [
+                "1c66a0b563e7951d",
+                "6f40bb1fad8b78de"
+            ]
+        ],
+        "outputLabels": [
+            "debug",
+            "mqtt",
+            "output"
+        ]
+    },
+    {
+        "id": "0f512801ce54c2ed",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "debug mqtt jobs",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 1540,
+        "wires": []
+    },
+    {
+        "id": "f5859b8b4f1e2b8d",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "output mqtt haConfigQueue",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 1580,
+        "wires": []
+    },
+    {
+        "id": "48ec3d86ea3b8891",
+        "type": "function",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "Push haValueQueue to mqtt",
+        "func": "for ( const [index, command] of msg.result.haValueQueue.entries() ) {\n    var msgMqtt = command\n    msgMqtt.delay = index * 5\n    node.send(msgMqtt, null)\n}\n\nreturn [null, msg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1700,
+        "wires": [
+            [
+                "948117c26c60d181",
+                "8286b55fac62e5e1"
+            ],
+            [
+                "5508cae80718b493"
+            ]
+        ],
+        "outputLabels": [
+            "mqtt",
+            "output"
+        ]
+    },
+    {
+        "id": "5508cae80718b493",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "output",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 1720,
+        "wires": []
+    },
+    {
+        "id": "948117c26c60d181",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "output mqtt haValueQueue",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 1680,
+        "wires": []
+    },
+    {
+        "id": "1c66a0b563e7951d",
+        "type": "delay",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 540,
+        "y": 1640,
+        "wires": [
+            [
+                "48ec3d86ea3b8891"
+            ]
+        ]
+    },
+    {
+        "id": "8133c8e66208a8e8",
+        "type": "function",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "Collect data from mqtt input (TTN)",
+        "func": "// This function extract data from TTN payload and place it in \"metaData\" and \"sensorData\"\n//   - decoded data\n//   - deviceName\n//   - application\n//   - join_eui\n//   - timestamp\n//   - timestamp_hr   (human readable)\n//   - rssi   (strongest signal)\n\n\n// Define the pattern to match the topic\n//const pattern = /^v3\\/[^\\/]+\\/devices\\/[^\\/]+\\/up\\/[^\\/]+/;\nconst pattern = /^v3\\/[^\\/]+\\/devices\\/[^\\/]+\\/up$/;\n\n// Check if the topic matches the pattern\nif (!pattern.test(msg.topic)) {\n    msg.info = \"no up topic\"\n    return [msg, null]; // Pass the message if it matches\n}\n\n// checks if key excist in obj, Checks on every level in key\nfunction checkKeyInObj(key, obj) {\n    if ( typeof obj !== \"object\" || obj === null ) {\n        return false;\n    }\n\n    const keys = key.split('.')\n\n    for ( const part of keys ) {\n        const match = part.match(/^([^\\[\\]]+)(?:\\[(\\d+)\\])?$/); // Matches \"property\" or \"property[index]\"\n        if ( !match ) {\n            return { exist: false, value: undefined };\n        }\n\n        const property = match[1] // The property name\n        const index = match[2]   // The optional array index\n\n        // Ensure `obj` is an object or array and has the property\n        if ( typeof obj !== \"object\" || obj === null || !( property in obj ) ) {\n            return { exist: false, value: undefined }\n        }\n        obj = obj[property] // Move to the next level\n\n        // Handle array indexing\n        if (index !== undefined) {\n            if ( !Array.isArray(obj) || !( index in obj ) ) {\n                return { exist: false, value: undefined }\n            }\n            obj = obj[index]; // Move to the indexed array element\n        }\n    }\n    return { exist: true, value: obj }\n}\n\nfunction dateConvert(timestamp) {\n    const date = new Date(timestamp)\n    var day = date.getDate().toString()\n    var month = (date.getMonth() + 1).toString()\n    var year = date.getFullYear().toString()\n    var hour = date.getHours().toString()\n    var minutes = date.getMinutes().toString()\n    var seconds = date.getSeconds().toString()\n\n    day = checkZero(day)\n    month = checkZero(month)\n    year = checkZero(year)\n    hour = checkZero(hour)\n    minutes = checkZero(minutes)\n    seconds = checkZero(seconds)\n\n    return year + \"/\" + month + \"/\" + day + \" \" + hour + \":\" + minutes + \":\" + seconds + \" GMT\"\n}\n\nfunction checkZero(data) {\n    if (data.length == 1) {\n        data = \"0\" + data;\n    }\n    return data;\n}\n\nif (!msg.result) {\n    msg.result = {}\n}\n\nmsg.result.loraData = { metaData: {}, sensorData: {}, batteryData: {} }\n\n\n\n// read the new lora message\nif (msg.payload.end_device_ids) {\n    if (msg.payload.end_device_ids.device_id) {\n        msg.result.loraData.metaData.deviceName = msg.payload.end_device_ids.device_id\n        msg.result.loraData.metaData.dev_eui = msg.payload.end_device_ids.dev_eui\n        msg.result.loraData.metaData.join_eui = msg.payload.end_device_ids.join_eui\n        msg.result.loraData.metaData.application = msg.payload.end_device_ids.application_ids.application_id\n        msg.result.loraData.metaData.timestamp = Date.parse(msg.payload.received_at)\n        msg.result.loraData.metaData.timestamp_hr = dateConvert(Date.parse(msg.payload.received_at))\n\n        // get strongest rssi from gateway\n        \n        let rx_metadata = {value: []}\n        rx_metadata = checkKeyInObj( \"payload.uplink_message.rx_metadata\", msg )\n        if ( rx_metadata.exist ) {\n            for (const [index, loraValue] of rx_metadata.value.entries()) {\n                if (!msg.result.loraData.sensorData) {\n                    msg.result.loraData.sensorData = {}\n                }\n                if (!msg.result.loraData.sensorData.rssi) {\n                    msg.result.loraData.sensorData.rssi = loraValue.rssi\n                } else if (loraValue.rssi > msg.result.loraData.sensorData.rssi) {\n                    msg.result.loraData.sensorData.rssi = loraValue.rssi\n                }\n            }\n        }\n\n        let decoded_payload = {value: {}}\n        decoded_payload = checkKeyInObj( \"payload.uplink_message.decoded_payload\", msg )\n        if ( decoded_payload.exist ) {\n            for (const [loraKey, loraValue] of Object.entries(decoded_payload.value)) {\n                if (!msg.result.loraData.sensorData) {\n                    msg.result.loraData.sensorData = {}\n                }\n                if (typeof (loraValue) != \"object\") {\n                    msg.result.loraData.sensorData[loraKey] = loraValue\n                } else {\n                    for (var [loraKeySub, loraValueSub] of Object.entries(loraValue)) {\n                        msg.result.loraData.sensorData[loraKey + \"_\" + loraKeySub] = loraValueSub\n                    }\n                }\n            }\n        }\n\n        // add battery level which is send in a different topic\n        let battery_check = checkKeyInObj(\"payload.uplink_message.last_battery_percentage.value\", msg)\n        if ( battery_check.excist ) {\n            msg.result.loraData.batteryData.battery = Math.round(msg.payload.uplink_message.last_battery_percentage.value * 10) / 10\n        }\n    \n    }\n    \n    // read the prefious message from node red memory\n    if ( msg.result.loraData.metaData.deviceName ) {\n        msg.result.previousData = flow.get(\"previous_\" + msg.result.loraData.metaData.deviceName) || { metaData: {}, sensorData: {} }\n    }\n\n    msg.result.currentData = {\n        metaData: Object.assign({}, msg.result.previousData.metaData, msg.result.loraData.metaData),\n        sensorData: Object.assign({}, msg.result.previousData.sensorData, msg.result.loraData.sensorData),\n        batteryData: Object.assign({}, msg.result.previousData.batteryData, msg.result.loraData.batteryData),\n    }\n\n    flow.set(\"previous_\" + msg.result.loraData.metaData.deviceName, msg.result.currentData)\n\n    var msgOut = {\n        settings: msg.settings,\n        result: msg.result,\n    }\n    \n    return [msg, msgOut];\n\n}\n\nmsg.info = \"no \\\"msg.payload.end_device_ids\\\"\"\n\nreturn [msg, null]",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 640,
+        "wires": [
+            [
+                "bdbecd65264f2fae"
+            ],
+            [
+                "92e46f2e9806a759",
+                "6789640e6eed2948"
+            ]
+        ],
+        "outputLabels": [
+            "debug",
+            "output"
+        ]
+    },
+    {
+        "id": "bdbecd65264f2fae",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "debug Collect data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "92e46f2e9806a759",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "output Collect data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "70eabc4b1c779112",
+        "type": "function",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "Collect device details and distribute values to the correct integration",
+        "func": "var metaData = msg.result.currentData.metaData\nvar sensorData = msg.result.currentData.sensorData\n\nmsg.deviceConfig = msg.settings[metaData.join_eui]\n\nmsg.result.integration = {}\n\nmsg.result.general = {\n    deviceName: metaData.deviceName,\n    application: metaData.application,\n    join_eui: metaData.join_eui,\n}\n\nmsg.manufacturerId = msg.deviceConfig.device.manufacturer.name.replaceAll(\" \",\"_\")\nmsg.result.general.topicDeviceGet = \"lora2nodered2mqtt/\" + msg.manufacturerId + \"/\" + metaData.deviceName + \"/get\"\nmsg.result.general.topicDeviceSet = \"mqtt2nodered2lora/\" + msg.manufacturerId + \"/\" + metaData.application + \"/\" + metaData.deviceName + \"/\" + metaData.join_eui + \"/set\"\n\nmsg.result.integration.device = {\n    identifiers: [\"lora2nodered2mqtt_\" + metaData.deviceName],\n    name: metaData.deviceName,\n    configuration_url: msg.settings.loraServer + \"/console/applications/\" + metaData.application + \"/devices/\" + metaData.deviceName\n}\nif (msg.deviceConfig.device.manufacturer ) {\n    msg.result.integration.device.manufacturer = msg.deviceConfig.device.manufacturer.name + \" (LoRaWAN device)\"\n}\nif (msg.deviceConfig.device.model ) {\n    msg.result.integration.device.model = msg.deviceConfig.device.model.name\n}\n\nmsg.result.key_skipped = {}\nfor ( const [loraKey, loraValue] of Object.entries(msg.result.currentData.sensorData) ) {\n    var keySelect = true\n    for ( const [integration, keysObject] of Object.entries(msg.deviceConfig) ) {\n        for (const [key, config] of Object.entries(keysObject) ) {\n            if ( loraKey == key ) {\n                var keySelect = false\n                if ( !msg.result.integration[integration] ) {\n                    msg.result.integration[integration] = {}\n                }\n                let name = loraKey\n                if (config.name) {\n                    name = config.name\n                }\n                if ( integration == \"device\" ) {\n                    msg.result.integration[integration][name] = loraValue.toString()\n                } else {\n                    msg.result.integration[integration][name] = JSON.parse(JSON.stringify(config))\n                    msg.result.integration[integration][name].value = loraValue\n                    delete msg.result.integration[integration][name].name\n                }\n            }\n        }\n    }\n    if ( keySelect ) {\n        msg.result.key_skipped[loraKey] = loraValue\n    }\n}\n\nmsg.result.haConfigQueue = []\nmsg.result.haValueQueue = []\nmsg.result.processed = []\n\nvar msgOut = {\n    settings: msg.settings,\n    result: msg.result\n}\n\nreturn [msg, msgOut];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 920,
+        "wires": [
+            [
+                "3e0168e3a12610a4"
+            ],
+            [
+                "2722e2159758eafd",
+                "c71aa33e19a46870"
+            ]
+        ],
+        "outputLabels": [
+            "debug",
+            "output"
+        ]
+    },
+    {
+        "id": "2722e2159758eafd",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "output Order data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "3e0168e3a12610a4",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "debug Order data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "c71aa33e19a46870",
+        "type": "function",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "Process integration \"Sensor\"",
+        "func": "var general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"sensor\"\n\nif ( msg.result.integration[integration] ) {\n    for ( const [key, valueObj] of Object.entries(msg.result.integration[integration]) ) {\n        \n        var key_capital = key.replace(/_/g, \" \").replace(/\\b./g, function(m){ return m.toUpperCase(); })\n\n        msg.result.processed.push(key_capital)\n        \n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key_capital,\n            default_entity_id: integration + \".\" + general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            json_attributes_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            value_template: \"{{ value_json.value }}\",\n        }\n        for ( var entity in valueObj) {\n            if ( entity == \"device_class\") {\n                if ( valueObj[entity] != \"None\" ) {\n                    objConfig.payload[entity] = valueObj[entity]\n                }\n            } else {\n                objConfig.payload[entity] = valueObj[entity]\n            }\n        }\n        msg.result.haConfigQueue.push(objConfig)\n\n\n        // #########################        \n        // ##  Integration values\n        // #########################        \n        var objValue = {\n            topic: msg.result.general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            retain: true,\n            payload: {value: valueObj.value}\n        }\n        msg.result.haValueQueue.push(objValue)\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1040,
+        "wires": [
+            [
+                "24b61149eaa5cab5",
+                "3a4db6f303f34824"
+            ]
+        ]
+    },
+    {
+        "id": "24b61149eaa5cab5",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "debug integration \"sensor\"",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "3a4db6f303f34824",
+        "type": "function",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "Process integration \"Binary_sensor\"",
+        "func": "var general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"binary_sensor\"\n\nif ( msg.result.integration[integration] ) {\n    for ( const [key, valueObj] of Object.entries(msg.result.integration[integration]) ) {\n\n        var key_capital = key.replace(/_/g, \" \").replace(/\\b./g, function(m){ return m.toUpperCase(); })\n\n        msg.result.processed.push(key_capital)\n\n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key_capital,\n            default_entity_id: integration + \".\" + general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            json_attributes_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            value_template: \"{{ value_json.value }}\",\n            payload_on: true,\n            payload_off: false,\n        }\n        for (var entity in valueObj) {\n            if (entity == \"device_class\") {\n                if (valueObj[entity] != \"None\") {\n                    objConfig.payload[entity] = valueObj[entity]\n                }\n            } else {\n                objConfig.payload[entity] = valueObj[entity]\n            }\n        }\n        msg.result.haConfigQueue.push(objConfig)\n\n\n        // #########################        \n        // ##  Integration values\n        // #########################        \n        if ( valueObj.value === true || valueObj.value === false ) {\n            var value = valueObj.value\n        } else if ( valueObj.value == \"off\" ) {\n            value = false\n        } else if ( valueObj.value == \"on\" ) {\n            value = true\n        } else if ( valueObj.value == \"Detected\" ) {\n            value = true\n        } else if ( valueObj.value == \"None\" ) {\n            value = false\n        } else {\n            if ( valueObj.value == 0 ) {\n                value = false\n            } else {\n                value = true\n            }\n        }\n        var objValue = {\n            topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            retain: true,\n            payload: {value: value}\n        }\n        msg.result.haValueQueue.push(objValue)\n    }\n}\n\nreturn msg;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 1100,
+        "wires": [
+            [
+                "cdf4e02a3d6004b0",
+                "54beca1da5ab7e12"
+            ]
+        ]
+    },
+    {
+        "id": "cdf4e02a3d6004b0",
+        "type": "function",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "Process integration \"Switch\"",
+        "func": "var general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"switch\"\n\nif ( msg.result.integration[integration] ) {\n    var integrationValues = msg.result.integration[integration]\n\n    for ( const [key, valueObj] of Object.entries(msg.result.integration[integration]) ) {\n\n        var key_capital = key.replace(/_/g, \" \").replace(/\\b./g, function(m){ return m.toUpperCase(); })\n\n        msg.result.processed.push(key_capital)\n\n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key_capital,\n            default_entity_id: integration + \".\" + general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            command_topic: general.topicDeviceSet + \"/\" + integration + \"/\" + key,\n            state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            json_attributes_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            value_template: \"{{ value_json.value }}\",\n            payload_off: \"off\",\n            payload_on: \"on\",\n        }\n        for ( var entity in valueObj) {\n            if ( entity == \"device_class\") {\n                if ( valueObj[entity] != \"None\" ) {\n                    objConfig.payload[entity] = valueObj[entity]\n                }\n            } else {\n                objConfig.payload[entity] = valueObj[entity]\n            }\n        }\n        msg.result.haConfigQueue.push(objConfig)\n\n\n        // #########################        \n        // ##  Integration values\n        // #########################        \n        if ( valueObj.value == integrationValues[key].downlink.on ) {\n            var switchState = \"on\"\n        } else {\n            switchState = \"off\"\n        }\n        var objValue = {\n            topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            retain: true,\n            payload: {value: switchState}\n        }\n        msg.result.haValueQueue.push(objValue)\n    }\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1160,
+        "wires": [
+            [
+                "645f7be806c95179",
+                "fbb5c7dcc3f419b7"
+            ]
+        ]
+    },
+    {
+        "id": "645f7be806c95179",
+        "type": "function",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "Process integration \"Climate\"",
+        "func": "function checkKeyInObj(key, obj) {\n    if (typeof obj !== 'object' || obj === null) {\n        return false;\n    }\n\n    const keys = key.split('.')\n\n    for ( const part of keys ) {\n        const match = part.match(/^([^\\[\\]]+)(?:\\[(\\d+)\\])?$/); // Matches \"property\" or \"property[index]\"\n        if ( !match ) {\n            return { exist: false, value: undefined };\n        }\n\n        const property = match[1] // The property name\n        const index = match[2]   // The optional array index\n\n        // Ensure `obj` is an object or array and has the property\n        if ( typeof obj !== 'object' || obj === null || !( property in obj ) ) {\n            return { exist: false, value: undefined }\n        }\n        obj = obj[property] // Move to the next level\n\n        // Handle array indexing\n        if (index !== undefined) {\n            if ( !Array.isArray(obj) || !( index in obj ) ) {\n                return { exist: false, value: undefined }\n            }\n            obj = obj[index]; // Move to the indexed array element\n        }\n    }\n    return { exist: true, value: obj }\n}\n\nfunction getKeyValue(keyValue) {\n    var key_lora = keyValue\n    for (const [keyConfig, valueConfig] of Object.entries(integrationConfig)) {\n        if (valueConfig.name == keyValue) {\n            key_lora = keyConfig\n        }\n    }\n    if (!msg.testGetKeyValue ) {\n        msg.testGetKeyValue = {}\n    }\n    msg.testGetKeyValue[keyValue] = {}\n    // check if in the config a default value is available\n    msg.testGetKeyValue[keyValue].value_default = checkKeyInObj(key_lora + \".value_default\", integrationConfig)\n    if (msg.testGetKeyValue[keyValue].value_default.exist ) {\n        var value = msg.testGetKeyValue[keyValue].value_default.value;\n    }\n    // check if in the sensordata the value is available\n    msg.testGetKeyValue[keyValue].value_lora = checkKeyInObj(keyValue + \".value\", integrationValues)\n    if (msg.testGetKeyValue[keyValue].value_lora.exist ) {\n        value = msg.testGetKeyValue[keyValue].value_lora.value\n    } else {\n        integrationValues[keyValue] = { value: value }\n    }\n    // check if in the config the value is available which will overwrite the sensor data\n    msg.testGetKeyValue[keyValue].value_overwrite = checkKeyInObj(key_lora + \".value\", integrationConfig)\n    if (msg.testGetKeyValue[keyValue].value_overwrite.exist ) {\n        value = msg.testGetKeyValue[keyValue].value_overwrite.value\n        integrationValues[keyValue] = { value: value }\n    }\n    return value\n}\n\nvar general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"climate\"\n\nif ( msg.result.integration[integration] ) {\n    var integrationValues = msg.result.integration[integration]\n    var integrationConfig = msg.settings[join_eui][integration]\n\n    var key = msg.settings[join_eui].device[integration + \"_primary_key\"].name\n    var valueObj = integrationValues[key]\n\n    var max_temp = getKeyValue(\"max_temp\")\n    var min_temp = getKeyValue(\"min_temp\")\n    var temp_step = getKeyValue(\"temp_step\")\n    var mode = getKeyValue(\"mode\")\n    var system_mode = getKeyValue(\"system_mode\")\n\n\n    // ##################################################\n    // ##  Start - device specific excetions\n    // ##################################################\n\n    // additional check for MClimate Vicki\n    if ( join_eui == \"70B3D52DD3000000\" ) {\n        if ( !integrationValues.attached_backplate ) {    // MClimate Vicki exception\n            integrationValues.system_mode = { value: \"off\" }\n        }\n    }\n\n    // ##################################################\n    // ##  End - device specific excetions\n    // ##################################################\n\n    if ( integrationValues[key] ) {\n\n        var key_capital = key.replace(/_/g, \" \").replace(/\\b./g, function(m){ return m.toUpperCase(); })\n\n        msg.result.processed.push(key_capital)\n\n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key_capital,\n            default_entity_id: integration + \".\" + general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            modes: mode,\n            max_temp: max_temp,\n            min_temp: min_temp,\n            temp_step: 1,\n\n            json_attributes_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n\n            mode_state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + \"system_mode\",\n//            mode_state_template: \"{{ value_json.value  if value_json.value=='off' else 'auto'}}\",\n            mode_state_template: \"{{ value_json.value }}\",\n\n            current_temperature_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + \"current_temperature\",\n            current_temperature_template: \"{{ value_json.value }}\",\n            \n            temperature_state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            temperature_state_template: \"{{ value_json.value }}\",\n\n            temperature_command_topic: general.topicDeviceSet + \"/\" + integration + \"/\" + key,\n            mode_command_topic: general.topicDeviceSet + \"/\" + integration + \"/\" + \"system_mode\",\n        }\n\n        for ( var entity in valueObj) {\n            if ( entity == \"device_class\") {\n                if ( valueObj[entity] != \"None\" ) {\n                    objConfig.payload[entity] = valueObj[entity]\n                }\n            } else {\n                objConfig.payload[entity] = valueObj[entity]\n            }\n        }\n        msg.result.haConfigQueue.push(objConfig)\n\n\n        // #########################        \n        // ##  Integration values\n        // #########################        \n        for (const [key, value] of Object.entries(integrationValues) ) {\n            var objValue = {\n                topic: msg.result.general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n                retain: true,\n                payload: { value: value.value }\n            }\n            msg.result.haValueQueue.push(objValue)\n        }\n    }\n}\n\n\n\n\n\n\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1220,
+        "wires": [
+            [
+                "6d6a04341f33fd96",
+                "b8a04f622b177fd1"
+            ]
+        ]
+    },
+    {
+        "id": "6d6a04341f33fd96",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "debug integration \"climate\"",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "fbb5c7dcc3f419b7",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "debug integration \"switch\"",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1130,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "54beca1da5ab7e12",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "debug integration \"binary_sensor\"",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "b8a04f622b177fd1",
+        "type": "function",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "Process integration \"Number\"",
+        "func": "function checkKeyInObj(key, obj) {\n    if (typeof obj !== 'object' || obj === null) {\n        return false;\n    }\n\n    const keys = key.split('.')\n\n    for ( const part of keys ) {\n        const match = part.match(/^([^\\[\\]]+)(?:\\[(\\d+)\\])?$/); // Matches \"property\" or \"property[index]\"\n        if ( !match ) {\n            return { exist: false, value: undefined };\n        }\n\n        const property = match[1] // The property name\n        const index = match[2]   // The optional array index\n\n        // Ensure `obj` is an object or array and has the property\n        if ( typeof obj !== 'object' || obj === null || !( property in obj ) ) {\n            return { exist: false, value: undefined }\n        }\n        obj = obj[property] // Move to the next level\n\n        // Handle array indexing\n        if (index !== undefined) {\n            if ( !Array.isArray(obj) || !( index in obj ) ) {\n                return { exist: false, value: undefined }\n            }\n            obj = obj[index]; // Move to the indexed array element\n        }\n    }\n    return { exist: true, value: obj }\n}\n\nfunction getKeyValue(keyValue) {\n    var key_lora = keyValue\n    for (const [keyConfig, valueConfig] of Object.entries(integrationConfig)) {\n        if (valueConfig.name == keyValue) {\n            key_lora = keyConfig\n        }\n    }\n    if (!msg.testGetKeyValue) {\n        msg.testGetKeyValue = {}\n    }\n    msg.testGetKeyValue[keyValue] = {}\n    // check if in the config a default value is available\n    msg.testGetKeyValue[keyValue].value_default = checkKeyInObj(key_lora + \".value_default\", integrationConfig)\n    if (msg.testGetKeyValue[keyValue].value_default.exist) {\n        var value = msg.testGetKeyValue[keyValue].value_default.value;\n    }\n    // check if in the sensordata the value is available\n    msg.testGetKeyValue[keyValue].value_lora = checkKeyInObj(keyValue + \".value\", integrationValues)\n    if (msg.testGetKeyValue[keyValue].value_lora.exist) {\n        value = msg.testGetKeyValue[keyValue].value_lora.value\n    } else {\n        integrationValues[keyValue] = { value: value }\n    }\n    // check if in the config the value is available which will overwrite the sensor data\n    msg.testGetKeyValue[keyValue].value_overwrite = checkKeyInObj(key_lora + \".value\", integrationConfig)\n    if (msg.testGetKeyValue[keyValue].value_overwrite.exist) {\n        value = msg.testGetKeyValue[keyValue].value_overwrite.value\n        integrationValues[keyValue] = { value: value }\n    }\n    return value\n}\n\nvar general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"number\"\n\nif ( msg.result.integration[integration] ) {\n    var integrationValues = msg.result.integration[integration]\n    var integrationConfig = msg.settings[join_eui][integration]\n\n    var key = msg.settings[join_eui].device[integration + \"_primary_key\"].name\n    var valueObj = integrationValues[key]\n\n    var max = getKeyValue(\"max\")\n    var min = getKeyValue(\"min\")\n    var step = getKeyValue(\"step\")\n    var mode = getKeyValue(\"mode\")\n\n    if ( integrationValues[key] ) {\n\n        var key_capital = key.replaceAll(/_/g, \" \").replace(/\\b./g, function(m){ return m.toUpperCase(); })\n\n        msg.result.processed.push(key_capital)\n\n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key_capital,\n            default_entity_id: integration + \".\" + general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            max: max,\n            min: min,\n            step: step,\n            mode: mode,\n          \n            state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            value_template: '{{ value_json.value }}',\n\n            command_topic: general.topicDeviceSet + \"/\" + integration + \"/\" + key,\n        }\n        for ( var entity in valueObj) {\n            if ( entity == \"device_class\") {\n                if ( valueObj[entity] != \"None\" ) {\n                    objConfig.payload[entity] = valueObj[entity]\n                }\n            } else {\n                objConfig.payload[entity] = valueObj[entity]\n            }\n        }\n\n        msg.result.haConfigQueue.push(objConfig)\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1300,
+        "wires": [
+            [
+                "3b7efac40a52d699",
+                "ca2b473d39f23fc0"
+            ]
+        ]
+    },
+    {
+        "id": "3b7efac40a52d699",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "debug integration \"number\"",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "ca2b473d39f23fc0",
+        "type": "function",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "Process integration \"Button\"",
+        "func": "var general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"button\"\n\nif (msg.settings[general.join_eui][integration]) {\n    var integrationConfig = msg.settings[general.join_eui][integration]\n\n    for (const [key, value] of Object.entries(integrationConfig)) {\n\n        var key_capital = key.replaceAll(/_/g, \" \").replace(/\\b./g, function(m){ return m.toUpperCase(); })\n\n        var valueObj = msg.settings[general.join_eui][integration][key]\n\n        msg.result.processed.push(key_capital)\n\n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key_capital,\n            default_entity_id: integration + \".\" + general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            command_topic: general.topicDeviceSet + \"/\" + integration + \"/\" + key,\n            payload_press: \"request\",\n        }\n        for ( var entity in valueObj) {\n            if ( entity == \"device_class\") {\n                if ( valueObj[entity] != \"None\" ) {\n                    objConfig.payload[entity] = valueObj[entity]\n                }\n            } else {\n                objConfig.payload[entity] = valueObj[entity]\n            }\n        }\n        msg.result.haConfigQueue.push(objConfig)\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1360,
+        "wires": [
+            [
+                "cd298c397842f716",
+                "b61231ba3b9e2057"
+            ]
+        ]
+    },
+    {
+        "id": "cd298c397842f716",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "debug integration \"button\"",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1130,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "6f40bb1fad8b78de",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "output",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 1620,
+        "wires": []
+    },
+    {
+        "id": "68b2a4d63a46d3fe",
+        "type": "delay",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "",
+        "pauseType": "delayv",
+        "timeout": "5",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 1640,
+        "wires": [
+            [
+                "13e748b78850cde5"
+            ]
+        ]
+    },
+    {
+        "id": "8286b55fac62e5e1",
+        "type": "delay",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "",
+        "pauseType": "delayv",
+        "timeout": "5",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 840,
+        "y": 1740,
+        "wires": [
+            [
+                "13e748b78850cde5"
+            ]
+        ]
+    },
+    {
+        "id": "dfeac6853e8d5156",
+        "type": "function",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "Load settings",
+        "func": "// Retrieve settings from flow context\nmsg.settings = flow.get(\"settings\");\n\nreturn msg\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 560,
+        "wires": [
+            [
+                "8133c8e66208a8e8",
+                "8f6e2d7f2d5242ba"
+            ]
+        ]
+    },
+    {
+        "id": "6789640e6eed2948",
+        "type": "function",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "Get sensor details from settings",
+        "func": "// Extract key identifiers from incoming message\nconst join_eui = msg.result.loraData.metaData.join_eui || msg.joineui || msg.joinEUI || msg.join_eui;\nconst dev_eui = msg.result.loraData.metaData.dev_eui || msg.deveui || msg.devEUI || msg.dev_eui;\nconst application = msg.result.loraData.metaData.application || msg.application || msg.app_id || msg.application_id;\n\n\n// Validation\nif (!join_eui) {\n    node.error(\"Missing joineui in message\", msg);\n    return null;\n}\n\nif (!msg.settings || !msg.settings.joinKey2lorakey2ha) {\n    node.error(\"Settings not found in flow context\", msg);\n    return null;\n}\n\n// Get configurations for this joineui\nconst configs_joineui = msg.settings.joinKey2lorakey2ha[join_eui];\n\nif (!configs_joineui || configs_joineui.length === 0) {\n    //node.warn(`No configuration found for joineui: ${join_eui}`, msg);\n    return null;\n}\n\n// Function to match configuration based on dev_eui and application\nfunction findMatchingConfig(configs, dev_eui, application) {\n    // If only one config exists, return it (backward compatibility)\n    if (configs.length === 1) {\n        let config_selected = JSON.parse(JSON.stringify(configs[0]))\n        config_selected.matched_by = \"join_eui\"\n        return config_selected;\n    }\n    \n    // Try to find exact match with dev_eui first (highest priority)\n    if (dev_eui) {\n        for (let config of configs) {\n            if (config.dev_eui_array && config.dev_eui_array.some(eui => eui.toLowerCase() === dev_eui.toLowerCase())) {\n                let config_selected = JSON.parse(JSON.stringify(config))\n                config_selected.matched_by = \"dev_eui\"\n                return config_selected;\n            }\n        }\n    }\n    \n    // Try to find match with application (secondary priority)\n    if (application) {\n        for (let config of configs) {\n            if (config.application_array && config.application_array.some(app => app.toLowerCase() === application.toLowerCase())) {\n                let config_selected = JSON.parse(JSON.stringify(config))\n                config_selected.matched_by = \"application\"\n                return config_selected;\n            }\n        }\n    }\n}\n\n\n// Find the matching configuration\nconst matchedConfig = findMatchingConfig(configs_joineui, dev_eui, application);\n\nif (!matchedConfig) {\n    msg.error = `No matching configuration found for joineui: ${join_eui}, dev_eui: ${dev_eui}, application: ${application}`, msg;\n    node.error(`No matching configuration found for joineui: ${join_eui}, dev_eui: ${dev_eui}, application: ${application}`, msg);\n    return [msg, null];\n}\n\n\n\n// Attach the configuration to the message\nmsg.settings[join_eui] = matchedConfig;\n\nvar msgOut = {\n    settings: msg.settings,\n    result: msg.result\n}\nreturn [msg, msgOut];\n\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 800,
+        "wires": [
+            [
+                "d034bb4dab5598dc"
+            ],
+            [
+                "70eabc4b1c779112",
+                "537bb638f089a045"
+            ]
+        ],
+        "outputLabels": [
+            "debug",
+            "output"
+        ]
+    },
+    {
+        "id": "d034bb4dab5598dc",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "debug Collect data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "537bb638f089a045",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "output Collect data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "bf9ec015259d5077",
+        "type": "mqtt out",
+        "z": "31916c06523cf6d5",
+        "d": true,
+        "g": "c27d99bf77c056cd",
+        "name": "ha_mqtt.local",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "1ebcec3975b473c4",
+        "x": 1090,
+        "y": 1780,
+        "wires": []
+    },
+    {
+        "id": "8f6e2d7f2d5242ba",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "debug Collect data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "b61231ba3b9e2057",
+        "type": "function",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "Process \"Battery\"",
+        "func": "var general = msg.result.general\nvar join_eui = msg.result.loraData.metaData.join_eui\nvar integration = \"sensor\"\nvar key = \"battery\"\nvar key_capital = key.replaceAll(\"_\", \" \").replace(/\\b./g, function(m){ return m.toUpperCase(); })\n\nif (msg.result.loraData.batteryData.battery) {\n    if(!msg.result.processed.includes(key_capital)) {\n        // #########################        \n        // ##  Integration configuration\n        // #########################        \n        var objConfig = {}\n        objConfig.topic = \"homeassistant/\" + integration + \"/\" + general.deviceName + \"/\" + key + \"/config\"\n        objConfig.payload = {\n            device: msg.result.integration.device,\n            name: key_capital,\n            default_entity_id: integration + \".\" + general.deviceName + \"_\" + integration + \"_\" + key,\n            unique_id: general.deviceName + \"_\" + integration + \"_\" + key + \"_lora2nodered2mqtt\",\n            state_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            json_attributes_topic: general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            value_template: \"{{ value_json.value }}\",\n            device_class: \"battery\",\n            unit_of_measurement: \"%\",\n            entity_category: \"diagnostic\",\n            state_class: \"measurement\",\n        }\n        msg.result.haConfigQueue.push(objConfig)\n\n        // #########################        \n        // ##  Integration values\n        // #########################        \n        var objValue = {\n            topic: msg.result.general.topicDeviceGet + \"/\" + integration + \"/\" + key,\n            retain: true,\n            payload: { value: msg.result.loraData.batteryData.battery }\n        }\n        msg.result.haValueQueue.push(objValue)\n\n    } else {\n        msg.info = \"Battery already defined\"\n    }\n}\n\nreturn msg;\n\n/*\n{\n    \"topic\":\"homeassistant/sensor/eui-3534313670377805/battery/config\",\n    \"payload\":{\n    }\n}\n\n{\n    \"topic\":\"lora2nodered2mqtt/OfficeSense/eui-333437395d376009/get/sensor/battery\",\n    \"retain\":true,\n    \"payload\":{\"value\":42}\n}\n\n*/",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 1420,
+        "wires": [
+            [
+                "cd4c45b86d0692c3",
+                "4e6912709662bcc3"
+            ]
+        ]
+    },
+    {
+        "id": "4e6912709662bcc3",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "debug integration \"battery\"",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "266a54d6ec26a923",
+        "type": "function",
+        "z": "31916c06523cf6d5",
+        "g": "2f9a63d95378d89c",
+        "name": "Downlink for lora and update HA (TTN)",
+        "func": "\n\n\nmsg.result.test = msg.settings[msg.result.join_eui][msg.result.integration]\n\n\n// ######################\n// ##  create lora downlink command\n// ######################\nmsg.result.loraDownlinkCmd = []\nfor (const [key, value] of Object.entries(msg.settings[msg.result.join_eui][msg.result.integration])) {\n    if ( value.name == msg.result.sensor ) {\n        if ( value.downlink ) {\n            var downlinkValue = msg.result.value\n            if ( value.downlink[downlinkValue] ) {\n                downlinkValue = value.downlink[downlinkValue]\n            }\n            msg.result.downlinkCmd = value.downlink.cmd\n            var objLora = {\n                topic: \"v3/\" + msg.result.application + \"@ttn/devices/\" + msg.result.deviceName + \"/down/push\",\n                payload: {\n                    downlinks: [\n                        {\n                            f_port: value.downlink.fPort,\n                            decoded_payload: { [value.downlink.cmd]: downlinkValue },\n                            priority: \"NORMAL\",\n                            confirmed: false\n                        }\n                    ]\n                },\n                application: msg.result.application,\n            }\n            msg.result.loraDownlinkCmd.push(objLora)\n        }\n    }\n}\n\n// ######################\n// ##  create update Home Assistant\n// ######################\nmsg.result.homeassistantCmd = []\nfor (const [integration, integrationValue] of Object.entries(msg.settings[msg.result.join_eui])) {\n    if ( integration != \"button\" ) {\n        for (const [loraKey, sensorValue] of Object.entries(integrationValue)) {\n            if ( sensorValue.downlink ) {\n                if ( sensorValue.downlink.cmd == msg.result.downlinkCmd ) {\n                    var objHa = {\n                        topic: \"lora2nodered2mqtt/\" + msg.result.manufacturer + \"/\" + msg.result.deviceName + \"/get/\" + integration + \"/\" + sensorValue.name,\n                        payload: { value: msg.result.value },\n                    }\n                    msg.result.homeassistantCmd.push(objHa)\n                }\n            }\n        }\n    }\n}\n\n\n// ######################\n// ##  create lora downlink command\n// ######################\nfor (const msgLora of msg.result.loraDownlinkCmd) {\n    node.send([null, null, msgLora])\n}\n\n\n// ######################\n// ##  send update Home Assistant\n// ######################\nfor (const msgHa of msg.result.homeassistantCmd) {\n    node.send([null, msgHa, null])\n}\n\nreturn [msg, null, null]",
+        "outputs": 3,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 2100,
+        "wires": [
+            [
+                "68331ecb232579a4"
+            ],
+            [
+                "28d3cf249406163e",
+                "7231c57d70a84070"
+            ],
+            [
+                "37044c85521a5d88",
+                "98dd0b40f6d55958"
+            ]
+        ],
+        "outputLabels": [
+            "debug",
+            "output mqtt HA device values",
+            "output mqtt downlink Lora server"
+        ]
+    },
+    {
+        "id": "68331ecb232579a4",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "2f9a63d95378d89c",
+        "name": "debug downlink commands",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 2060,
+        "wires": []
+    },
+    {
+        "id": "7231c57d70a84070",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "2f9a63d95378d89c",
+        "name": "output mqtt haValue",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 2100,
+        "wires": []
+    },
+    {
+        "id": "37044c85521a5d88",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "2f9a63d95378d89c",
+        "name": "output mqtt downlink",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 2140,
+        "wires": []
+    },
+    {
+        "id": "6646f5239447d38d",
+        "type": "function",
+        "z": "31916c06523cf6d5",
+        "g": "2f9a63d95378d89c",
+        "name": "TTN - app-01",
+        "func": "if (msg.application == \"app-01\") {\n    return msg;\n}\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 2200,
+        "wires": [
+            [
+                "0658a7569cbd7566",
+                "75f234b8fad01a5d"
+            ]
+        ]
+    },
+    {
+        "id": "0658a7569cbd7566",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "2f9a63d95378d89c",
+        "name": "output",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 2200,
+        "wires": []
+    },
+    {
+        "id": "75f234b8fad01a5d",
+        "type": "mqtt out",
+        "z": "31916c06523cf6d5",
+        "d": true,
+        "g": "2f9a63d95378d89c",
+        "name": "TTN - app-01",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "97a2cf6e3e96b22a",
+        "x": 1090,
+        "y": 2240,
+        "wires": []
+    },
+    {
+        "id": "3b6bf9cba361b113",
+        "type": "function",
+        "z": "31916c06523cf6d5",
+        "g": "2f9a63d95378d89c",
+        "name": "TTN - app-02",
+        "func": "if (msg.application == \"app-02\") {\n    return msg;\n}\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 2300,
+        "wires": [
+            [
+                "87ac556b37f9ae88",
+                "3890e7ae4e9e7974"
+            ]
+        ]
+    },
+    {
+        "id": "87ac556b37f9ae88",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "2f9a63d95378d89c",
+        "name": "output",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 2300,
+        "wires": []
+    },
+    {
+        "id": "3890e7ae4e9e7974",
+        "type": "mqtt out",
+        "z": "31916c06523cf6d5",
+        "d": true,
+        "g": "2f9a63d95378d89c",
+        "name": "TTN - app-02",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f4729358adc75d8a",
+        "x": 1090,
+        "y": 2340,
+        "wires": []
+    },
+    {
+        "id": "50dbfbdd8fcc9baf",
+        "type": "mqtt in",
+        "z": "31916c06523cf6d5",
+        "d": true,
+        "g": "2f9a63d95378d89c",
+        "name": "ha_mqtt.local | mqtt2nodered2lora/#",
+        "topic": "mqtt2nodered2lora/#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "1ebcec3975b473c4",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 260,
+        "y": 1940,
+        "wires": [
+            [
+                "e7803e290bd27a07"
+            ]
+        ]
+    },
+    {
+        "id": "e7803e290bd27a07",
+        "type": "function",
+        "z": "31916c06523cf6d5",
+        "g": "2f9a63d95378d89c",
+        "name": "Get configuration",
+        "func": "const getChar = (s, n) => s.slice(-n);\n\nmsg.settings = flow.get(\"settings\")\n\nif(!msg.result) {\n    msg.result = {}\n}\n\nmsg.result.manufacturer = msg.topic.split(\"/\")[1]\nmsg.result.application = msg.topic.split(\"/\")[2]\nmsg.result.deviceName = msg.topic.split(\"/\")[3]\nmsg.result.join_eui = msg.topic.split(\"/\")[4]\nmsg.result.integration = msg.topic.split(\"/\")[6]\nmsg.result.sensor = msg.topic.split(\"/\")[7]\nmsg.result.value = msg.payload\nmsg.result.dev_eui = getChar(msg.result.deviceName, 16)\n\n// Get configurations for this joineui\nconst configs_joineui = msg.settings.joinKey2lorakey2ha[msg.result.join_eui];\n\nif (!configs_joineui || configs_joineui.length === 0) {\n    //node.warn(`No configuration found for joineui: ${join_eui}`, msg);\n    return null;\n}\n\n// Function to match configuration based on dev_eui and application\nfunction findMatchingConfig(configs, dev_eui, application) {\n    // If only one config exists, return it (backward compatibility)\n    if (configs.length === 1) {\n        let config_selected = JSON.parse(JSON.stringify(configs[0]))\n        config_selected.matched_by = \"join_eui\"\n        return config_selected;\n    }\n    \n    // Try to find exact match with dev_eui first (highest priority)\n    if (dev_eui) {\n        for (let config of configs) {\n            if (config.dev_eui_array && config.dev_eui_array.some(eui => eui.toLowerCase() === dev_eui.toLowerCase())) {\n                let config_selected = JSON.parse(JSON.stringify(config))\n                config_selected.matched_by = \"dev_eui\"\n                return config_selected;\n            }\n        }\n    }\n    \n    // Try to find match with application (secondary priority)\n    if (application) {\n        for (let config of configs) {\n            if (config.application_array && config.application_array.some(app => app.toLowerCase() === application.toLowerCase())) {\n                let config_selected = JSON.parse(JSON.stringify(config))\n                config_selected.matched_by = \"application\"\n                return config_selected;\n            }\n        }\n    }\n}\n\n// Find the matching configuration\nconst matchedConfig = findMatchingConfig(configs_joineui, msg.result.dev_eui, msg.result.application);\n\nif (!matchedConfig) {\n    msg.error = `No matching configuration found for joineui: ${msg.result.join_eui}, dev_eui: ${msg.result.dev_eui}, application: ${msg.result.application}`, msg;\n    node.error(`No matching configuration found for joineui: ${msg.result.join_eui}, dev_eui: ${msg.result.dev_eui}, application: ${msg.result.application}`, msg);\n    return [msg, null];\n}\n\n// Attach the configuration to the message\nmsg.settings[msg.result.join_eui] = matchedConfig;\n\nreturn [msg, msg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 1940,
+        "wires": [
+            [
+                "6da66e81b8274fb9"
+            ],
+            [
+                "266a54d6ec26a923",
+                "7a76aa14950c24ea"
+            ]
+        ],
+        "outputLabels": [
+            "debug",
+            "output"
+        ]
+    },
+    {
+        "id": "6da66e81b8274fb9",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "2f9a63d95378d89c",
+        "name": "debug Collect data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 1920,
+        "wires": []
+    },
+    {
+        "id": "7a76aa14950c24ea",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "2f9a63d95378d89c",
+        "name": "output Collect data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 1960,
+        "wires": []
+    },
+    {
+        "id": "5fc24c9adcfd1d5d",
+        "type": "mqtt in",
+        "z": "31916c06523cf6d5",
+        "d": true,
+        "g": "49ec1f350b1c8b0e",
+        "name": "TTN - app-01 | #",
+        "topic": "#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "97a2cf6e3e96b22a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 340,
+        "wires": [
+            [
+                "d4a17e0aaf69e7e4"
+            ]
+        ]
+    },
+    {
+        "id": "3e28be76817123af",
+        "type": "mqtt in",
+        "z": "31916c06523cf6d5",
+        "d": true,
+        "g": "49ec1f350b1c8b0e",
+        "name": "TTN - app-02 | #",
+        "topic": "#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f4729358adc75d8a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 400,
+        "wires": [
+            [
+                "d5b2198c7a8f23eb"
+            ]
+        ]
+    },
+    {
+        "id": "a1d50d7a1c91209b",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "49ec1f350b1c8b0e",
+        "name": "debug Collect data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "afcbe524785d6152",
+        "type": "debug",
+        "z": "31916c06523cf6d5",
+        "g": "49ec1f350b1c8b0e",
+        "name": "output Collect data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "28d8a150d08d759d",
+        "type": "comment",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "Example output \"Collect data from mqtt input (TTN)\"",
+        "info": "msg = {\n    settings: {\n        lns: \"ttn\",\n        loraServer: \"https://eu1.cloud.thethings.network\",\n        joinKey2lorakey2ha: {\n            \"70B3D52DD3000000\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"MClimate\"},\"model\":{\"name\":\"Vicki - LoRaWAN Smart Radiator Thermostat\"},\"deviceVersions_software\":{\"name\":\"sw_version\"},\"deviceVersions_hardware\":{\"name\":\"hw_version\"},\"climate_primary_key\":{\"name\":\"radiator_thermostat\"},\"number_primary_key\":{\"name\":\"temperature_control\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"batteryPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"relativeHumidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"valvePct\":{\"name\":\"valve_open_status\",\"device_class\":\"None\",\"unit_of_measurement\":\"%\",\"icon\":\"mdi:pipe-valve\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"attachedBackplate\":{\"name\":\"attached_backplate\",\"icon\":\"mdi:engine\"},\"childLock\":{\"name\":\"child_lock\",\"icon\":\"mdi:lock\"},\"openWindow\":{\"name\":\"open_window_detection\",\"icon\":\"mdi:window-closed-variant\"}},\"climate\":{\"sensorTemperature\":{\"name\":\"current_temperature\"},\"targetTemperature\":{\"name\":\"radiator_thermostat\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"downlink\":{\"fPort\":1,\"cmd\":\"setTargetTemperature\"}},\"temperatureRangeSettings_min\":{\"name\":\"min_temp\",\"value\":15},\"temperatureRangeSettings_max\":{\"name\":\"max_temp\",\"value\":21},\"modes\":{\"name\":\"mode\",\"value\":[\"off\",\"heat\"]},\"system_mode\":{\"name\":\"system_mode\",\"value_default\":\"heat\"},\"attachedBackplate\":{\"name\":\"attached_backplate\"},\"temp_step\":{\"name\":\"temp_step\",\"value\":1}},\"number\":{\"temperatureRangeSettings_min\":{\"name\":\"min\",\"value\":15},\"temperatureRangeSettings_max\":{\"name\":\"max\",\"value\":21},\"targetTemperature\":{\"name\":\"temperature_control\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"downlink\":{\"fPort\":1,\"cmd\":\"setTargetTemperature\"}},\"step\":{\"name\":\"step\",\"value\":1},\"mode\":{\"name\":\"mode\",\"value\":\"slider\"}},\"button\":{\"request_device_settings\":{\"name\":\"request_device_settings\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":1,\"cmd\":\"getAllParams\"}},\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":1,\"cmd\":\"getDeviceVersions\"}}}}],\n            \"70B3D52DD8000000\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"MClimate\"},\"model\":{\"name\":\"WirelessThermostat - LoRaWAN\"},\"deviceVersions_software\":{\"name\":\"sw_version\"},\"deviceVersions_hardware\":{\"name\":\"hw_version\"},\"climate_primary_key\":{\"name\":\"thermostat\"},\"number_primary_key\":{\"name\":\"temperature_control\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"batteryPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"relativeHumidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"lux\":{\"name\":\"light\",\"device_class\":\"illuminance\",\"unit_of_measurement\":\"lx\",\"state_class\":\"measurement\"}},\"climate\":{\"sensorTemperature\":{\"name\":\"current_temperature\"},\"targetTemperature\":{\"name\":\"thermostat\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"downlink\":{\"fPort\":1,\"cmd\":\"setTargetTemperature\"}},\"temperatureRangeSettings_min\":{\"name\":\"min\",\"value\":15},\"temperatureRangeSettings_max\":{\"name\":\"max\",\"value\":21},\"modes\":{\"name\":\"mode\",\"value\":[\"off\",\"heat\"]},\"system_mode\":{\"name\":\"system_mode\",\"value\":\"heat\"},\"temp_step\":{\"name\":\"temp_step\",\"value\":1}},\"number\":{\"temperatureRangeSettings_min\":{\"name\":\"min\",\"value\":15},\"temperatureRangeSettings_max\":{\"name\":\"max\",\"value\":21},\"targetTemperature\":{\"name\":\"temperature_control\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"downlink\":{\"fPort\":1,\"cmd\":\"setTargetTemperature\"}},\"step\":{\"name\":\"step\",\"value\":1},\"mode\":{\"name\":\"mode\",\"value\":\"slider\"}},\"button\":{\"request_device_settings\":{\"name\":\"request_device_settings\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":1,\"cmd\":\"getAllParams\"}},\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":1,\"cmd\":\"getDeviceVersions\"}}}}],\n            \"24E124C0002A0001\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"Milesight\"},\"model\":{\"name\":\"WS523 - Smart Portable Socket\"},\"softwareVersion\":{\"name\":\"sw_version\"},\"hardwareVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"factor\":{\"name\":\"power_factor\",\"device_class\":\"power_factor\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"power\":{\"name\":\"power\",\"device_class\":\"power\",\"unit_of_measurement\":\"W\",\"state_class\":\"measurement\"},\"power_sum\":{\"name\":\"energy_total\",\"device_class\":\"energy\",\"unit_of_measurement\":\"Wh\",\"state_class\":\"measurement\"},\"voltage\":{\"name\":\"voltage\",\"device_class\":\"voltage\",\"unit_of_measurement\":\"V\",\"state_class\":\"measurement\"}},\"switch\":{\"state\":{\"name\":\"switch\",\"downlink\":{\"fPort\":1,\"cmd\":\"setState\",\"on\":\"open\",\"off\":\"close\"}}}}],\n            \"8000000000000003\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"Elsys\"},\"model\":{\"name\":\"ERS smart building sensor\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"temperature\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"},\"light\":{\"name\":\"light\",\"device_class\":\"illuminance\",\"unit_of_measurement\":\"lx\",\"state_class\":\"measurement\"},\"motion\":{\"name\":\"motion\",\"icon\":\"mdi:walk\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"motion\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"}}}],\n            \"647FDA8010000100\":[\n                {\"dev_eui_array\":[\"647FDA00000069d1\"],\"application_array\":[\"tektelic\",\"test_app_B\"],\"device\":{\"manufacturer\":{\"name\":\"Tektelic\"},\"model\":{\"name\":\"Smart Room Sensor - PIR\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"batteryPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"battery_voltage\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"ambient_temperature\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"},\"relative_humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"motion_event_state\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"},\"reed_state\":{\"name\":\"contact\",\"device_class\":\"door\",\"state_class\":\"measurement\"}}},{\"dev_eui_array\":[\"647FDA0000007D3C\"],\"application_array\":[\"test_app_1\",\"test_app_2\",\"test_app_3\"],\"device\":{\"manufacturer\":{\"name\":\"Tektelic\"},\"model\":{\"name\":\"Tundra - Cold Chain Temperature & Humidity Sensor\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"batteryPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"ambient_temperature\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"},\"ambient_humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"}}}],\n            \"70B3D5FFFE0B5002\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"OfficeSense\"},\"model\":{\"name\":\"Comfort\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"tempC\":{\"name\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"}},\"button\":{\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":200,\"cmd\":\"getDeviceVersions\"}}}}],\n            \"70B3D5FFFE0B5502\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"OfficeSense\"},\"model\":{\"name\":\"Comfort\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"tempC\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"},\"co2\":{\"name\":\"carbon_dioxide\",\"device_class\":\"carbon_dioxide\",\"unit_of_measurement\":\"ppm\",\"state_class\":\"measurement\"},\"sound\":{\"name\":\"sound\",\"device_class\":\"sound_pressure\",\"unit_of_measurement\":\"dBA\",\"state_class\":\"measurement\"},\"lux\":{\"name\":\"light\",\"device_class\":\"illuminance\",\"unit_of_measurement\":\"lx\",\"state_class\":\"measurement\"}},\"button\":{\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":200,\"cmd\":\"getDeviceVersions\"}}}}],\n            \"70B3D5FFFE0B5005\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"OfficeSense\"},\"model\":{\"name\":\"Desk\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"occupied\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"}},\"button\":{\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":200,\"cmd\":\"getDeviceVersions\"}}}}],\n            \"70B3D5FFFE0B5505\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"OfficeSense\"},\"model\":{\"name\":\"Desk\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"occupied\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"}},\"button\":{\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":200,\"cmd\":\"getDeviceVersions\"}}}}],\n            \"70B3D5FFFE0B5001\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"OfficeSense\"},\"model\":{\"name\":\"Presence\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"tempC\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"occupied\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"}},\"button\":{\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":200,\"cmd\":\"getDeviceVersions\"}}}}],\n            \"70B3D5FFFE0B5501\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"OfficeSense\"},\"model\":{\"name\":\"Presence\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"tempC\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"occupied\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"}},\"button\":{\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":200,\"cmd\":\"getDeviceVersions\"}}}}]\n        },\n        647FDA8010000100: {\n            dev_eui_array: [\"647FDA00000069d1\"],\n            application_array: [\"tektelic\",\"test_app_B\"],\n            device:{\n                manufacturer: { name:\"Tektelic\" },\n                model: { name: \"Smart Room Sensor - PIR\" },\n                swVersion: { name: \"sw_version\" },\n                hwVersion: { name: hw_version }\n            },\n            sensor: {\n                rssi: {\n                    name: \"signal_strength\",\n                    device_class: \"signal_strength\",\n                    unit_of_measurement: \"dBm\",\n                    icon: \"mdi:signal\",\n                    entity_category: \"diagnostic\",\n                    state_class: \"measurement\"\n                },\n                batteryPct: {\n                    name: \"battery\",\n                    device_class: \"battery\",\n                    unit_of_measurement: \"%\",\n                    entity_category: \"diagnostic\",\n                    state_class: \"measurement\"\n                },\n                battery_voltage: {\n                    name: \"voltage\",\n                    device_classe: \"voltage\",\n                    unit_of_measurement: \"V\",\n                    entity_category: \"diagnostic\",\n                    state_class: \"measurement\"\n                },\n                ambient_temperature: {\n                    name: \"temperature\",\n                    device_class: \"temperature\",\n                    unit_of_measurement: \"°C\",\n                    state_class: \"measurement\"\n                },\n                relative_humidity: {\n                    name: \"humidity\",\n                    device_class: \"humidity\",\n                    unit_of_measurement: \"%\",\n                    state_class: \"measurement\"\n                }\n            },\n            binary_sensor: {\n                motion_event_state: {\n                    name: \"occupancy\",\n                    device_class: \"occupancy\",\n                    state_class: \"measurement\"\n                },\n                reed_state: {\n                    name: \"contact\",\n                    device_class: \"door\",\n                    state_class: \"measurement\"\n                }\n            },\n            matched_by: \"dev_eui\"\n        }\n    },\n    result: {\n        loraData: {\n            metaData: {\n                deviceName: \"eui-647dfa00000069d1\",\n                dev_eui: \"647FDA00000069D1\",\n                join_eui: \"647FDA8010000100\",\n                application: \"tektelic\",\n                timestamp: 1793115612556,\n                timestamp_hr: \"2026/10/27 16:40:12 GMT\"\n            },\n            sensorData: {\n                rssi: -64,\n                payloadHex: \"01000008040001\",\n                reed_count: 1,\n                reed_state: false\n            }\n        },\n        previousData: {\n            metaData: {\n                deviceName: \"eui-647dfa00000069d1\",\n                join_eui: \"647FDA8010000100\",\n                application: \"tektelic\",\n                timestamp: 1793115594493,\n                timestamp_hr: \"2026/10/27 16:39:54 GMT\",\n                dev_eui: \"647FDA00000069D1\"\n            },\n            sensorData: {\n                rssi: -63,\n                motion_event_state: 255,\n                payloadHex: \"0100ff08040001\",\n                ambient_temperature: 20.8,\n                battery_voltage: 2.87,\n                relative_humidity: 64.5,\n                reed_count: 1,\n                reed_state: true\n            }\n        },\n        currentData: {\n            metaData: {\n                deviceName: \"eui-647dfa00000069d1\",\n                join_eui: \"647FDA8010000100\",\n                application: \"tektelic\",\n                timestamp: 1793115612556,\n                timestamp_hr: \"2026/10/27 16:40:12 GMT\",\n                dev_eui: \"647FDA00000069D1\"\n            },\n            sensorData: {\n                rssi: -64,\n                motion_event_state: 255,\n                payloadHex: \"01000008040001\",\n                ambient_temperature: 20.8,\n                battery_voltage: 2.87,\n                relative_humidity: 64.5,\n                reed_count: 1,\n                reed_state: false\n            }\n        }\n    },\n    _msgid: \"994f9eb7d4baae98\"\n}\n",
+        "x": 1210,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "0e081ce7cb21952d",
+        "type": "comment",
+        "z": "31916c06523cf6d5",
+        "g": "c27d99bf77c056cd",
+        "name": "Example output after all intergration functions",
+        "info": "msg = {\n    settings: {\n        lns: \"ttn\",\n        loraServer: \"https://eu1.cloud.thethings.network\",\n        joinKey2lorakey2ha: {\n            \"70B3D52DD3000000\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"MClimate\"},\"model\":{\"name\":\"Vicki - LoRaWAN Smart Radiator Thermostat\"},\"deviceVersions_software\":{\"name\":\"sw_version\"},\"deviceVersions_hardware\":{\"name\":\"hw_version\"},\"climate_primary_key\":{\"name\":\"radiator_thermostat\"},\"number_primary_key\":{\"name\":\"temperature_control\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"batteryPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"relativeHumidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"valvePct\":{\"name\":\"valve_open_status\",\"device_class\":\"None\",\"unit_of_measurement\":\"%\",\"icon\":\"mdi:pipe-valve\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"attachedBackplate\":{\"name\":\"attached_backplate\",\"icon\":\"mdi:engine\"},\"childLock\":{\"name\":\"child_lock\",\"icon\":\"mdi:lock\"},\"openWindow\":{\"name\":\"open_window_detection\",\"icon\":\"mdi:window-closed-variant\"}},\"climate\":{\"sensorTemperature\":{\"name\":\"current_temperature\"},\"targetTemperature\":{\"name\":\"radiator_thermostat\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"downlink\":{\"fPort\":1,\"cmd\":\"setTargetTemperature\"}},\"temperatureRangeSettings_min\":{\"name\":\"min_temp\",\"value\":15},\"temperatureRangeSettings_max\":{\"name\":\"max_temp\",\"value\":21},\"modes\":{\"name\":\"mode\",\"value\":[\"off\",\"heat\"]},\"system_mode\":{\"name\":\"system_mode\",\"value_default\":\"heat\"},\"attachedBackplate\":{\"name\":\"attached_backplate\"},\"temp_step\":{\"name\":\"temp_step\",\"value\":1}},\"number\":{\"temperatureRangeSettings_min\":{\"name\":\"min\",\"value\":15},\"temperatureRangeSettings_max\":{\"name\":\"max\",\"value\":21},\"targetTemperature\":{\"name\":\"temperature_control\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"downlink\":{\"fPort\":1,\"cmd\":\"setTargetTemperature\"}},\"step\":{\"name\":\"step\",\"value\":1},\"mode\":{\"name\":\"mode\",\"value\":\"slider\"}},\"button\":{\"request_device_settings\":{\"name\":\"request_device_settings\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":1,\"cmd\":\"getAllParams\"}},\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":1,\"cmd\":\"getDeviceVersions\"}}}}],\n            \"70B3D52DD8000000\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"MClimate\"},\"model\":{\"name\":\"WirelessThermostat - LoRaWAN\"},\"deviceVersions_software\":{\"name\":\"sw_version\"},\"deviceVersions_hardware\":{\"name\":\"hw_version\"},\"climate_primary_key\":{\"name\":\"thermostat\"},\"number_primary_key\":{\"name\":\"temperature_control\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"batteryPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"relativeHumidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"lux\":{\"name\":\"light\",\"device_class\":\"illuminance\",\"unit_of_measurement\":\"lx\",\"state_class\":\"measurement\"}},\"climate\":{\"sensorTemperature\":{\"name\":\"current_temperature\"},\"targetTemperature\":{\"name\":\"thermostat\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"downlink\":{\"fPort\":1,\"cmd\":\"setTargetTemperature\"}},\"temperatureRangeSettings_min\":{\"name\":\"min\",\"value\":15},\"temperatureRangeSettings_max\":{\"name\":\"max\",\"value\":21},\"modes\":{\"name\":\"mode\",\"value\":[\"off\",\"heat\"]},\"system_mode\":{\"name\":\"system_mode\",\"value\":\"heat\"},\"temp_step\":{\"name\":\"temp_step\",\"value\":1}},\"number\":{\"temperatureRangeSettings_min\":{\"name\":\"min\",\"value\":15},\"temperatureRangeSettings_max\":{\"name\":\"max\",\"value\":21},\"targetTemperature\":{\"name\":\"temperature_control\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"downlink\":{\"fPort\":1,\"cmd\":\"setTargetTemperature\"}},\"step\":{\"name\":\"step\",\"value\":1},\"mode\":{\"name\":\"mode\",\"value\":\"slider\"}},\"button\":{\"request_device_settings\":{\"name\":\"request_device_settings\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":1,\"cmd\":\"getAllParams\"}},\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":1,\"cmd\":\"getDeviceVersions\"}}}}],\n            \"24E124C0002A0001\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"Milesight\"},\"model\":{\"name\":\"WS523 - Smart Portable Socket\"},\"softwareVersion\":{\"name\":\"sw_version\"},\"hardwareVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"factor\":{\"name\":\"power_factor\",\"device_class\":\"power_factor\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"power\":{\"name\":\"power\",\"device_class\":\"power\",\"unit_of_measurement\":\"W\",\"state_class\":\"measurement\"},\"power_sum\":{\"name\":\"energy_total\",\"device_class\":\"energy\",\"unit_of_measurement\":\"Wh\",\"state_class\":\"measurement\"},\"voltage\":{\"name\":\"voltage\",\"device_class\":\"voltage\",\"unit_of_measurement\":\"V\",\"state_class\":\"measurement\"}},\"switch\":{\"state\":{\"name\":\"switch\",\"downlink\":{\"fPort\":1,\"cmd\":\"setState\",\"on\":\"open\",\"off\":\"close\"}}}}],\n            \"8000000000000003\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"Elsys\"},\"model\":{\"name\":\"ERS smart building sensor\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"temperature\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"},\"light\":{\"name\":\"light\",\"device_class\":\"illuminance\",\"unit_of_measurement\":\"lx\",\"state_class\":\"measurement\"},\"motion\":{\"name\":\"motion\",\"icon\":\"mdi:walk\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"motion\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"}}}],\n            \"647FDA8010000100\":[\n                {\"dev_eui_array\":[\"647FDA00000069d1\"],\"application_array\":[\"tektelic\",\"test_app_B\"],\"device\":{\"manufacturer\":{\"name\":\"Tektelic\"},\"model\":{\"name\":\"Smart Room Sensor - PIR\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"batteryPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"battery_voltage\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"ambient_temperature\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"},\"relative_humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"motion_event_state\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"},\"reed_state\":{\"name\":\"contact\",\"device_class\":\"door\",\"state_class\":\"measurement\"}}},{\"dev_eui_array\":[\"647FDA0000007D3C\"],\"application_array\":[\"test_app_1\",\"test_app_2\",\"test_app_3\"],\"device\":{\"manufacturer\":{\"name\":\"Tektelic\"},\"model\":{\"name\":\"Tundra - Cold Chain Temperature & Humidity Sensor\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"batteryPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"ambient_temperature\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"},\"ambient_humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"}}}],\n            \"70B3D5FFFE0B5002\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"OfficeSense\"},\"model\":{\"name\":\"Comfort\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"tempC\":{\"name\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"}},\"button\":{\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":200,\"cmd\":\"getDeviceVersions\"}}}}],\n            \"70B3D5FFFE0B5502\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"OfficeSense\"},\"model\":{\"name\":\"Comfort\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"tempC\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"},\"co2\":{\"name\":\"carbon_dioxide\",\"device_class\":\"carbon_dioxide\",\"unit_of_measurement\":\"ppm\",\"state_class\":\"measurement\"},\"sound\":{\"name\":\"sound\",\"device_class\":\"sound_pressure\",\"unit_of_measurement\":\"dBA\",\"state_class\":\"measurement\"},\"lux\":{\"name\":\"light\",\"device_class\":\"illuminance\",\"unit_of_measurement\":\"lx\",\"state_class\":\"measurement\"}},\"button\":{\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":200,\"cmd\":\"getDeviceVersions\"}}}}],\n            \"70B3D5FFFE0B5005\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"OfficeSense\"},\"model\":{\"name\":\"Desk\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"occupied\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"}},\"button\":{\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":200,\"cmd\":\"getDeviceVersions\"}}}}],\n            \"70B3D5FFFE0B5505\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"OfficeSense\"},\"model\":{\"name\":\"Desk\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"occupied\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"}},\"button\":{\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":200,\"cmd\":\"getDeviceVersions\"}}}}],\n            \"70B3D5FFFE0B5001\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"OfficeSense\"},\"model\":{\"name\":\"Presence\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"tempC\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"occupied\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"}},\"button\":{\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":200,\"cmd\":\"getDeviceVersions\"}}}}],\n            \"70B3D5FFFE0B5501\":[\n                {\"device\":{\"manufacturer\":{\"name\":\"OfficeSense\"},\"model\":{\"name\":\"Presence\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"tempC\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"occupied\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"}},\"button\":{\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":200,\"cmd\":\"getDeviceVersions\"}}}}]\n        },\n        647FDA8010000100: {\n            dev_eui_array: [\"647FDA00000069d1\"],\n            application_array: [\"tektelic\",\"test_app_B\"],\n            device:{\n                manufacturer: { name:\"Tektelic\" },\n                model: { name: \"Smart Room Sensor - PIR\" },\n                swVersion: { name: \"sw_version\" },\n                hwVersion: { name: hw_version }\n            },\n            sensor: {\n                rssi: {\n                    name: \"signal_strength\",\n                    device_class: \"signal_strength\",\n                    unit_of_measurement: \"dBm\",\n                    icon: \"mdi:signal\",\n                    entity_category: \"diagnostic\",\n                    state_class: \"measurement\"\n                },\n                batteryPct: {\n                    name: \"battery\",\n                    device_class: \"battery\",\n                    unit_of_measurement: \"%\",\n                    entity_category: \"diagnostic\",\n                    state_class: \"measurement\"\n                },\n                battery_voltage: {\n                    name: \"voltage\",\n                    device_classe: \"voltage\",\n                    unit_of_measurement: \"V\",\n                    entity_category: \"diagnostic\",\n                    state_class: \"measurement\"\n                },\n                ambient_temperature: {\n                    name: \"temperature\",\n                    device_class: \"temperature\",\n                    unit_of_measurement: \"°C\",\n                    state_class: \"measurement\"\n                },\n                relative_humidity: {\n                    name: \"humidity\",\n                    device_class: \"humidity\",\n                    unit_of_measurement: \"%\",\n                    state_class: \"measurement\"\n                }\n            },\n            binary_sensor: {\n                motion_event_state: {\n                    name: \"occupancy\",\n                    device_class: \"occupancy\",\n                    state_class: \"measurement\"\n                },\n                reed_state: {\n                    name: \"contact\",\n                    device_class: \"door\",\n                    state_class: \"measurement\"\n                }\n            },\n            matched_by: \"dev_eui\"\n        }\n    },\n    result: {\n        loraData: {\n            metaData: {\n                deviceName: \"eui-647dfa00000069d1\",\n                dev_eui: \"647FDA00000069D1\",\n                join_eui: \"647FDA8010000100\",\n                application: \"tektelic\",\n                timestamp: 1793115612556,\n                timestamp_hr: \"2026/10/27 16:40:12 GMT\"\n            },\n            sensorData: {\n                rssi: -64,\n                payloadHex: \"01000008040001\",\n                reed_count: 1,\n                reed_state: false\n            }\n        },\n        previousData: {metaData :{\"deviceName\":\"eui-647dfa00000069d1\",\"join_eui\":\"647FDA8010000100\",\"application\":\"tektelic\",\"timestamp\":1793115594493,\"timestamp_hr\":\"2026/10/27 16:39:54 GMT\",\"dev_eui\":\"647FDA00000069D1\"},\"sensorData\":{\"rssi\":-63,\"motion_event_state\":255,\"payloadHex\":\"0100ff08040001\",\"ambient_temperature\":20.8,\"battery_voltage\":2.87,\"relative_humidity\":64.5,\"reed_count\":1,\"reed_state\":true}},\"currentData\":{\"metaData\":{\"deviceName\":\"eui-647dfa00000069d1\",\"join_eui\":\"647FDA8010000100\",\"application\":\"tektelic\",\"timestamp\":1793115612556,\"timestamp_hr\":\"2026/10/27 16:40:12 GMT\",\"dev_eui\":\"647FDA00000069D1\"},\"sensorData\":{\"rssi\":-64,\"motion_event_state\":255,\"payloadHex\":\"01000008040001\",\"ambient_temperature\":20.8,\"battery_voltage\":2.87,\"relative_humidity\":64.5,\"reed_count\":1,\"reed_state\":false}}\n    },\n    _msgid: \"994f9eb7d4baae98\"\n}\n\n\n\n\nmsg = {\n    settings: {\n        lns: \"ttn\",\n        loraServer: \"https://eu1.cloud.thethings.network\",\n    joinKey2lorakey2ha:{\n        70B3D52DD3000000: [\n            {\"device\":{\"manufacturer\":{\"name\":\"MClimate\"},\"model\":{\"name\":\"Vicki - LoRaWAN Smart Radiator Thermostat\"},\"deviceVersions_software\":{\"name\":\"sw_version\"},\"deviceVersions_hardware\":{\"name\":\"hw_version\"},\"climate_primary_key\":{\"name\":\"radiator_thermostat\"},\"number_primary_key\":{\"name\":\"temperature_control\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"batteryPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"relativeHumidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"valvePct\":{\"name\":\"valve_open_status\",\"device_class\":\"None\",\"unit_of_measurement\":\"%\",\"icon\":\"mdi:pipe-valve\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"attachedBackplate\":{\"name\":\"attached_backplate\",\"icon\":\"mdi:engine\"},\"childLock\":{\"name\":\"child_lock\",\"icon\":\"mdi:lock\"},\"openWindow\":{\"name\":\"open_window_detection\",\"icon\":\"mdi:window-closed-variant\"}},\"climate\":{\"sensorTemperature\":{\"name\":\"current_temperature\"},\"targetTemperature\":{\"name\":\"radiator_thermostat\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"downlink\":{\"fPort\":1,\"cmd\":\"setTargetTemperature\"}},\"temperatureRangeSettings_min\":{\"name\":\"min_temp\",\"value\":15},\"temperatureRangeSettings_max\":{\"name\":\"max_temp\",\"value\":21},\"modes\":{\"name\":\"mode\",\"value\":[\"off\",\"heat\"]},\"system_mode\":{\"name\":\"system_mode\",\"value_default\":\"heat\"},\"attachedBackplate\":{\"name\":\"attached_backplate\"},\"temp_step\":{\"name\":\"temp_step\",\"value\":1}},\"number\":{\"temperatureRangeSettings_min\":{\"name\":\"min\",\"value\":15},\"temperatureRangeSettings_max\":{\"name\":\"max\",\"value\":21},\"targetTemperature\":{\"name\":\"temperature_control\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"downlink\":{\"fPort\":1,\"cmd\":\"setTargetTemperature\"}},\"step\":{\"name\":\"step\",\"value\":1},\"mode\":{\"name\":\"mode\",\"value\":\"slider\"}},\"button\":{\"request_device_settings\":{\"name\":\"request_device_settings\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":1,\"cmd\":\"getAllParams\"}},\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":1,\"cmd\":\"getDeviceVersions\"}}}}],\n        70B3D52DD8000000:[\n            {\"device\":{\"manufacturer\":{\"name\":\"MClimate\"},\"model\":{\"name\":\"WirelessThermostat - LoRaWAN\"},\"deviceVersions_software\":{\"name\":\"sw_version\"},\"deviceVersions_hardware\":{\"name\":\"hw_version\"},\"climate_primary_key\":{\"name\":\"thermostat\"},\"number_primary_key\":{\"name\":\"temperature_control\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"batteryPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"relativeHumidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"lux\":{\"name\":\"light\",\"device_class\":\"illuminance\",\"unit_of_measurement\":\"lx\",\"state_class\":\"measurement\"}},\"climate\":{\"sensorTemperature\":{\"name\":\"current_temperature\"},\"targetTemperature\":{\"name\":\"thermostat\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"downlink\":{\"fPort\":1,\"cmd\":\"setTargetTemperature\"}},\"temperatureRangeSettings_min\":{\"name\":\"min\",\"value\":15},\"temperatureRangeSettings_max\":{\"name\":\"max\",\"value\":21},\"modes\":{\"name\":\"mode\",\"value\":[\"off\",\"heat\"]},\"system_mode\":{\"name\":\"system_mode\",\"value\":\"heat\"},\"temp_step\":{\"name\":\"temp_step\",\"value\":1}},\"number\":{\"temperatureRangeSettings_min\":{\"name\":\"min\",\"value\":15},\"temperatureRangeSettings_max\":{\"name\":\"max\",\"value\":21},\"targetTemperature\":{\"name\":\"temperature_control\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"downlink\":{\"fPort\":1,\"cmd\":\"setTargetTemperature\"}},\"step\":{\"name\":\"step\",\"value\":1},\"mode\":{\"name\":\"mode\",\"value\":\"slider\"}},\"button\":{\"request_device_settings\":{\"name\":\"request_device_settings\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":1,\"cmd\":\"getAllParams\"}},\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":1,\"cmd\":\"getDeviceVersions\"}}}}],\n        24E124C0002A0001: [\n            {\"device\":{\"manufacturer\":{\"name\":\"Milesight\"},\"model\":{\"name\":\"WS523 - Smart Portable Socket\"},\"softwareVersion\":{\"name\":\"sw_version\"},\"hardwareVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"factor\":{\"name\":\"power_factor\",\"device_class\":\"power_factor\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"power\":{\"name\":\"power\",\"device_class\":\"power\",\"unit_of_measurement\":\"W\",\"state_class\":\"measurement\"},\"power_sum\":{\"name\":\"energy_total\",\"device_class\":\"energy\",\"unit_of_measurement\":\"Wh\",\"state_class\":\"measurement\"},\"voltage\":{\"name\":\"voltage\",\"device_class\":\"voltage\",\"unit_of_measurement\":\"V\",\"state_class\":\"measurement\"}},\"switch\":{\"state\":{\"name\":\"switch\",\"downlink\":{\"fPort\":1,\"cmd\":\"setState\",\"on\":\"open\",\"off\":\"close\"}}}}],\n        8000000000000003: [\n            {\"device\":{\"manufacturer\":{\"name\":\"Elsys\"},\"model\":{\"name\":\"ERS smart building sensor\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"temperature\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"},\"light\":{\"name\":\"light\",\"device_class\":\"illuminance\",\"unit_of_measurement\":\"lx\",\"state_class\":\"measurement\"},\"motion\":{\"name\":\"motion\",\"icon\":\"mdi:walk\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"motion\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"}}}],\n        647FDA8010000100: [\n            {\"dev_eui_array\":[\"647FDA00000069d1\"],\"application_array\":[\"tektelic\",\"test_app_B\"],\"device\":{\"manufacturer\":{\"name\":\"Tektelic\"},\"model\":{\"name\":\"Smart Room Sensor - PIR\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"batteryPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"battery_voltage\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"ambient_temperature\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"},\"relative_humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"motion_event_state\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"},\"reed_state\":{\"name\":\"contact\",\"device_class\":\"door\",\"state_class\":\"measurement\"}}},{\"dev_eui_array\":[\"647FDA0000007D3C\"],\"application_array\":[\"test_app_1\",\"test_app_2\",\"test_app_3\"],\"device\":{\"manufacturer\":{\"name\":\"Tektelic\"},\"model\":{\"name\":\"Tundra - Cold Chain Temperature & Humidity Sensor\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"batteryPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"ambient_temperature\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"},\"ambient_humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"}}}],\n        70B3D5FFFE0B5002: [\n            {\"device\":{\"manufacturer\":{\"name\":\"OfficeSense\"},\"model\":{\"name\":\"Comfort\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"tempC\":{\"name\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"}},\"button\":{\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":200,\"cmd\":\"getDeviceVersions\"}}}}],\n        70B3D5FFFE0B5502: [\n            {\"device\":{\"manufacturer\":{\"name\":\"OfficeSense\"},\"model\":{\"name\":\"Comfort\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"tempC\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"},\"co2\":{\"name\":\"carbon_dioxide\",\"device_class\":\"carbon_dioxide\",\"unit_of_measurement\":\"ppm\",\"state_class\":\"measurement\"},\"sound\":{\"name\":\"sound\",\"device_class\":\"sound_pressure\",\"unit_of_measurement\":\"dBA\",\"state_class\":\"measurement\"},\"lux\":{\"name\":\"light\",\"device_class\":\"illuminance\",\"unit_of_measurement\":\"lx\",\"state_class\":\"measurement\"}},\"button\":{\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":200,\"cmd\":\"getDeviceVersions\"}}}}],\n        70B3D5FFFE0B5005: [\n            {\"device\":{\"manufacturer\":{\"name\":\"OfficeSense\"},\"model\":{\"name\":\"Desk\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"occupied\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"}},\"button\":{\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":200,\"cmd\":\"getDeviceVersions\"}}}}],\n        70B3D5FFFE0B5505: [\n            {\"device\":{\"manufacturer\":{\"name\":\"OfficeSense\"},\"model\":{\"name\":\"Desk\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"occupied\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"}},\"button\":{\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":200,\"cmd\":\"getDeviceVersions\"}}}}],\n        70B3D5FFFE0B5001: [\n            {\"device\":{\"manufacturer\":{\"name\":\"OfficeSense\"},\"model\":{\"name\":\"Presence\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"tempC\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"occupied\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"}},\"button\":{\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":200,\"cmd\":\"getDeviceVersions\"}}}}],\n        70B3D5FFFE0B5501: [\n            {\"device\":{\"manufacturer\":{\"name\":\"OfficeSense\"},\"model\":{\"name\":\"Presence\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"vddPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"vdd\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"},\"tempC\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"occupied\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"}},\"button\":{\"request_device_version\":{\"name\":\"request_device_version\",\"device_class\":\"None\",\"icon\":\"mdi:cog-outline\",\"entity_category\":\"config\",\"downlink\":{\"fPort\":200,\"cmd\":\"getDeviceVersions\"}}}}]\n    },\n    647FDA8010000100:{\n        \"dev_eui_array\":[\"647FDA00000069d1\"],\"application_array\":[\"tektelic\",\"test_app_B\"],\"device\":{\"manufacturer\":{\"name\":\"Tektelic\"},\"model\":{\"name\":\"Smart Room Sensor - PIR\"},\"swVersion\":{\"name\":\"sw_version\"},\"hwVersion\":{\"name\":\"hw_version\"}},\"sensor\":{\"rssi\":{\"name\":\"signal_strength\",\"device_class\":\"signal_strength\",\"unit_of_measurement\":\"dBm\",\"icon\":\"mdi:signal\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"batteryPct\":{\"name\":\"battery\",\"device_class\":\"battery\",\"unit_of_measurement\":\"%\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"battery_voltage\":{\"name\":\"voltage\",\"device_classe\":\"voltage\",\"unit_of_measurement\":\"V\",\"entity_category\":\"diagnostic\",\"state_class\":\"measurement\"},\"ambient_temperature\":{\"name\":\"temperature\",\"device_class\":\"temperature\",\"unit_of_measurement\":\"°C\",\"state_class\":\"measurement\"},\"relative_humidity\":{\"name\":\"humidity\",\"device_class\":\"humidity\",\"unit_of_measurement\":\"%\",\"state_class\":\"measurement\"}},\"binary_sensor\":{\"motion_event_state\":{\"name\":\"occupancy\",\"device_class\":\"occupancy\",\"state_class\":\"measurement\"},\"reed_state\":{\"name\":\"contact\",\"device_class\":\"door\",\"state_class\":\"measurement\"}},\"matched_by\":\"dev_eui\"}},\n    result:{\n        loraData: {\n            metaData: {\n                deviceName: \"eui-647dfa00000069d1\",\n                dev_eui: \"647FDA00000069D1\",\n                join_eui: \"647FDA8010000100\",\n                application: \"tektelic\",\n                timestamp: 1793115612556,\n                timestamp_hr: \"2026/10/27 16:40:12 GMT\"\n            },\n            sensorData: {\n                rssi: -64,\n                payloadHex: \"01000008040001\",\n                reed_count: 1,\n                reed_state: false\n            }\n        },\n        previousData: {\n            metaData: {\n                deviceName: \"eui-647dfa00000069d1\",\n                join_eui: \"647FDA8010000100\",\n                application: \"tektelic\",\n                timestamp: 1793115594493,\n                timestamp_hr: \"2026/10/27 16:39:54 GMT\",\n                dev_eui: \"647FDA00000069D1\"\n            },\n            sensorData: {\n                rssi: -63,\n                motion_event_state:255,\n                payloadHex: \"0100ff08040001\",\n                ambient_temperature: 20.8,\n                battery_voltage: 2.87,\n                relative_humidity:64.5,\n                reed_count: 1,\n                reed_state: true\n            }\n        },\n        currentData: {\n            metaData: {\n                deviceName: \"eui-647dfa00000069d1\",\n                join_eui: \"647FDA8010000100\",\n                application: \"tektelic\",\n                timestamp: 1793115612556,\n                timestamp_hr: \"2026/10/27 16:40:12 GMT\",\n                dev_eui: \"647FDA00000069D1\"\n            },\n            sensorData: {\n                rssi: -64,\n                motion_event_state: 255,\n                payloadHex: \"01000008040001\",\n                ambient_temperature: 20.8,\n                battery_voltage:2.87,\n                relative_humidity: 64.5,\n                reed_count: 1,\n                reed_state: false\n            }\n        },\n        integration: {\n            device: {\n                identifiers: [\"lora2nodered2mqtt_eui-647dfa00000069d1\"],name: \"eui-647dfa00000069d1\",\n                configuration_url: \"https://eu1.cloud.thethings.network/console/applications/tektelic/devices/eui-647dfa00000069d1\",\n                manufacturer: \"Tektelic (LoRaWAN device)\",\n                model: \"Smart Room Sensor - PIR\"\n            },\n            sensor: {\n                signal_strength: {\n                    device_class: \"signal_strength\",\n                    unit_of_measurement: \"dBm\",\n                    icon: \"mdi:signal\",\n                    entity_category: \"diagnostic\",\n                    state_class: \"measurement\",\n                    value:-64\n                },\n                temperature: {\n                    device_class: \"temperature\",\n                    unit_of_measurement: \"°C\",\n                    state_class: \"measurement\",\n                    value:20.8\n                },\n                voltage: {\n                    device_classe: \"voltage\",\n                    unit_of_measurement: \"V\",\n                    entity_category: \"diagnostic\",\n                    state_class: \"measurement\",\n                    value: 2.87\n                },\n                humidity: {\n                    device_class: \"humidity\",\n                    unit_of_measurement: \"%\",\n                    state_class: \"measurement\",\n                    value: 64.5\n                }\n            },\n            binary_sensor: {\n                occupancy: {\n                    device_class: \"occupancy\",\n                    state_class: \"measurement\",\n                    value\":255\n                },\n                contact: {\n                    device_class: \"door\",\n                    state_class: \"measurement\",\n                    value:false\n                }\n            }\n        },\n        general: {\n            deviceName: \"eui-647dfa00000069d1\",\n            application: \"tektelic\",\n            join_eui:\"647FDA8010000100\",\n            topicDeviceGet: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get\",\n            topicDeviceSet: \"mqtt2nodered2lora/Tektelic/tektelic/eui-647dfa00000069d1/647FDA8010000100/set\"\n        },\n        key_skipped: {\n            payloadHex: \"01000008040001\",\n            reed_count: 1\n        },\n        haConfigQueue: [\n            {\n                topic: \"homeassistant/sensor/eui-647dfa00000069d1/signal_strength/config\",\n                payload: {\n                    device: {\n                        identifiers: [\"lora2nodered2mqtt_eui-647dfa00000069d1\"],\n                        name:\"eui-647dfa00000069d1\",\n                        configuration_url: \"https://eu1.cloud.thethings.network/console/applications/tektelic/devices/eui-647dfa00000069d1\",\n                        manufacturer: \"Tektelic (LoRaWAN device)\",\n                        model: \"Smart Room Sensor - PIR\"\n                    },\n                    name: \"Signal Strength\",\n                    default_entity_id:\"sensor.eui-647dfa00000069d1_sensor_signal_strength\",\n                    unique_id: \"eui-647dfa00000069d1_sensor_signal_strength_lora2nodered2mqtt\",\n                    state_topic: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get/sensor/signal_strength\",\n                    json_attributes_topic: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get/sensor/signal_strength\",\n                    value_template: \"{{ value_json.value }}\",\n                    device_class: \"signal_strength\",\n                    unit_of_measurement: \"dBm\",\n                    icon: \"mdi:signal\",\n                    entity_category: \"diagnostic\",\n                    state_class: \"measurement\",\n                    value:-64\n                }\n            },\n            {\n                topic: \"homeassistant/sensor/eui-647dfa00000069d1/temperature/config\",\n                payload: {\n                    device: {\n                        identifiers: [\"lora2nodered2mqtt_eui-647dfa00000069d1\"],\n                        name: \"eui-647dfa00000069d1\",\n                        configuration_url: \"https://eu1.cloud.thethings.network/console/applications/tektelic/devices/eui-647dfa00000069d1\",\n                        manufacturer: \"Tektelic (LoRaWAN device)\",\n                        model: \"Smart Room Sensor - PIR\"\n                    },\n                    name: \"Temperature\",\n                    default_entity_id: \"sensor.eui-647dfa00000069d1_sensor_temperature\",\n                    unique_id: \"eui-647dfa00000069d1_sensor_temperature_lora2nodered2mqtt\",\n                    state_topic: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get/sensor/temperature\",\n                    json_attributes_topic: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get/sensor/temperature\",\n                    value_template: \"{{ value_json.value }}\",\n                    device_class: \"temperature\",\n                    unit_of_measurement: \"°C\",\n                    state_class: \"measurement\",\n                    value: 20.8\n                }\n            },\n            {\n                topic: \"homeassistant/sensor/eui-647dfa00000069d1/voltage/config\",\n                payload: {\n                    device: {\n                        identifiers: [\"lora2nodered2mqtt_eui-647dfa00000069d1\"],\n                        name: \"eui-647dfa00000069d1\",\n                        configuration_url: \"https://eu1.cloud.thethings.network/console/applications/tektelic/devices/eui-647dfa00000069d1\",\n                        manufacturer: \"Tektelic (LoRaWAN device)\",\n                        model: \"Smart Room Sensor - PIR\"\n                    },\n                    name: \"Voltage\",\n                    default_entity_id: \"sensor.eui-647dfa00000069d1_sensor_voltage\",\n                    unique_id: \"eui-647dfa00000069d1_sensor_voltage_lora2nodered2mqtt\",\n                    state_topic: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get/sensor/voltage\",\n                    json_attributes_topic: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get/sensor/voltage\",\n                    value_template: \"{{ value_json.value }}\",\n                    device_classe: \"voltage\",\n                    unit_of_measurement: \"V\",\n                    entity_category: \"diagnostic\",\n                    state_class:\"measurement\",\n                    value: 2.87\n                }\n            },\n            {\n                topic: \"homeassistant/sensor/eui-647dfa00000069d1/humidity/config\",\n                payload: {\n                    device: {\n                        identifiers: [\"lora2nodered2mqtt_eui-647dfa00000069d1\"],\n                        name: \"eui-647dfa00000069d1\",\n                        configuration_url: \"https://eu1.cloud.thethings.network/console/applications/tektelic/devices/eui-647dfa00000069d1\",\n                        manufacturer: \"Tektelic (LoRaWAN device)\",\n                        model: \"Smart Room Sensor - PIR\"\n                    },\n                    name: \"Humidity\",\n                    default_entity_id: \"sensor.eui-647dfa00000069d1_sensor_humidity\",\n                    unique_id: \"eui-647dfa00000069d1_sensor_humidity_lora2nodered2mqtt\",\n                    state_topic: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get/sensor/humidity\",\n                    json_attributes_topic: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get/sensor/humidity\",\n                    value_template: \"{{ value_json.value }}\",\n                    device_class: \"humidity\",\n                    unit_of_measurement: \"%\",\n                    state_class: \"measurement\",\n                    value:64.5\n                }\n            },\n            {\n                topic: \"homeassistant/binary_sensor/eui-647dfa00000069d1/occupancy/config\",\n                payload: {\n                    device: {\n                        identifiers: [\"lora2nodered2mqtt_eui-647dfa00000069d1\"],\n                        name: \"eui-647dfa00000069d1\",\n                        configuration_url: \"https://eu1.cloud.thethings.network/console/applications/tektelic/devices/eui-647dfa00000069d1\",\n                        manufacturer: \"Tektelic (LoRaWAN device)\",\n                        model: \"Smart Room Sensor - PIR\"\n                    },\n                    name: \"Occupancy\",\n                    default_entity_id: \"binary_sensor.eui-647dfa00000069d1_binary_sensor_occupancy\",\n                    unique_id: \"eui-647dfa00000069d1_binary_sensor_occupancy_lora2nodered2mqtt\",\n                    state_topic: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get/binary_sensor/occupancy\",\n                    json_attributes_topic: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get/binary_sensor/occupancy\",\n                    value_template: \"{{ value_json.value }}\",\n                    payload_on: true,\n                    payload_off: false,\n                    device_class: \"occupancy\",\n                    state_class: \"measurement\",\n                    value: 255\n                }\n            },\n            {\n                topic: \"homeassistant/binary_sensor/eui-647dfa00000069d1/contact/config\",\n                payload: {\n                    device: {\n                        identifiers: [\"lora2nodered2mqtt_eui-647dfa00000069d1\"],\n                        name: \"eui-647dfa00000069d1\",\n                        configuration_url: \"https://eu1.cloud.thethings.network/console/applications/tektelic/devices/eui-647dfa00000069d1\",\n                        manufacturer: \"Tektelic (LoRaWAN device)\",\n                        model: \"Smart Room Sensor - PIR\"\n                    },\n                    name: \"Contact\",\n                    default_entity_id: \"binary_sensor.eui-647dfa00000069d1_binary_sensor_contact\",\n                    unique_id: \"eui-647dfa00000069d1_binary_sensor_contact_lora2nodered2mqtt\",\n                    state_topic: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get/binary_sensor/contact\",\n                    json_attributes_topic: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get/binary_sensor/contact\",\n                    value_template: \"{{ value_json.value }}\",\n                    payload_on: true,\n                    payload_off: false,\n                    device_class: \"door\",\n                    state_class: \"measurement\",\n                    value: false\n                }\n            }\n        ],\n        haValueQueue: [\n            {\n                topic: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get/sensor/signal_strength\",\n                retain: true,\n                payload: {\"value\":-64}\n            },\n            {\n                topic: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get/sensor/temperature\",\n                retain: true,\n                payload: {\"value\":20.8}\n            },\n            {\n                topic: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get/sensor/voltage\",\n                retain: true,\n                payload: {\"value\":2.87}\n            },\n            {\n                topic: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get/sensor/humidity\",\n                retain: true,\n                payload: {\"value\":64.5}\n            },\n            {\n                topic: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get/binary_sensor/occupancy\",\n                retain: true,\n                payload: {\"value\":true}\n            },\n            {\n                topic: \"lora2nodered2mqtt/Tektelic/eui-647dfa00000069d1/get/binary_sensor/contact\",\n                retain: true,\n                payload: {\"value\":false}\n            }\n        ]\n    },\n    _msgid: \"994f9eb7d4baae98\"\n}",
+        "x": 1190,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "1ebcec3975b473c4",
+        "type": "mqtt-broker",
+        "name": "ha_mqtt.local",
+        "broker": "mqtt.local",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "97a2cf6e3e96b22a",
+        "type": "mqtt-broker",
+        "name": "TTN - app-01",
+        "broker": "eu1.cloud.thethings.network",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "f4729358adc75d8a",
+        "type": "mqtt-broker",
+        "name": "TTN - app-02",
+        "broker": "eu1.cloud.thethings.network",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
