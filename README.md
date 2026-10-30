@@ -3,7 +3,7 @@
 ### Update - 2026-10-30 (2.1.4):
  - LNS dependent code in separate functions.
  - Change the the way "device classes" are  processed. Instead predefined in the integrations it will now process all defined once in the settings.
- - Add for many sensors the state_class: "measurment" which will keep the sensordata instead it is dropped after 14 days.
+ - Add for many sensors the state_class: "measurement" which will keep the sensordata instead it is dropped after 14 days.
  - Process the battery status in TTN which is send in a separate topic.
 
 ### Integrate Lora sensors into Home Assistant
