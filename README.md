@@ -15,6 +15,7 @@ With this integration Lora "sensors" and "switches" can be integrated. I have tr
  - MClimate:  Wireless Thermostat
  - OfficeSense: Comfort, Desk and Presence
  - Tektelic: Smart Room Sensor - PIR
+ - Multiple sensor types with one JoinEUI could now be selected on DevEUI or Application name
 
 These definitions could also be used as example for other sensors.
 
